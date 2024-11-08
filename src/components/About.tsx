@@ -1,6 +1,6 @@
 import React from 'react';
 import './about.scss';
-import profilePicture from '../assets/profile_picture.png';
+import profilePicturePath from '../assets/profile_picture.png';
 
 const About = () => {
     return (
@@ -9,7 +9,7 @@ const About = () => {
                 About him
             </div>
             {/* eslint-disable-next-line */}
-            <img className='profile' src={profilePicture} alt='profile picture' />
+            <img className='profile' src={profilePicturePath} aria-description='A picture showing Ole Kösters head. He wears a red shirt and a grey jacket.' />
             <div className='skills'>
                 <div className='skillNames'>
                     <div className='skillName'>JavaScript</div>
