@@ -106,7 +106,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <div className='skillsDescription text-center'>
+            <div className='textContent text-center'>
                 &gt; <b>Certified</b> Full-Stack developer<br /><br />
                 &gt; Worked as a <b>contractor</b> for a online marketing agency
             </div>
