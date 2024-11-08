@@ -28,6 +28,7 @@
 
 %imgBase {
     max-width: 213px;
+    max-height: 213px;
     border-radius: 8px;
     margin-bottom: 20px;
 }
@@ -35,7 +36,8 @@
 div {
 
     &.about,
-    &.project {
+    &.project,
+    &.contact {
         display: flex;
         flex-direction: column;
         justify-content: space-between;

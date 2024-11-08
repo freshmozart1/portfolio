@@ -1,0 +1,9 @@
+@import '../App.scss';
+
+div {
+    &.map {
+        @extend %imgBase;
+        width: 100%;
+        height: 100%;
+    }
+}
