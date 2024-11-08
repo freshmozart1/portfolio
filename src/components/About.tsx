@@ -15,7 +15,7 @@ const About = () => {
                     <div className='skillName'>JavaScript</div>
                     <div className="skillName">React</div>
                     <div className="skillName">TypeScript</div>
-                    <div className="skillName">AWs</div>
+                    <div className="skillName">AWS</div>
                     <div className="skillName">MongoDB</div>
                 </div>
                 <div className="skillStars">
