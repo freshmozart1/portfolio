@@ -4,3 +4,89 @@
 @import '../node_modules/bootstrap/scss/maps';
 @import '../node_modules/bootstrap/scss/mixins';
 @import '../node_modules/bootstrap/scss/root';
+
+@import '../node_modules/bootstrap/scss/bootstrap-utilities.scss';
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('./assets/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
+%textBase {
+    font-size: 12px;
+    color: black;
+    font-family: 'Playfair Display', sans-serif;
+    font-weight: 400;
+    letter-spacing: 1.20px;
+    word-wrap: break-word;
+}
+
+%imgBase {
+    max-width: 213px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+div {
+
+    &.about,
+    &.project {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100svh;
+    }
+
+    &.ellipse {
+        width: 16px;
+        height: 16px;
+        background: #D9D9D9;
+        border-radius: 8px;
+        border: 0.50px solid black;
+
+        &_filled {
+            @extend .ellipse;
+            background: black;
+        }
+    }
+
+    &.navigation {
+        height: 40px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+    }
+
+    &.header {
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 32px;
+        font-family: 'Playfair Display', sans-serif;
+        font-weight: 400;
+        line-height: 40px;
+        letter-spacing: 3.20px;
+        word-wrap: break-word;
+    }
+
+    &.textContent {
+        @extend %textBase;
+        line-height: 18px;
+        margin-bottom: 20px;
+
+        b {
+            font-weight: 700;
+        }
+    }
+}

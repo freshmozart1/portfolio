@@ -1,0 +1,7 @@
+@import '../App.scss';
+
+img {
+    &.project_image {
+        @extend %imgBase;
+    }
+}
