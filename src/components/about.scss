@@ -1,0 +1,133 @@
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+@import '../../node_modules/bootstrap/scss/variables-dark';
+@import '../../node_modules/bootstrap/scss/maps';
+@import '../../node_modules/bootstrap/scss/mixins';
+@import '../../node_modules/bootstrap/scss/root';
+
+@import '../../node_modules/bootstrap/scss/bootstrap-utilities.scss';
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../assets/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../assets/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
+div {
+    &.about {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100svh;
+    }
+
+    &.ellipse {
+        width: 16px;
+        height: 16px;
+        background: #D9D9D9;
+        border-radius: 8px;
+        border: 0.50px solid black;
+
+        &_filled {
+            @extend .ellipse;
+            background: black;
+        }
+    }
+
+    &.navigation {
+        height: 40px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+    }
+
+    &.header {
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        font-size: 32px;
+        font-family: 'Playfair Display', sans-serif;
+        font-weight: 400;
+        line-height: 40px;
+        letter-spacing: 3.20px;
+        word-wrap: break-word;
+    }
+
+    &.skills {
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+    &.skillTextBase {
+        font-size: 12px;
+        color: black;
+        font-family: 'Playfair Display', sans-serif;
+        font-weight: 400;
+        letter-spacing: 1.20px;
+        word-wrap: break-word;
+    }
+
+    &.skillNamesAndStarsBase {
+        flex-direction: column;
+        justify-content: flex-start;
+        display: inline-flex;
+    }
+
+    &.skillNames {
+        @extend .skillNamesAndStarsBase;
+        align-items: flex-end;
+    }
+
+    &.skillName {
+        @extend .skillTextBase;
+        text-align: right;
+        line-height: 20px;
+    }
+
+    &.skillStars {
+        @extend .skillNamesAndStarsBase;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    &.skillStarRow {
+        align-self: stretch;
+        justify-content: flex-start;
+        align-items: center;
+        display: inline-flex;
+    }
+
+    &.skillsDescription {
+        @extend .skillTextBase;
+        line-height: 18px;
+        margin-bottom: 20px;
+
+        b {
+            font-weight: 700;
+        }
+    }
+}
+
+img {
+    &.profile {
+        max-width: 213px;
+        max-height: 213px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+}
