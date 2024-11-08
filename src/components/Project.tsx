@@ -20,8 +20,8 @@ const Project = ({ className, projectName, projectImagePath, children }: Project
                 {children}
             </div>
             <div className='navigation'>
-                <div className='ellipse_filled'></div>
-                <div className="ellipse"></div>
+                <div className='ellipse'></div>
+                <div className="ellipse_filled"></div>
                 <div className="ellipse"></div>
                 <div className="ellipse"></div>
             </div>
