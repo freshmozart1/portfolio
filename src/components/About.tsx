@@ -110,12 +110,6 @@ const About = () => {
                 &gt; <b>Certified</b> Full-Stack developer<br /><br />
                 &gt; Worked as a <b>contractor</b> for a online marketing agency
             </div>
-            <div className='navigation'>
-                <div className='ellipse_filled'></div>
-                <div className="ellipse"></div>
-                <div className="ellipse"></div>
-                <div className="ellipse"></div>
-            </div>
         </div>
     );
 };

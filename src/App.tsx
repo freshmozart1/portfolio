@@ -3,6 +3,7 @@ import About from './components/About.tsx';
 import './App.scss';
 import Project from './components/Project.tsx';
 import TweHeaderPath from './assets/twe_header.png';
+import Navigation from './components/Navigation.tsx';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         &gt; react-native-gifted-chat<br />
         &gt; react-native-maps
       </Project>
+      <Navigation />
     </div>
   );
 }

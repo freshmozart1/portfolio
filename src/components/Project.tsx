@@ -19,12 +19,6 @@ const Project = ({ className, projectName, projectImagePath, children }: Project
             <div className='textContent text-center'>
                 {children}
             </div>
-            <div className='navigation'>
-                <div className='ellipse'></div>
-                <div className="ellipse_filled"></div>
-                <div className="ellipse"></div>
-                <div className="ellipse"></div>
-            </div>
         </div>
     );
 };
