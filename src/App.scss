@@ -1,3 +1,5 @@
+@import './mixins.scss';
+
 @font-face {
     font-family: 'Playfair Display';
     src: url('./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
@@ -8,142 +10,168 @@
     src: url('./assets/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
 }
 
+b {
+    font-weight: 700;
+}
+
 div {
-    &.mainContainer {
+
+    &.hidden {
+        opacity: 0;
+        filter: blur(5px);
+        transition: all 0.5s;
+    }
+
+    &.show {
+        filter: blur(0);
+        opacity: 1;
+    }
+
+    &.rows {
         width: 100svw;
         height: 100svh;
         overflow: hidden;
-        color: white;
-        font-family: 'Playfair Display', serif;
-        word-wrap: break-word;
-        text-align: center;
-        display: inline-flex;
     }
 
-    &.riddleContainer {
-        display: flex;
-        flex-direction: column;
-        flex-shrink: 0;
-        padding: 20px;
-        align-items: center;
-        justify-content: space-around;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url(./assets/star_texture.png);
+    &.columns {
+        @include container;
+        width: 100svw;
+        height: 100svh;
+        flex-direction: row;
+        align-items: flex-start;
+        padding: 0;
+        gap: 0;
 
         div {
-            &.question {
-                height: 200px;
-                border-radius: 7.5px;
-                border: 1px solid white;
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 32px;
-                line-height: 40px;
-                letter-spacing: 3.20px;
-                font-weight: 700;
-            }
 
-            &.fortyTwo {
+            &.riddleContainer,
+            &.transitionContainer,
+            &.solutionContainer,
+            &.sorryContainer {
+                @include container;
+                background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 100%), url(./assets/star_texture.png);
 
-                >div:nth-child(1),
-                >div:nth-child(2) {
-                    width: 45px;
-                    height: 119px;
+                span.question,
+                span.solution {
+                    @include borderedText;
+                }
+
+                div.fortyTwo {
                     display: inline-flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: center;
-                    gap: 5px;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    gap: 10px;
 
-                    div.numberContainer {
+                    >div {
                         width: 45px;
-                        height: 45px;
-                        background: linear-gradient(180deg, #999999 0%, white 50%, #999999 100%);
-                        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
-                        border-radius: 7.5px;
-                        overflow: scroll;
+                        height: 119px;
                         display: inline-flex;
-                        justify-content: center;
+                        flex-direction: column;
+                        justify-content: flex-start;
                         align-items: center;
-                        /* hide scrollbar in Internet Explorer 10+ */
-                        -ms-overflow-style: none;
-                        /* hide scrollbar in Firefox */
-                        scrollbar-width: none;
+                        gap: 5px;
 
-                        /* hide scrollbar in Safari, Opera and Chrome */
-                        &::-webkit-scrollbar {
-                            display: none;
-                        }
-
-                        span {
+                        div.numberContainer {
                             width: 45px;
                             height: 45px;
-                            color: black;
-                            font-size: 32px;
-                            letter-spacing: 0px;
+                            background: linear-gradient(180deg, #999999 0%, white 50%, #999999 100%);
+                            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+                            border-radius: 7.5px;
+                            overflow: scroll;
+                            display: inline-flex;
+                            justify-content: center;
+                            align-items: center;
+                            /* hide scrollbar in Internet Explorer 10+ */
+                            -ms-overflow-style: none;
+                            /* hide scrollbar in Firefox */
+                            scrollbar-width: none;
+
+                            /* hide scrollbar in Safari, Opera and Chrome */
+                            &::-webkit-scrollbar {
+                                display: none;
+                            }
+
+                            span {
+                                width: 45px;
+                                height: 45px;
+                                color: black;
+                                font-size: 32px;
+                                letter-spacing: 0px;
+                                font-weight: 700;
+                                line-height: 45px;
+                            }
+                        }
+
+                        >button {
+                            all: unset;
+                            box-sizing: border-box;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 32px;
+                            height: 32px;
+                            line-height: 20px;
                             font-weight: 700;
-                            line-height: 45px;
+                            letter-spacing: 0px;
+                        }
+
+                        >button:nth-of-type(1) {
+                            rotate: -90deg;
+                        }
+
+                        >button:nth-of-type(2) {
+                            rotate: -90deg;
                         }
                     }
-
-                    >span:nth-child(1),
-                    >span:nth-child(3) {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        width: 32px;
-                        height: 32px;
-                        font-size: 20px;
-                        line-height: 20px;
-                        font-weight: 700;
-                        letter-spacing: 0px;
-                    }
-
-                    >span:nth-child(1) {
-                        rotate: -90deg;
-                    }
-
-                    >span:nth-child(3) {
-                        rotate: -90deg;
-                    }
-                }
-
-                >div:nth-child(2) {
-                    left: 55px;
                 }
             }
 
-            &.help {
-                padding-left: 10px;
-                padding-right: 10px;
-                border-radius: 7.5px;
-                border: 1px rgba(255, 255, 255, 0.3) solid;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                display: inline-flex;
-                color: rgba(255, 255, 255, 0.3);
-                font-size: 20px;
-                font-weight: 700;
-                line-height: 25px;
-                letter-spacing: 2px;
-
-                span {
-                    width: 20px;
-                    rotate: 90deg;
-                    letter-spacing: 0px;
+            &.solutionContainer>div.navigation {
+                >button:first-of-type {
+                    padding: 0;
                 }
+            }
+
+            &.profilePictureContainer {
+                @include container;
+                background-image: url(./assets/koester.jpg);
+                font-weight: 700;
+                justify-content: flex-end;
+            }
+
+            &.skillsContainer {
+                @include container;
+                background: linear-gradient(180deg, #570000 0%, #E35E5E 100%);
+
+                div.skills {
+                    display: inline-flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                }
+
+                div.skillNames,
+                div.skillStars {
+                    display: inline-flex;
+                    flex-direction: column;
+                    text-align: right;
+                }
+            }
+
+            &.contactContainer {
+                @include container;
+                background: linear-gradient(180deg, #820202 0%, #E35E5E 100%);
+            }
+
+            &.tweContainer {
+                @include container;
+                background-color: black;
+            }
+
+            &.myFlixContainer {
+                @include container;
+                background-color: black;
             }
         }
-    }
-
-    &.transitionContainer {
-        flex-shrink: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url(./assets/star_texture.png);
-        padding: 20px;
     }
 }
