@@ -272,8 +272,7 @@ function App() {
           </div>
         </div>
         <div className='tweContainer'>{/* Column 4 */}
-          {/* eslint-disable-next-line */}
-          <div className='imageContainer'><img src={twe_header} /></div>
+          <div className='imageContainer'><img src={twe_header} alt='' aria-hidden='true' /></div>
           <div className="content">
             <span><b>Talk With Everyone</b></span>
             <span>&gt; <b>chat app</b> for Android/iOS</span>
@@ -290,8 +289,7 @@ function App() {
           </div>
         </div>
         <div className='myFlixContainer'>{/* Column 5 */}
-          {/* eslint-disable-next-line */}
-          <div className='imageContainer'><img src={myFlix_header} /></div>
+          <div className='imageContainer'><img src={myFlix_header} alt='' aria-hidden='true' /></div>
           <div className="content">
             <span><b>myFlix</b></span>
             <span>&gt; Users can upload information about movies to a <b>movie database</b>, search for movies and highlight favourites.</span>
