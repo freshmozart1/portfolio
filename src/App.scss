@@ -49,13 +49,25 @@ div {
             &.sorryContainer,
             &.skillsContainer,
             &.contactContainer,
-            &.aboutMeContainer {
+            &.aboutMeContainer,
+            &.caseStudyContainer:not(:nth-of-type(7)),
+            &.caseStudyContainer:not(:nth-of-type(8)),
+            &.caseStudyContainer:not(:nth-of-type(9)),
+            &.caseStudyContainer:not(:nth-of-type(10)),
+            &.caseStudyContainer:not(:nth-of-type(11)),
+            &.caseStudyContainer:not(:nth-of-type(12)) {
                 @include mixins.container;
             }
 
             &.profilePictureContainer,
             &.tweContainer,
-            &.myFlixContainer {
+            &.myFlixContainer,
+            &.caseStudyContainer:nth-of-type(7),
+            &.caseStudyContainer:nth-of-type(8),
+            &.caseStudyContainer:nth-of-type(9),
+            &.caseStudyContainer:nth-of-type(10),
+            &.caseStudyContainer:nth-of-type(11),
+            &.caseStudyContainer:nth-of-type(12) {
                 @include mixins.imageContainer;
             }
 

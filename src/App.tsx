@@ -8,6 +8,18 @@ import koester from './assets/koester.jpg';
 import twe_header from './assets/twe_header.png';
 // @ts-ignore
 import myFlix_header from './assets/myflix_header.png';
+// @ts-ignore
+import twe_start_screen from './assets/twe_start_screen.png';
+// @ts-ignore
+import twe_code_snippet from './assets/twe_code_snippet.png';
+// @ts-ignore
+import twe_mockup from './assets/twe_mockup.png';
+// @ts-ignore
+import twe_gifted_chat from './assets/twe_gifted_chat.png';
+// @ts-ignore
+import twe_map from './assets/twe_map.png';
+// @ts-ignore
+import twe_test_message from './assets/twe_test_message.png';
 
 function App() {
   const [currentPage, setCurrentPage] = useState({ columnIndex: 0, rowIndex: 0 });
@@ -44,8 +56,24 @@ function App() {
         [null, 1, null, null],
         [null, 2, null, 3],
         [2, 2, null, null],
-        [null, 4, null, 5],
+        [null, 4, 0, 5],
         [4, 4, null, null]
+      ],
+      2: [
+        [null, 4, null, 1],
+        [0, 4, null, 2],
+        [1, 4, null, 3],
+        [2, 4, null, 4],
+        [3, 4, null, 5],
+        [4, 4, null, 6],
+        [5, 4, null, 7],
+        [6, 4, null, 8],
+        [7, 4, null, 9],
+        [8, 4, null, 10],
+        [9, 4, null, 11],
+        [10, 4, null, 12],
+        [11, 4, null, 13],
+        [12, 4, null, null]
       ]
     };
     const [dir, rowOffset] = {
@@ -282,7 +310,7 @@ function App() {
             <button onClick={e => {
               navigation('up');
             }}>&uarr;</button>
-            <button>Case Study &darr;</button>
+            <button onClick={e => navigation('down')}>Case Study &darr;</button>
             <button onClick={e => {
               navigation('right');
             }}>&rarr;</button>
@@ -300,6 +328,260 @@ function App() {
               navigation('left');
             }}>&larr;</button>
             <button>Try</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+          </div>
+        </div>
+      </div>
+      <div className='columns'>{/* Row 2 */}
+        <div className="caseStudyContainer">{/* Column 0 */}
+          <div className="content">
+            <span><b>Overview</b></span>
+            <span>&gt; chat application, where users can give themselves names and exchange messages without the need of creating an account</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 1 */}
+          <div className="content">
+            <span><b>Purpose</b></span>
+            <span>&gt; Showcase my JavaScript skills</span>
+            <span>&gt; Development was part of my Full-Stack Web Development course at CareerFoundry.com</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 2 */}
+          <div className="content">
+            <span><b>Objective</b></span>
+            <span>&gt; Enhance my portfolio by adding a mobile app that relies on serverless architecture</span>
+            <span>&gt; Create a complete chat application (front-/backend) from scratch</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 3 */}
+          <div className="content">
+            <span><b>My Role</b></span>
+            <span>&gt; Worked alone on this project<br />&gt; Was responsible for everything</span>
+            <span>&gt; Occasionally received help from my tutor at CareerFoundry</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 4 */}
+          <div className="content">
+            <span><b>Tech Stack</b></span>
+            <span>&gt; Backend (Google):<br />Firebase<br />Firestore<br />Cloud Storage</span>
+            <span>&gt; Frontend (JavaScript):<br />Node.js<br />React Native</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 5 */}
+          <div className="content">
+            <span><b>Backend</b></span>
+            <span>&gt; Created a Google Firestore database for storing the messages</span>
+            <span>&gt; Firestore is a real-time database that notifies all connected clients, when new data is available</span>
+            <span>&gt; Images are stored in a separate Google Cloud Storage Bucket</span>
+            <span>&gt; Buckets are basic Google Cloud Storage containers that can store files</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 6 */}
+          <div className="imageContainer"><img src={twe_start_screen} alt="Talk With Everyone App Start Screen" /></div>
+          <div className="content">
+            <span><b>Backend: Google Firebase Authentication</b></span>
+            <span>&gt; Before using Firestore, it's necessary to authenticate a client anonymously</span>
+            <span>&gt; Firebase generates a random id and authenticates the client anonymously, when a user clicks on "Start Chatting"</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 7 */}
+          <div className="imageContainer"><img src={twe_code_snippet} alt="A code snippet that stores a new location message in the database" /></div>
+          <div className="content">
+            <span><b>Backend: Google Firestore</b></span>
+            <span>&gt; The structure of the database is defined in the frontend</span>
+            <span aria-hidden="true">&gt; Picture shows a code snippet that stores a new location message in the database</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 8 */}
+          <div className="imageContainer"><img src={twe_mockup} alt="A mockup of the apps start screen" /></div>
+          <div className="content">
+            <span><b>Building the interface</b></span>
+            <span>&gt; CareerFoundry sent me detailed instructions about how the apps start screen should look like</span>
+            <span>&gt; I sped up development process by using prefabricated React Native Components</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 9 */}
+          <div className="imageContainer"><img src={twe_gifted_chat} alt="A code snippet that shows the REACT component responsible for creating the Chat screen" /></div>
+          <div className="content">
+            <span><b>The Chat</b></span>
+            <span>&gt; I used the node package "react-native-gifted-chat" for creating the chat screen</span>
+            <span>&gt; CareerFoundry didn't provide any details describing the design of the chat screen, so I used the standard design of "react-native-gifted-chat"</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 10 */}
+          <div className="imageContainer"><img src={twe_map} alt="A screenshot that shows a chat bubble" /></div>
+          <div className="content">
+            <span><b>react-native-maps</b></span>
+            <span>&gt; I used the node package "react-native-maps" for displaying location messages</span>
+            <span>&gt; I integrated the package into the chat bubbles of "react-native-gifted-chat"</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 11 */}
+          <div className="imageContainer"><img src={twe_test_message} alt="A screenshot that shows how I test code" /></div>
+          <div className="content">
+            <span><b>Testing & Debuging</b></span>
+            <span>&gt; React Native provides a service named "expo" for running and debuging apps</span>
+            <span>&gt; I used this service to regularly test and debug my code</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 12 */}
+          <div className="content">
+            <span><b>Duration</b><br />&gt; Frontend: 2 weeks<br />&gt; Backend: 1 day</span>
+            <span><b>What I learned</b><br />&gt; How to develop native applications with React Native<br />&gt; How to use Google Firebase, Firestore and Cloud Storage</span>
+            <span><b>Next Steps</b><br />&gt; Add user registration<br />&gt; Add user-to-user communication<br />&gt; Add encryption</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className="caseStudyContainer">{/* Column 13 */}
+          <div className="content">
+            <span><b>Conclusion</b></span>
+            <span>React native is a powerful framework for developing native apps. The project was a fulfilling learning experience. It helped deepen my understanding of the development process and illustrated the complexities of app development.</span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
             <button onClick={e => {
               navigation('up');
             }}>&uarr;</button>
