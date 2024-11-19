@@ -11,7 +11,7 @@
     background: rgba(255, 255, 255, 0.10);
     font-size: 20px;
     line-height: 25px;
-    box-shadow: 0px 4px 4px rgba(255, 255, 255, 0.10);
+    box-shadow: 0px 0px 2px rgb(0, 0, 0);
     padding: 10px 15px 10px 15px;
     cursor: pointer;
 }
@@ -56,6 +56,42 @@
 
         >button {
             @include navButton;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        font-size: 40px;
+        line-height: 50px;
+
+        div.navigation {
+            height: 90px;
+
+            >button {
+                font-size: 40px;
+                line-height: 50px;
+                min-width: 90px;
+                height: 90px;
+                border-radius: 45px;
+                padding: 20px 30px 20px 30px;
+            }
+        }
+    }
+}
+
+@mixin imageContainer {
+    @include container;
+
+    div.imageContainer {
+        height: 100%;
+        max-width: 100%;
+        box-shadow: 0px 0px 2px rgb(0, 0, 0);
+        border-radius: 22.5px;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            max-width: 100%;
+            object-fit: cover;
         }
     }
 }
