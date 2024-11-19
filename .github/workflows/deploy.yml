@@ -40,6 +40,7 @@ jobs:
     permissions:
       contents: read
       pages: write
+      id-token: write
     steps:
       - name: Deploy to Pages
         uses: actions/deploy-pages@v4
