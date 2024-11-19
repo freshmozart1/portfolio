@@ -1,4 +1,4 @@
-@import './mixins.scss';
+@use './mixins.scss';
 
 @font-face {
     font-family: 'Playfair Display';
@@ -30,15 +30,18 @@ div {
     }
 
     &.columns {
-        @include container;
-        width: 100svw;
-        height: 100svh;
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 0;
-        gap: 0;
+        @include mixins.container;
 
-        div {
+        & {
+            width: 100svw;
+            height: 100svh;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 0;
+            gap: 0;
+        }
+
+        >div {
 
             &.riddleContainer,
             &.transitionContainer,
@@ -47,13 +50,13 @@ div {
             &.skillsContainer,
             &.contactContainer,
             &.aboutMeContainer {
-                @include container;
+                @include mixins.container;
             }
 
             &.profilePictureContainer,
             &.tweContainer,
             &.myFlixContainer {
-                @include imageContainer;
+                @include mixins.imageContainer;
             }
 
             &.riddleContainer,
@@ -64,7 +67,7 @@ div {
 
                 span.question,
                 span.solution {
-                    @include borderedText;
+                    @include mixins.borderedText;
                 }
 
                 div.fortyTwo {
@@ -179,6 +182,10 @@ div {
 
             &.myFlixContainer {
                 background: linear-gradient(180deg, #C83434 33%, #E35E5E 100%);
+            }
+
+            &.caseStudyContainer {
+                background: black;
             }
         }
     }
