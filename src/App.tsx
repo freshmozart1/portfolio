@@ -1,7 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ContactIcons from './components/ContactIcons/contactIcons.tsx';
 import 'material-symbols';
 import './App.scss';
+// @ts-ignore
+import koester from './assets/koester.jpg';
+// @ts-ignore
+import twe_header from './assets/twe_header.png';
+// @ts-ignore
+import myFlix_header from './assets/myflix_header.png';
 
 function App() {
   const [currentPage, setCurrentPage] = useState({ columnIndex: 0, rowIndex: 0 });
@@ -24,10 +30,23 @@ function App() {
     }
   }
 
-  const navigation = React.useCallback((direction: 'left' | 'right' | 'up' | 'down') => {
+  const navigation = useCallback((direction: 'left' | 'up' | 'down' | 'right') => {
     const columnMap = {
-      0: [[null, null, 0, 1], [null, null, 1, 2], [1, null, null, 3], [2, null, null, 4], [3, null, 2, null]],
-      1: [[null, 1, null, null], [null, 1, null, null], [null, 4, null, 3], [2, 4, null, null]]
+      0: [
+        [null, null, 0, 1],
+        [null, null, 1, 2],
+        [1, null, 2, 3],
+        [2, null, null, 4],
+        [3, null, 4, null]
+      ],
+      1: [
+        [null, 1, null, null],
+        [null, 1, null, null],
+        [null, 2, null, 3],
+        [2, 2, null, null],
+        [null, 4, null, 5],
+        [4, 4, null, null]
+      ]
     };
     const [dir, rowOffset] = {
       left: [0, 0],
@@ -40,7 +59,7 @@ function App() {
       const newRowIndex = currentPage.rowIndex + rowOffset;
       const nextRow = document.querySelectorAll('div.columns')[newRowIndex];
       const nextPage = nextRow?.childNodes[newColumnIndex] as HTMLElement;
-      if (newRowIndex !== currentPage.rowIndex && nextRow) {
+      if (newRowIndex !== currentPage.rowIndex && nextRow && nextPage) {
         nextRow.scrollTo({ left: nextPage.offsetLeft, behavior: 'auto' });
       }
       if (nextPage) {
@@ -53,10 +72,10 @@ function App() {
   useEffect(() => {
     function handleArrowKeyPress(event: KeyboardEvent) {
       const keyMap = {
-        ArrowLeft: currentPage.columnIndex === 1 && currentPage.rowIndex === 0 ? 'down' : 'left',
+        ArrowLeft: (currentPage.columnIndex === 1 && currentPage.rowIndex === 0) ? 'down' : 'left',
         ArrowRight: 'right',
         ArrowUp: 'up',
-        ArrowDown: 'down'
+        ArrowDown: currentPage.columnIndex === 1 && currentPage.rowIndex === 0 ? null : 'down'
       };
       if (keyMap[event.key]) {
         navigation(keyMap[event.key]);
@@ -71,8 +90,8 @@ function App() {
 
   return (
     <div className="rows">
-      <div className='columns'>
-        <div className='riddleContainer'>
+      <div className='columns'>{/* Row 0 */}
+        <div className='riddleContainer'>{/* Column 0 */}
           <div className="content">
             <span className='question'>What is the answer to life, the universe and everything?</span>
             <div className='fortyTwo'>
@@ -109,7 +128,7 @@ function App() {
             }}>Portfolio &rarr;</button>
           </div>
         </div>
-        <div className='transitionContainer'>
+        <div className='transitionContainer'>{/* Column 1 */}
           <div className="content">
             {!solvedRiddle && <span>
               Although your answer was false, it doesn't truly matter,
@@ -138,18 +157,19 @@ function App() {
             </button>
           </div>
         </div>
-        <div className='profilePictureContainer'>
+        <div className='profilePictureContainer'>{/* Column 2 */}
+          <div className="imageContainer"><img src={koester} alt='profile picture of me' /></div>
           <div className="navigation">
             <button onClick={e => {
               navigation('left');
             }}>&larr;</button>
-            <span>This is me.</span>
+            <button onClick={e => navigation('down')}>My Journey &darr;</button>
             <button onClick={e => {
               navigation('right');
             }}>&rarr;</button>
           </div>
         </div>
-        <div className='skillsContainer'>
+        <div className='skillsContainer'>{/* Column 3 */}
           <div className="content">
             <span>I'm a <b>certified full-stack developer</b> who has worked for a online marketing agency before and is now looking for new challenges.</span>
             <div className="skills">
@@ -178,7 +198,7 @@ function App() {
             }}>&rarr;</button>
           </div>
         </div>
-        <div className='contactContainer'>
+        <div className='contactContainer'>{/* Column 4 */}
           <div className="content">
             <span>Contact me</span>
             <ContactIcons />
@@ -194,8 +214,8 @@ function App() {
           </div>
         </div>
       </div>
-      <div className='columns'>
-        <div className='solutionContainer'>
+      <div className='columns'>{/* Row 1 */}
+        <div className='solutionContainer'>{/* Column 0 */}
           <div className="content">
             <span className="solution">42</span>
             <span><b>42</b> is a reference to the science fiction novel <b>'The Hitchhiker's Guide to the Galaxy'</b>.</span>
@@ -210,7 +230,7 @@ function App() {
             }}>&uarr;</button>
           </div>
         </div>
-        <div className='sorryContainer'>
+        <div className='sorryContainer'>{/* Column 1 */}
           <div className='content'>
             <span>Sorry, you can't go back. Earth was destroyed five minutes ago.</span>
           </div>
@@ -220,11 +240,13 @@ function App() {
             }}>&uarr;</button>
           </div>
         </div>
-        <div className='tweContainer'>
-          <div className="content">
-            twe
+        <div className='aboutMeContainer'>{/* Column 2 */}
+          <div className='content'>
+            <span>&gt; Started programming batch scripts and HTML at age six.</span>
+            <span>&gt; Worked as a developer for a online marketing agency in 2018<br />&gt; Was part of small teams (designer, developer, project owner)</span>
+            <span>&gt; Developed a lottery website for a Bundesliga Club and its sponsor<br />&gt; Integrated a new booking process into a website for a van rental service</span>
           </div>
-          <div className="navigation">
+          <div className='navigation'>
             <button onClick={e => {
               navigation('up');
             }}>&uarr;</button>
@@ -233,14 +255,54 @@ function App() {
             }}>&rarr;</button>
           </div>
         </div>
-        <div className='myFlixContainer'>
+        <div className="aboutMeContainer">{/* Column 3 */}
           <div className="content">
-            myFlix
+            <span>&gt; Agency couldn't pay me anymore, because of financial problems</span>
+            <span>&gt; Transported up to 40 diverse customers/day (people with disabilities, elderlies, kids) as a bus driver<br />&gt; Managed stressful situations (angry customers, physical attacks, traffic accidents)</span>
+            <span>&gt; Took a web development course in 2024 to refresh and expand my knowledge</span>
           </div>
           <div className="navigation">
             <button onClick={e => {
               navigation('left');
             }}>&larr;</button>
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+          </div>
+        </div>
+        <div className='tweContainer'>{/* Column 4 */}
+          <div className='imageContainer'>
+            <img src={twe_header} />
+          </div>
+          <div className="content">
+            <span><b>Talk With Everyone</b></span>
+            <span>&gt; <b>chat app</b> for Android/iOS</span>
+            <span>&gt; Google <b>Firebase</b><br />&gt; Google Firestore<br />&gt; Google Cloud Storage<br />&gt; <b>React Native</b></span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('up');
+            }}>&uarr;</button>
+            <button>Case Study &darr;</button>
+            <button onClick={e => {
+              navigation('right');
+            }}>&rarr;</button>
+          </div>
+        </div>
+        <div className='myFlixContainer'>{/* Column 5 */}
+          <div className='imageContainer'>
+            <img src={myFlix_header} />
+          </div>
+          <div className="content">
+            <span><b>myFlix</b></span>
+            <span>&gt; Users can upload information about movies to a <b>movie database</b>, search for movies and highlight favourites.</span>
+            <span>&gt; Amazon Web Services<br />&gt; <b>React</b><br />&gt; Bootstrap<br />&gt; <b>MongoDB</b></span>
+          </div>
+          <div className="navigation">
+            <button onClick={e => {
+              navigation('left');
+            }}>&larr;</button>
+            <button>Try</button>
             <button onClick={e => {
               navigation('up');
             }}>&uarr;</button>
