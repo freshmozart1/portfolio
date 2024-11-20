@@ -1,0 +1,27 @@
+@use '../../mixins.scss';
+
+div.navigation {
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 85px;
+    position: fixed;
+    bottom: 0;
+    padding: 20px;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+
+    @media screen and (min-width: 1024px) {
+        height: 130px;
+    }
+
+    >button {
+        @include mixins.navButton;
+        transition: all 0.5s ease;
+        transform-style: preserve-3d;
+    }
+}
