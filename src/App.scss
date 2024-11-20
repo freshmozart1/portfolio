@@ -1,28 +1,22 @@
 @use './mixins.scss';
 
-@font-face {
-    font-family: 'Playfair Display';
-    src: url('./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Playfair Display';
-    src: url('./assets/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
-}
-
 b {
     font-weight: 700;
 }
 
-@media (min-width: 1024px) {
-    div[class$="Container"]:not(.numberContainer):not(.imageContainer) {
-        padding: 100px !important;
-        gap: 100px !important;
+@keyframes fadeOut {
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1;
     }
 }
 
 div {
-
     &.rows {
         width: 100svw;
         height: 100svh;
@@ -149,12 +143,6 @@ div {
                             rotate: -90deg;
                         }
                     }
-                }
-            }
-
-            &.solutionContainer>div.navigation {
-                >button:first-of-type {
-                    padding: 0;
                 }
             }
 
