@@ -1,0 +1,79 @@
+@use '../../mixins.scss';
+
+div.riddleContainer {
+    @include mixins.container;
+    background: linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1) 100%), url(../../assets/star_texture.png);
+
+    div.fortyTwo {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+
+        span.question {
+            @include mixins.borderedText;
+        }
+
+        >div {
+            width: 45px;
+            height: 119px;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 5px;
+
+            div.numberContainer {
+                width: 45px;
+                height: 45px;
+                background: linear-gradient(180deg, #999999 0%, white 50%, #999999 100%);
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset;
+                border-radius: 7.5px;
+                overflow: scroll;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                /* hide scrollbar in Internet Explorer 10+ */
+                -ms-overflow-style: none;
+                /* hide scrollbar in Firefox */
+                scrollbar-width: none;
+
+                /* hide scrollbar in Safari, Opera and Chrome */
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                span {
+                    width: 45px;
+                    height: 45px;
+                    color: black;
+                    font-size: 32px;
+                    letter-spacing: 0px;
+                    font-weight: 700;
+                    line-height: 45px;
+                }
+            }
+
+            >button {
+                all: unset;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 32px;
+                height: 32px;
+                line-height: 20px;
+                font-weight: 700;
+                letter-spacing: 0px;
+            }
+
+            >button:nth-of-type(1) {
+                rotate: -90deg;
+            }
+
+            >button:nth-of-type(2) {
+                rotate: -90deg;
+            }
+        }
+    }
+}

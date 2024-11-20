@@ -21,65 +21,21 @@ import twe_map from './assets/twe_map.png';
 // @ts-ignore
 import twe_test_message from './assets/twe_test_message.png';
 import Navigation, { navigate } from './components/Navigation/navigation.tsx';
+import Riddle from './components/Riddle/riddle.tsx';
 
-function App() {
+export default function App() {
   const [currentPage, setCurrentPage] = useState({ columnIndex: 0, rowIndex: 0 });
-  const [riddleScrollPositions, setRiddleScrollPositions] = useState([0, 0]);
   const [solvedRiddle, setSolvedRiddle] = useState(false);
 
-  function riddleClickHandler(e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number, direction: 'up' | 'down' = 'down') {
-    const numberContainer = document.querySelectorAll('div.numberContainer')[index];
-    const scrollPosition = numberContainer.scrollTop;
-    const newPosition = direction === 'up' ? Math.max(scrollPosition - 45, 0) : Math.min(scrollPosition + 45, 405);
-    numberContainer.scrollTo({ top: newPosition, behavior: 'smooth' });
-  }
-
-  function riddleScrollHandler(e: React.UIEvent<HTMLDivElement, UIEvent>, index: 0 | 1) {
-    if (!solvedRiddle) {
-      const newScrollPositions = [...riddleScrollPositions];
-      newScrollPositions[index] = e.currentTarget.scrollTop;
-      setRiddleScrollPositions(newScrollPositions);
-      if (80 <= newScrollPositions[1] && newScrollPositions[1] <= 100 && 170 <= newScrollPositions[0] && newScrollPositions[0] <= 190) {
-        setSolvedRiddle(true);
-      }
-    }
-  }
-
   useEffect(() => {
-    if (solvedRiddle) navigate('right', currentPage, setCurrentPage);
+    if (solvedRiddle) navigate('right', { columnIndex: 0, rowIndex: 0 }, setCurrentPage);
   }, [solvedRiddle]);
 
   return (
     <div className="rows">
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <div className='columns'>{/* Row 0 */}
-        <div className='riddleContainer'>{/* Column 0 */}
-          <div className="content">
-            <span className='question'>What is the answer to life, the universe and everything?</span>
-            <div className='fortyTwo'>
-              <div>
-                <button onClick={e => riddleClickHandler(e, 0, 'up')}>&rarr;</button>
-                <div
-                  className='numberContainer'
-                  onScroll={e => riddleScrollHandler(e, 0)}
-                >
-                  <span>0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9</span>
-                </div>
-                <button onClick={e => riddleClickHandler(e, 0)}>&larr;</button>
-              </div>
-              <div>
-                <button onClick={e => riddleClickHandler(e, 1, 'up')}>&rarr;</button>
-                <div
-                  className='numberContainer'
-                  onScroll={e => riddleScrollHandler(e, 1)}
-                >
-                  <span>0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9</span>
-                </div>
-                <button onClick={e => riddleClickHandler(e, 1)}>&larr;</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Riddle solvedRiddle={solvedRiddle} setSolvedRiddle={setSolvedRiddle} />
         <div className='transitionContainer'>{/* Column 1 */}
           <div className="content">
             {!solvedRiddle && <span>
@@ -280,5 +236,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
