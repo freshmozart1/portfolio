@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.8cdd2cc2.css",
-    "main.js": "/portfolio/static/js/main.d69769e2.js",
+    "main.css": "/portfolio/static/css/main.de07726c.css",
+    "main.js": "/portfolio/static/js/main.43253414.js",
     "static/media/material-symbols-rounded.woff2": "/portfolio/static/media/material-symbols-rounded.536a28929c4168eb593f.woff2",
     "static/media/material-symbols-outlined.woff2": "/portfolio/static/media/material-symbols-outlined.fcc8c76968c33451aec4.woff2",
     "static/media/material-symbols-sharp.woff2": "/portfolio/static/media/material-symbols-sharp.a2afbd3ef9f24e993434.woff2",
@@ -18,11 +18,11 @@
     "static/media/koester.jpg": "/portfolio/static/media/koester.579a5274cb2c7b5ca6bc.jpg",
     "static/media/twe_map.png": "/portfolio/static/media/twe_map.f638bd499e719ef82637.png",
     "index.html": "/portfolio/index.html",
-    "main.8cdd2cc2.css.map": "/portfolio/static/css/main.8cdd2cc2.css.map",
-    "main.d69769e2.js.map": "/portfolio/static/js/main.d69769e2.js.map"
+    "main.de07726c.css.map": "/portfolio/static/css/main.de07726c.css.map",
+    "main.43253414.js.map": "/portfolio/static/js/main.43253414.js.map"
   },
   "entrypoints": [
-    "static/css/main.8cdd2cc2.css",
-    "static/js/main.d69769e2.js"
+    "static/css/main.de07726c.css",
+    "static/js/main.43253414.js"
   ]
 }
