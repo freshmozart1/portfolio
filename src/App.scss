@@ -42,6 +42,7 @@ div {
             &.skillsContainer,
             &.contactContainer,
             &.aboutMeContainer,
+            &.impressumContainer,
             &.caseStudyContainer:not(:nth-of-type(n+11):nth-of-type(-n+16)) {
                 @include mixins.container;
             }
@@ -91,7 +92,8 @@ div {
             }
 
             &.tweContainer,
-            &.caseStudyContainer {
+            &.caseStudyContainer,
+            &.impressumContainer {
                 background: linear-gradient(180deg, #820202 0%, #E35E5E 100%);
             }
 

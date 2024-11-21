@@ -13,7 +13,8 @@ export const navigationMap: {
         [2, null, null, 4, '&larr;', null, null, '&rarr;'],
         [3, null, 4, 5, '&larr;', null, 'Case Study &darr;', '&rarr;'],
         [4, null, null, 6, '&larr;', null, 'Try it', '&rarr;'], //Exception 1
-        [5, null, null, null, '&larr;', null, 'Try it', null] //Exception 2
+        [5, null, null, 7, '&larr;', null, 'Try it', '&rarr;'], //Exception 2
+        [6, null, null, null, '&larr;', null, null, null]
 
     ],
     1: [
@@ -93,7 +94,8 @@ export default function Navigation({ currentPage, setCurrentPage }: { currentPag
                 } else if (row === '0' && index === 6) { // Exception 2
                     buttons.push(
                         React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
-                        React.createElement('button', { key: 'tryIt', onClick: () => window.open('https://pokedex.ole-koester.de'), dangerouslySetInnerHTML: { __html: downLabel as string } })
+                        React.createElement('button', { key: 'tryIt', onClick: () => window.open('https://pokedex.ole-koester.de'), dangerouslySetInnerHTML: { __html: downLabel as string } }),
+                        React.createElement('button', { key: 'right', onClick: () => navigate('right', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } })
                     );
                 } else {
                     if (left !== null) buttons.push(React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }));

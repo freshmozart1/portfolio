@@ -112,6 +112,14 @@ export default function App() {
             <span>&gt; HTML<br />&gt; CSS<br />&gt; <b>JavaScript</b><br />&gt; Bootstrap</span>
           </div>
         </div>
+        <div className='impressumContainer'>
+          <div className='content'>
+            <span><b>Impressum</b></span>
+            <span>Ole K&ouml;ster<br />mail@ole-koester.de</span>
+            <span>Neuenfelder Stra&szlig;e 84A<br />21109 Hamburg</span>
+            <span>Imprint according to § 5 DDG</span>
+          </div>
+        </div>
       </div>
       <div className='columns'>{/* Row 1 */}
         <div className='solutionContainer'>{/* Column 0 */}
