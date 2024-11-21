@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ContactIcons from './components/ContactIcons/contactIcons.tsx';
-import 'material-symbols';
 import './App.scss';
 // @ts-ignore
 import koester from './assets/koester.jpg';
@@ -22,6 +21,7 @@ import twe_map from './assets/twe_map.png';
 import twe_test_message from './assets/twe_test_message.png';
 import Navigation, { navigate } from './components/Navigation/navigation.tsx';
 import Riddle from './components/Riddle/riddle.tsx';
+import Header from './components/Header/header.tsx';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState({ columnIndex: 0, rowIndex: 0 });
@@ -33,6 +33,7 @@ export default function App() {
 
   return (
     <div className="rows">
+      <Header />
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <div className='columns'>{/* Row 0 */}
         <Riddle solvedRiddle={solvedRiddle} setSolvedRiddle={setSolvedRiddle} />

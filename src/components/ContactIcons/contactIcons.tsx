@@ -1,5 +1,6 @@
 import React from 'react';
 import './contactIcons.scss';
+import 'material-symbols';
 
 function ContactIcons() {
     return (
