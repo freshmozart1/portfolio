@@ -114,7 +114,7 @@ export default function App() {
         </div>
         <div className='impressumContainer'>
           <div className='content'>
-            <span><b>Impressum</b></span>
+            <span><b>Imprint</b></span>
             <span>Ole K&ouml;ster<br />mail@ole-koester.de</span>
             <span>Neuenfelder Stra&szlig;e 84A<br />21109 Hamburg</span>
             <span>Imprint according to § 5 DDG</span>
