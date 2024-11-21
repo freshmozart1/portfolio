@@ -40,17 +40,27 @@ export default function App() {
         <Riddle solvedRiddle={solvedRiddle} setSolvedRiddle={setSolvedRiddle} />
         <div className='transitionContainer'>{/* Column 1 */}
           <div className="content">
-            {!solvedRiddle && <span>
-              Although your answer was false, it doesn't truly matter,
-              as the question itself has always remained elusive.
-              In a universe filled with infinite possibilities,
-              my mission is to navigate through this uncertainty
-              and find meaningful solutions through code.
-            </span>}
-            {solvedRiddle && <span>
-              In a universe filled with infinite possibilities,
-              my mission is to find meaningful solutions through code.
-            </span>}
+            {!solvedRiddle && <>
+              <span>
+                Although you couldn't solve the riddle, it doesn't truly matter,
+                as the question itself has always remained elusive.
+              </span>
+              <span>
+                In a universe filled with infinite possibilities,
+                my mission is to navigate through this uncertainty
+                and find meaningful solutions through code.
+              </span>
+            </>}
+            {solvedRiddle && <>
+              <span>
+                Your answer was correct, but it doesn't truly matter,
+                as the question itself has always remained elusive.
+              </span>
+              <span>
+                In a universe filled with infinite possibilities,
+                my mission is to find meaningful solutions through code.
+              </span>
+            </>}
           </div>
         </div>
         <div className='profilePictureContainer'>{/* Column 2 */}
