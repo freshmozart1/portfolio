@@ -40,6 +40,17 @@ export const navigationMap: {
     ]
 };
 
+function moveNavigationLine(columnIndex: number = 0, rowIndex: number = 0) {
+    const navigationLine = document.querySelector('div.navigationLine') as HTMLDivElement;
+    const numberOfColumns = navigationMap[rowIndex].length;
+    const lineWidth = window.innerWidth / numberOfColumns;
+    console.log('lineWidth', lineWidth);
+    const left = columnIndex * lineWidth;
+    navigationLine.style.width = `${lineWidth}px`;
+    navigationLine.style.left = `${left}px`;
+    navigationLine.style.transition = 'left 0.3s ease';
+}
+
 export function navigate(direction: 'left' | 'up' | 'down' | 'right', currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>>) {
     const [dir, rowOffset] = {
         left: [0, 0],
@@ -57,6 +68,7 @@ export function navigate(direction: 'left' | 'up' | 'down' | 'right', currentPag
         }
         if (nextPage) {
             setCurrentPage({ columnIndex: newColumnIndex, rowIndex: newRowIndex });
+            moveNavigationLine(newColumnIndex, newRowIndex);
             nextPage.scrollIntoView({ behavior: 'smooth' });
         }
     }
@@ -123,5 +135,9 @@ export default function Navigation({ currentPage, setCurrentPage }: { currentPag
         };
     }, [currentPage]);
 
-    return createNavigationButtons();
+    return (
+        <>
+            {createNavigationButtons()}
+            <div className='navigationLine' />
+        </>);
 }
