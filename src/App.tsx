@@ -117,14 +117,15 @@ export default function App() {
         </div>
         <div className='aboutMeContainer'>{/* Column 2 */}
           <div className='content'>
-            <span>&gt; Started programming batch scripts and HTML at age six.</span>
-            <span>&gt; Worked as a developer for a online marketing agency in 2018<br />&gt; Was part of small teams (designer, developer, project owner)</span>
-            <span>&gt; Developed a lottery website for a Bundesliga Club and its sponsor<br />&gt; Integrated a new booking process into a website for a van rental service</span>
+            <span><b>2000-2018</b></span>
+            <span>&gt; 2000's: First programming experiences</span>
+            <span>&gt; 2018: Developer for a online marketing agency<br />&gt; Small teams (designer, developer, project owner)</span>
+            <span>&gt; Developed a lottery website for a Bundesliga Club and its sponsor<br />&gt; Integrated a booking process into a website for a van rental service</span>
           </div>
         </div>
         <div className="aboutMeContainer">{/* Column 3 */}
           <div className="content">
-            <span>&gt; Agency couldn't pay me anymore, because of financial problems</span>
+            <span><b>2019-2024</b></span>
             <span>&gt; Transported up to 40 diverse customers/day (people with disabilities, elderlies, kids) as a bus driver<br />&gt; Managed stressful situations (angry customers, physical attacks, traffic accidents)</span>
             <span>&gt; Took a web development course in 2024 to refresh and expand my knowledge</span>
           </div>
