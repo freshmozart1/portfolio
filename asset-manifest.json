@@ -1,11 +1,9 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.de07726c.css",
-    "main.js": "/portfolio/static/js/main.43253414.js",
-    "static/media/material-symbols-rounded.woff2": "/portfolio/static/media/material-symbols-rounded.536a28929c4168eb593f.woff2",
-    "static/media/material-symbols-outlined.woff2": "/portfolio/static/media/material-symbols-outlined.fcc8c76968c33451aec4.woff2",
-    "static/media/material-symbols-sharp.woff2": "/portfolio/static/media/material-symbols-sharp.a2afbd3ef9f24e993434.woff2",
+    "main.css": "/portfolio/static/css/main.2e75406f.css",
+    "main.js": "/portfolio/static/js/main.ea4cf25a.js",
     "static/media/myflix_header.png": "/portfolio/static/media/myflix_header.d473c1a427be9d5a869c.png",
+    "static/media/pokedex.png": "/portfolio/static/media/pokedex.9e16f6fe44b0ae084214.png",
     "static/media/twe_start_screen.png": "/portfolio/static/media/twe_start_screen.f339d1f897541c959f16.png",
     "static/media/twe_mockup.png": "/portfolio/static/media/twe_mockup.21315338321f186aaf30.png",
     "static/media/star_texture.png": "/portfolio/static/media/star_texture.e674c61d471cff4e461e.png",
@@ -18,11 +16,11 @@
     "static/media/koester.jpg": "/portfolio/static/media/koester.579a5274cb2c7b5ca6bc.jpg",
     "static/media/twe_map.png": "/portfolio/static/media/twe_map.f638bd499e719ef82637.png",
     "index.html": "/portfolio/index.html",
-    "main.de07726c.css.map": "/portfolio/static/css/main.de07726c.css.map",
-    "main.43253414.js.map": "/portfolio/static/js/main.43253414.js.map"
+    "main.2e75406f.css.map": "/portfolio/static/css/main.2e75406f.css.map",
+    "main.ea4cf25a.js.map": "/portfolio/static/js/main.ea4cf25a.js.map"
   },
   "entrypoints": [
-    "static/css/main.de07726c.css",
-    "static/js/main.43253414.js"
+    "static/css/main.2e75406f.css",
+    "static/js/main.ea4cf25a.js"
   ]
 }
