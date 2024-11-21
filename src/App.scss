@@ -49,6 +49,7 @@ div {
             &.profilePictureContainer,
             &.tweContainer,
             &.myFlixContainer,
+            &.pokeDexContainer,
             &.caseStudyContainer:nth-of-type(n+11):nth-of-type(-n+16) {
                 @include mixins.imageContainer;
             }
@@ -97,6 +98,10 @@ div {
             &.myFlixContainer {
                 //background: linear-gradient(180deg, #C83434 33%, #E35E5E 100%);
                 background: linear-gradient(180deg, #A51919 33%, #E35E5E 100%);
+            }
+
+            &.pokeDexContainer {
+                background: linear-gradient(180deg, #C83434 33%, #E35E5E 100%);
             }
         }
     }

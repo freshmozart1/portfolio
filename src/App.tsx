@@ -19,6 +19,8 @@ import twe_gifted_chat from './assets/twe_gifted_chat.png';
 import twe_map from './assets/twe_map.png';
 // @ts-ignore
 import twe_test_message from './assets/twe_test_message.png';
+// @ts-ignore
+import pokedex from './assets/pokedex.png';
 import Navigation, { navigate } from './components/Navigation/navigation.tsx';
 import Riddle from './components/Riddle/riddle.tsx';
 import Header from './components/Header/header.tsx';
@@ -91,6 +93,14 @@ export default function App() {
             <span><b>myFlix</b></span>
             <span>&gt; Users can upload information about movies to a <b>movie database</b>, search for movies and highlight favourites.</span>
             <span>&gt; Amazon Web Services<br />&gt; <b>React</b><br />&gt; Bootstrap<br />&gt; <b>MongoDB</b></span>
+          </div>
+        </div>
+        <div className='pokeDexContainer'>
+          <div className='imageContainer'><img src={pokedex} alt='' aria-hidden='true' /></div>
+          <div className='content'>
+            <span><b>Pokédex</b></span>
+            <span>&gt; Users can search for and view information about Pokémon</span>
+            <span>&gt; HTML<br />&gt; CSS<br />&gt; <b>JavaScript</b><br />&gt; Bootstrap</span>
           </div>
         </div>
       </div>

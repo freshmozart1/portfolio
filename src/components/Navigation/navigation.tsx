@@ -12,7 +12,8 @@ export const navigationMap: {
         [1, null, 2, 3, '&larr;', null, 'My Journey &darr;', '&rarr;'],
         [2, null, null, 4, '&larr;', null, null, '&rarr;'],
         [3, null, 4, 5, '&larr;', null, 'Case Study &darr;', '&rarr;'],
-        [4, null, null, null, '&larr;', null, 'Try it', null] //Exception 1
+        [4, null, null, 6, '&larr;', null, 'Try it', '&rarr;'], //Exception 1
+        [5, null, null, null, '&larr;', null, 'Try it', null] //Exception 2
 
     ],
     1: [
@@ -84,6 +85,12 @@ export default function Navigation({ currentPage, setCurrentPage }: { currentPag
                         React.createElement('button', { key: 'up', onClick: () => navigate('up', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
                     );
                 } else if (row === '0' && index === 5) { // Exception 1
+                    buttons.push(
+                        React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
+                        React.createElement('button', { key: 'tryIt', dangerouslySetInnerHTML: { __html: downLabel as string } }),
+                        React.createElement('button', { key: 'right', onClick: () => navigate('right', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } })
+                    );
+                } else if (row === '0' && index === 6) {
                     buttons.push(
                         React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
                         React.createElement('button', { key: 'tryIt', dangerouslySetInnerHTML: { __html: downLabel as string } })
