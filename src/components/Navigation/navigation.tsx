@@ -137,6 +137,7 @@ export default function Navigation({ currentPage, setCurrentPage }: { currentPag
         return () => {
             window.removeEventListener('keyup', handleArrowKeyPress);
         };
+        // eslint-disable-next-line
     }, [currentPage]);
 
     return (
