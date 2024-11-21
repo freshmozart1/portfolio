@@ -42,24 +42,14 @@ div {
             &.skillsContainer,
             &.contactContainer,
             &.aboutMeContainer,
-            &.caseStudyContainer:not(:nth-of-type(7)),
-            &.caseStudyContainer:not(:nth-of-type(8)),
-            &.caseStudyContainer:not(:nth-of-type(9)),
-            &.caseStudyContainer:not(:nth-of-type(10)),
-            &.caseStudyContainer:not(:nth-of-type(11)),
-            &.caseStudyContainer:not(:nth-of-type(12)) {
+            &.caseStudyContainer:not(:nth-of-type(n+11):nth-of-type(-n+16)) {
                 @include mixins.container;
             }
 
             &.profilePictureContainer,
             &.tweContainer,
             &.myFlixContainer,
-            &.caseStudyContainer:nth-of-type(7),
-            &.caseStudyContainer:nth-of-type(8),
-            &.caseStudyContainer:nth-of-type(9),
-            &.caseStudyContainer:nth-of-type(10),
-            &.caseStudyContainer:nth-of-type(11),
-            &.caseStudyContainer:nth-of-type(12) {
+            &.caseStudyContainer:nth-of-type(n+11):nth-of-type(-n+16) {
                 @include mixins.imageContainer;
             }
 
@@ -95,24 +85,18 @@ div {
                 }
             }
 
-            &.contactContainer {
-                background: linear-gradient(180deg, #820202 0%, #E35E5E 100%);
-            }
-
             &.aboutMeContainer {
                 background: linear-gradient(180deg, #C83434 0%, #E35E5E 100%);
             }
 
-            &.tweContainer {
-                background: linear-gradient(180deg, #A51919 33%, #E35E5E 100%);
+            &.tweContainer,
+            &.caseStudyContainer {
+                background: linear-gradient(180deg, #820202 0%, #E35E5E 100%);
             }
 
             &.myFlixContainer {
-                background: linear-gradient(180deg, #C83434 33%, #E35E5E 100%);
-            }
-
-            &.caseStudyContainer {
-                background: black;
+                //background: linear-gradient(180deg, #C83434 33%, #E35E5E 100%);
+                background: linear-gradient(180deg, #A51919 33%, #E35E5E 100%);
             }
         }
     }
