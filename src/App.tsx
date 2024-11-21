@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ContactIcons from './components/ContactIcons/contactIcons.tsx';
 import './App.scss';
 // @ts-ignore
 import koester from './assets/koester.jpg';
