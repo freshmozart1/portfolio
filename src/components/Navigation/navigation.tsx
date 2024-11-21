@@ -4,30 +4,23 @@ import './navigation.scss';
 /*left, up, down, right, leftLabel, upLabel, downLabel, rightLabel */
 export const navigationMap: {
     0: Array<Array<null | number | string>>,
-    1: Array<Array<null | number | string>>,
-    2: Array<Array<null | number | string>>
+    1: Array<Array<null | number | string>>
 } = {
     0: [
         [null, null, 0, 1, null, null, '?', 'Portfolio &rarr;'],
         [null, null, 1, 2, null, null, '&larr;', '&rarr;'],
         [1, null, 2, 3, '&larr;', null, 'My Journey &darr;', '&rarr;'],
         [2, null, null, 4, '&larr;', null, null, '&rarr;'],
-        [3, null, 4, null, '&larr;', null, 'Projects &darr;', null]
+        [3, null, 4, 5, '&larr;', null, 'Case Study &darr;', '&rarr;'],
+        [4, null, null, null, '&larr;', null, 'Try it', null] //Exception 1
+
     ],
     1: [
         [null, 1, null, null, 'Wikipedia', '&uarr;', null, null], //Exception 0
         [null, 1, null, null, null, '&uarr;', null, null],
         [null, 2, null, 3, null, '&uarr;', null, '&rarr;'],
         [2, 2, null, null, '&larr;', '&uarr;', null, null],
-        [null, 4, 0, 5, null, '&uarr;', 'Case Study &darr;', '&rarr;'],
-        [4, 4, null, null, '&larr;', '&uarr;', 'Try it', null] //Exception 1
-    ],
-    2: [
-        [null, 4, null, 1, null, '&uarr;', null, '&rarr;'],
-        [0, 4, null, 2, '&larr;', '&uarr;', null, '&rarr;'],
-        [1, 4, null, 3, '&larr;', '&uarr;', null, '&rarr;'],
-        [2, 4, null, 4, '&larr;', '&uarr;', null, '&rarr;'],
-        [3, 4, null, 5, '&larr;', '&uarr;', null, '&rarr;'],
+        [null, 4, null, 5, null, '&uarr;', null, '&rarr;'],
         [4, 4, null, 6, '&larr;', '&uarr;', null, '&rarr;'],
         [5, 4, null, 7, '&larr;', '&uarr;', null, '&rarr;'],
         [6, 4, null, 8, '&larr;', '&uarr;', null, '&rarr;'],
@@ -36,7 +29,11 @@ export const navigationMap: {
         [9, 4, null, 11, '&larr;', '&uarr;', null, '&rarr;'],
         [10, 4, null, 12, '&larr;', '&uarr;', null, '&rarr;'],
         [11, 4, null, 13, '&larr;', '&uarr;', null, '&rarr;'],
-        [12, 4, null, null, '&larr;', '&uarr;', null, null]
+        [12, 4, null, 14, '&larr;', '&uarr;', null, '&rarr;'],
+        [13, 4, null, 15, '&larr;', '&uarr;', null, '&rarr;'],
+        [14, 4, null, 16, '&larr;', '&uarr;', null, '&rarr;'],
+        [15, 4, null, 17, '&larr;', '&uarr;', null, '&rarr;'],
+        [16, 4, null, null, '&larr;', '&uarr;', null, null]
     ]
 };
 
@@ -44,7 +41,6 @@ function moveNavigationLine(columnIndex: number = 0, rowIndex: number = 0) {
     const navigationLine = document.querySelector('div.navigationLine') as HTMLDivElement;
     const numberOfColumns = navigationMap[rowIndex].length;
     const lineWidth = window.innerWidth / numberOfColumns;
-    console.log('lineWidth', lineWidth);
     const left = columnIndex * lineWidth;
     navigationLine.style.width = `${lineWidth}px`;
     navigationLine.style.left = `${left}px`;
@@ -87,11 +83,10 @@ export default function Navigation({ currentPage, setCurrentPage }: { currentPag
                         React.createElement('button', { key: 'left', dangerouslySetInnerHTML: { __html: leftLabel as string } }),
                         React.createElement('button', { key: 'up', onClick: () => navigate('up', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
                     );
-                } else if (row === '1' && index === 5) { // Exception 1
+                } else if (row === '0' && index === 5) { // Exception 1
                     buttons.push(
                         React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
-                        React.createElement('button', { key: 'tryIt', dangerouslySetInnerHTML: { __html: downLabel as string } }),
-                        React.createElement('button', { key: 'up', onClick: () => navigate('up', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
+                        React.createElement('button', { key: 'tryIt', dangerouslySetInnerHTML: { __html: downLabel as string } })
                     );
                 } else {
                     if (left !== null) buttons.push(React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }));
