@@ -81,19 +81,19 @@ export default function Navigation({ currentPage, setCurrentPage }: { currentPag
                 const buttons: Array<ReactNode> = [];
                 if (row === '1' && index === 0) { // Exception 0
                     buttons.push(
-                        React.createElement('button', { key: 'left', dangerouslySetInnerHTML: { __html: leftLabel as string } }),
+                        React.createElement('button', { key: 'left', onClick: () => window.open('https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy'), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
                         React.createElement('button', { key: 'up', onClick: () => navigate('up', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
                     );
                 } else if (row === '0' && index === 5) { // Exception 1
                     buttons.push(
                         React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
-                        React.createElement('button', { key: 'tryIt', dangerouslySetInnerHTML: { __html: downLabel as string } }),
+                        React.createElement('button', { key: 'tryIt', onClick: () => window.open('https://oles-myflix.netlify.app'), dangerouslySetInnerHTML: { __html: downLabel as string } }),
                         React.createElement('button', { key: 'right', onClick: () => navigate('right', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } })
                     );
-                } else if (row === '0' && index === 6) {
+                } else if (row === '0' && index === 6) { // Exception 2
                     buttons.push(
                         React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
-                        React.createElement('button', { key: 'tryIt', dangerouslySetInnerHTML: { __html: downLabel as string } })
+                        React.createElement('button', { key: 'tryIt', onClick: () => window.open('https://pokedex.ole-koester.de'), dangerouslySetInnerHTML: { __html: downLabel as string } })
                     );
                 } else {
                     if (left !== null) buttons.push(React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }));
