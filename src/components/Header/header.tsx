@@ -17,21 +17,21 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
   function menuClick(nextPage?: { columnIndex: number, rowIndex: number }) {
     const menu: HTMLDivElement = document.querySelector('div.menu')!;
     const menuList: HTMLUListElement = document.querySelector('div.menu>ul')!;
-    function closeMenu() {
-      const menu: HTMLDivElement = document.querySelector('div.menu')!;
-      const menuList: HTMLUListElement = document.querySelector('div.menu>ul')!;
-      menu.style.right = '20px';
-      menu.style.top = '20px';
-      menu.style.width = window.innerWidth > 1024 ? '90px' : '45px';
-      menu.style.height = window.innerWidth > 1024 ? '90px' : '45px';
-      menu.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      menu.style.borderRadius = '50%';
-      menuList.style.width = '0';
-      menuList.style.height = '0';
-      menuList.style.opacity = '0';
-      menuList.style.overflow = 'hidden';
+
+    const closeMenu = () => {
+      Object.assign(menu.style, {
+        right: '20px', top: '20px',
+        width: window.innerWidth > 1024 ? '90px' : '45px',
+        height: window.innerWidth > 1024 ? '90px' : '45px',
+        backgroundColor: 'rgba(0, 0, 0, 0)', borderRadius: '50%'
+      });
+      Object.assign(menuList.style, {
+        width: '0', height: '0', opacity: '0',
+        overflow: 'hidden', fontSize: '0', lineHeight: '0'
+      });
       setMenuOpen(false);
-    }
+    };
+
     if (nextPage) {
       const path = findNavigationPath(currentPage, nextPage);
       if (path) {
@@ -40,18 +40,18 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
       }
       return;
     }
+
     if (menuOpen) closeMenu();
     else {
-      menu.style.right = '0';
-      menu.style.top = '0';
-      menu.style.width = '100%';
-      menu.style.height = '100%';
-      menu.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-      menu.style.borderRadius = '0';
-      menuList.style.width = '100%';
-      menuList.style.height = '100%';
-      menuList.style.opacity = '1';
-      menuList.style.overflow = 'auto';
+      Object.assign(menu.style, {
+        right: '0', top: '0', width: '100%', height: '100%',
+        backgroundColor: 'rgba(0, 0, 0, 0.9)', borderRadius: '0'
+      });
+      Object.assign(menuList.style, {
+        width: 'fit-content', height: '100%', opacity: '1',
+        overflow: 'auto', fontSize: window.innerWidth > 1024 ? '40px' : '20px',
+        lineHeight: window.innerWidth > 1024 ? '50px' : '25px'
+      });
       setMenuOpen(true);
     }
   }
@@ -94,28 +94,34 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
           </svg>
         </button>
         <ul>
-          <li onClick={e => menuClick({ columnIndex: 2, rowIndex: 0 })}>Me</li>
-          <li onClick={e => menuClick({ columnIndex: 2, rowIndex: 1 })}>2000 - 2018</li>
-          <li onClick={e => menuClick({ columnIndex: 3, rowIndex: 1 })}>2019 - 2024</li>
-          <li onClick={e => menuClick({ columnIndex: 3, rowIndex: 0 })}>Skills</li>
-          <li onClick={e => menuClick({ columnIndex: 4, rowIndex: 0 })}>Talk With Everyone</li>
-          <li onClick={e => menuClick({ columnIndex: 4, rowIndex: 1 })}>Overview</li>
-          <li onClick={e => menuClick({ columnIndex: 5, rowIndex: 1 })}>Purpose</li>
-          <li onClick={e => menuClick({ columnIndex: 6, rowIndex: 1 })}>Objective</li>
-          <li onClick={e => menuClick({ columnIndex: 7, rowIndex: 1 })}>My Role</li>
-          <li onClick={e => menuClick({ columnIndex: 8, rowIndex: 1 })}>Tech Stack</li>
-          <li onClick={e => menuClick({ columnIndex: 9, rowIndex: 1 })}>Backend</li>
-          <li onClick={e => menuClick({ columnIndex: 10, rowIndex: 1 })}>Google Firebase Authentication</li>
-          <li onClick={e => menuClick({ columnIndex: 11, rowIndex: 1 })}>Google Firestore</li>
-          <li onClick={e => menuClick({ columnIndex: 12, rowIndex: 1 })}>Building the Interface</li>
-          <li onClick={e => menuClick({ columnIndex: 13, rowIndex: 1 })}>The Chat</li>
-          <li onClick={e => menuClick({ columnIndex: 14, rowIndex: 1 })}>react-native-maps</li>
-          <li onClick={e => menuClick({ columnIndex: 15, rowIndex: 1 })}>Testing & Debuging</li>
-          <li onClick={e => menuClick({ columnIndex: 16, rowIndex: 1 })}>Duration, what I learned and next steps</li>
-          <li onClick={e => menuClick({ columnIndex: 17, rowIndex: 1 })}>Conclusion</li>
-          <li onClick={e => menuClick({ columnIndex: 5, rowIndex: 0 })}>myFlix</li>
-          <li onClick={e => menuClick({ columnIndex: 6, rowIndex: 0 })}>Pokédex</li>
-          <li onClick={e => menuClick({ columnIndex: 7, rowIndex: 0 })}>Imprint</li>
+          {[
+            { text: 'Me', columnIndex: 2, rowIndex: 0 },
+            { text: '2000 - 2018', columnIndex: 2, rowIndex: 1 },
+            { text: '2019 - 2024', columnIndex: 3, rowIndex: 1 },
+            { text: 'Skills', columnIndex: 3, rowIndex: 0 },
+            { text: 'Talk With Everyone', columnIndex: 4, rowIndex: 0 },
+            { text: 'Overview', columnIndex: 4, rowIndex: 1 },
+            { text: 'Purpose', columnIndex: 5, rowIndex: 1 },
+            { text: 'Objective', columnIndex: 6, rowIndex: 1 },
+            { text: 'My Role', columnIndex: 7, rowIndex: 1 },
+            { text: 'Tech Stack', columnIndex: 8, rowIndex: 1 },
+            { text: 'Backend', columnIndex: 9, rowIndex: 1 },
+            { text: 'Google Firebase Authentication', columnIndex: 10, rowIndex: 1 },
+            { text: 'Google Firestore', columnIndex: 11, rowIndex: 1 },
+            { text: 'Building the Interface', columnIndex: 12, rowIndex: 1 },
+            { text: 'The Chat', columnIndex: 13, rowIndex: 1 },
+            { text: 'react-native-maps', columnIndex: 14, rowIndex: 1 },
+            { text: 'Testing & Debuging', columnIndex: 15, rowIndex: 1 },
+            { text: 'Duration, what I learned and next steps', columnIndex: 16, rowIndex: 1 },
+            { text: 'Conclusion', columnIndex: 17, rowIndex: 1 },
+            { text: 'myFlix', columnIndex: 5, rowIndex: 0 },
+            { text: 'Pokédex', columnIndex: 6, rowIndex: 0 },
+            { text: 'Imprint', columnIndex: 7, rowIndex: 0 },
+          ].map(item => (
+            <li key={item.text} onClick={e => menuClick({ columnIndex: item.columnIndex, rowIndex: item.rowIndex })}>
+              {item.text}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
