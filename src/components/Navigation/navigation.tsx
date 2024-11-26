@@ -64,10 +64,8 @@ export function navigate(directionOrPath: 'left' | 'up' | 'down' | 'right' | Arr
                 const newRowIndex = currentPage.rowIndex + rowOffset;
                 const nextRow = document.querySelectorAll('div.columns')[newRowIndex];
                 const nextPage = nextRow?.childNodes[newColumnIndex] as HTMLElement;
-                if (newRowIndex !== currentPage.rowIndex && nextRow && nextPage) {
-                    nextRow.scrollTo({ left: nextPage.offsetLeft, behavior: 'auto' });
-                }
                 if (nextPage) {
+                    if (newRowIndex !== currentPage.rowIndex) nextRow.scrollTo({ left: nextPage.offsetLeft, behavior: 'auto' });
                     moveNavigationLine(newColumnIndex, newRowIndex);
                     nextPage.scrollIntoView({ behavior: 'smooth' });
                     return { columnIndex: newColumnIndex, rowIndex: newRowIndex };
