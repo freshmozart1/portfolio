@@ -34,7 +34,7 @@ export default function App() {
 
   return (
     <div className="rows">
-      <Header />
+      <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <div className='columns'>{/* Row 0 */}
         <Riddle solvedRiddle={solvedRiddle} setSolvedRiddle={setSolvedRiddle} />
