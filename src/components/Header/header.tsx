@@ -1,13 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
+import { navigate, findNavigationPath } from "../Navigation/navigation.tsx";
 import './header.scss';
 
-export default function Header() {
+export default function Header({ currentPage, setCurrentPage }: { currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>> }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   function iconClick(icon: 'mail' | 'linkedin' | 'xing' | 'medium' | 'github') {
     switch (icon) {
       case 'mail': window.open('mailto:mail@ole-koester.de'); break;
       case 'linkedin': window.open('https://www.linkedin.com/in/ole-koester/'); break;
       case 'xing': window.open('https://www.xing.com/profile/Ole_Koester5'); break;
       case 'github': window.open('https://github.com/freshmozart1'); break;
+    }
+  }
+
+  function menuClick(nextPage?: { columnIndex: number, rowIndex: number }) {
+    const menu: HTMLDivElement = document.querySelector('div.menu')!;
+    const menuList: HTMLUListElement = document.querySelector('div.menu>ul')!;
+    function closeMenu() {
+      const menu: HTMLDivElement = document.querySelector('div.menu')!;
+      const menuList: HTMLUListElement = document.querySelector('div.menu>ul')!;
+      menu.style.right = '20px';
+      menu.style.top = '20px';
+      menu.style.width = window.innerWidth > 1024 ? '90px' : '45px';
+      menu.style.height = window.innerWidth > 1024 ? '90px' : '45px';
+      menu.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      menu.style.borderRadius = '50%';
+      menuList.style.width = '0';
+      menuList.style.height = '0';
+      menuList.style.opacity = '0';
+      menuList.style.overflow = 'hidden';
+      setMenuOpen(false);
+    }
+    if (nextPage) {
+      const path = findNavigationPath(currentPage, nextPage);
+      if (path) {
+        closeMenu();
+        navigate(path, setCurrentPage);
+      }
+      return;
+    }
+    if (menuOpen) closeMenu();
+    else {
+      menu.style.right = '0';
+      menu.style.top = '0';
+      menu.style.width = '100%';
+      menu.style.height = '100%';
+      menu.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+      menu.style.borderRadius = '0';
+      menuList.style.width = '100%';
+      menuList.style.height = '100%';
+      menuList.style.opacity = '1';
+      menuList.style.overflow = 'auto';
+      setMenuOpen(true);
     }
   }
 
@@ -42,6 +87,37 @@ export default function Header() {
       <svg onClick={e => iconClick('github')} viewBox='0 0 98 96' xmlns="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" clipRule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" />
       </svg>
+      <div className='menu'>
+        <button onClick={e => menuClick()}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+          </svg>
+        </button>
+        <ul>
+          <li onClick={e => menuClick({ columnIndex: 2, rowIndex: 0 })}>Me</li>
+          <li onClick={e => menuClick({ columnIndex: 2, rowIndex: 1 })}>2000 - 2018</li>
+          <li onClick={e => menuClick({ columnIndex: 3, rowIndex: 1 })}>2019 - 2024</li>
+          <li onClick={e => menuClick({ columnIndex: 3, rowIndex: 0 })}>Skills</li>
+          <li onClick={e => menuClick({ columnIndex: 4, rowIndex: 0 })}>Talk With Everyone</li>
+          <li onClick={e => menuClick({ columnIndex: 4, rowIndex: 1 })}>Overview</li>
+          <li onClick={e => menuClick({ columnIndex: 5, rowIndex: 1 })}>Purpose</li>
+          <li onClick={e => menuClick({ columnIndex: 6, rowIndex: 1 })}>Objective</li>
+          <li onClick={e => menuClick({ columnIndex: 7, rowIndex: 1 })}>My Role</li>
+          <li onClick={e => menuClick({ columnIndex: 8, rowIndex: 1 })}>Tech Stack</li>
+          <li onClick={e => menuClick({ columnIndex: 9, rowIndex: 1 })}>Backend</li>
+          <li onClick={e => menuClick({ columnIndex: 10, rowIndex: 1 })}>Google Firebase Authentication</li>
+          <li onClick={e => menuClick({ columnIndex: 11, rowIndex: 1 })}>Google Firestore</li>
+          <li onClick={e => menuClick({ columnIndex: 12, rowIndex: 1 })}>Building the Interface</li>
+          <li onClick={e => menuClick({ columnIndex: 13, rowIndex: 1 })}>The Chat</li>
+          <li onClick={e => menuClick({ columnIndex: 14, rowIndex: 1 })}>react-native-maps</li>
+          <li onClick={e => menuClick({ columnIndex: 15, rowIndex: 1 })}>Testing & Debuging</li>
+          <li onClick={e => menuClick({ columnIndex: 16, rowIndex: 1 })}>Duration, what I learned and next steps</li>
+          <li onClick={e => menuClick({ columnIndex: 17, rowIndex: 1 })}>Conclusion</li>
+          <li onClick={e => menuClick({ columnIndex: 5, rowIndex: 0 })}>myFlix</li>
+          <li onClick={e => menuClick({ columnIndex: 6, rowIndex: 0 })}>Pokédex</li>
+          <li onClick={e => menuClick({ columnIndex: 7, rowIndex: 0 })}>Imprint</li>
+        </ul>
+      </div>
     </div>
   );
 }
