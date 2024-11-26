@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.22e7466c.css",
-    "main.js": "/portfolio/static/js/main.7ce223fd.js",
+    "main.css": "/portfolio/static/css/main.4a29f312.css",
+    "main.js": "/portfolio/static/js/main.4daf41f0.js",
     "static/media/myflix_header.png": "/portfolio/static/media/myflix_header.d473c1a427be9d5a869c.png",
     "static/media/pokedex.png": "/portfolio/static/media/pokedex.9e16f6fe44b0ae084214.png",
     "static/media/twe_start_screen.png": "/portfolio/static/media/twe_start_screen.f339d1f897541c959f16.png",
@@ -16,11 +16,11 @@
     "static/media/koester.jpg": "/portfolio/static/media/koester.579a5274cb2c7b5ca6bc.jpg",
     "static/media/twe_map.png": "/portfolio/static/media/twe_map.f638bd499e719ef82637.png",
     "index.html": "/portfolio/index.html",
-    "main.22e7466c.css.map": "/portfolio/static/css/main.22e7466c.css.map",
-    "main.7ce223fd.js.map": "/portfolio/static/js/main.7ce223fd.js.map"
+    "main.4a29f312.css.map": "/portfolio/static/css/main.4a29f312.css.map",
+    "main.4daf41f0.js.map": "/portfolio/static/js/main.4daf41f0.js.map"
   },
   "entrypoints": [
-    "static/css/main.22e7466c.css",
-    "static/js/main.7ce223fd.js"
+    "static/css/main.4a29f312.css",
+    "static/js/main.4daf41f0.js"
   ]
 }
