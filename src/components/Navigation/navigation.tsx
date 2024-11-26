@@ -104,10 +104,6 @@ export function findNavigationPath(from: { columnIndex: number, rowIndex: number
 
 export default function Navigation({ currentPage, setCurrentPage }: { currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>> }) {
 
-    function navigateTo(to: { columnIndex: number, rowIndex: number }) {
-        navigate(findNavigationPath(currentPage, to)!, setCurrentPage);
-    }
-
     function createNavigationButtons(): Array<ReactNode> {
         const navigationDivs: Array<ReactNode> = [];
         Object.keys(navigationMap).forEach(row => {
