@@ -48,8 +48,12 @@ div.header {
             width: 45px;
             text-align: center;
             overflow: hidden;
-            fill: white;
             z-index: 1;
+            cursor: pointer;
+
+            >svg {
+                fill: white;
+            }
         }
 
         >ul {
