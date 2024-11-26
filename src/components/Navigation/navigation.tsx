@@ -49,30 +49,64 @@ function moveNavigationLine(columnIndex: number = 0, rowIndex: number = 0) {
     navigationLine.style.transition = 'left 0.3s ease';
 }
 
-export function navigate(direction: 'left' | 'up' | 'down' | 'right', currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>>) {
-    const [dir, rowOffset] = {
-        left: [0, 0],
-        up: [1, -1],
-        down: [2, 1],
-        right: [3, 0]
-    }[direction];
-    if (dir !== undefined) {
-        const newColumnIndex = navigationMap[currentPage.rowIndex][currentPage.columnIndex][dir];
-        const newRowIndex = currentPage.rowIndex + rowOffset;
-        const nextRow = document.querySelectorAll('div.columns')[newRowIndex];
-        const nextPage = nextRow?.childNodes[newColumnIndex] as HTMLElement;
-        if (newRowIndex !== currentPage.rowIndex && nextRow && nextPage) {
-            nextRow.scrollTo({ left: nextPage.offsetLeft, behavior: 'auto' });
-        }
-        if (nextPage) {
-            setCurrentPage({ columnIndex: newColumnIndex, rowIndex: newRowIndex });
-            moveNavigationLine(newColumnIndex, newRowIndex);
-            nextPage.scrollIntoView({ behavior: 'smooth' });
-        }
+export function navigate(directionOrPath: 'left' | 'up' | 'down' | 'right' | Array<'left' | 'up' | 'down' | 'right'>, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>>) {
+    (Array.isArray(directionOrPath) ? directionOrPath : [directionOrPath]).forEach(direction => {
+        setCurrentPage(currentPage => {
+            const [dir, rowOffset] = {
+                left: [0, 0],
+                up: [1, -1],
+                down: [2, 1],
+                right: [3, 0]
+            }[direction];
+
+            if (dir !== undefined) {
+                const newColumnIndex = navigationMap[currentPage.rowIndex][currentPage.columnIndex][dir];
+                const newRowIndex = currentPage.rowIndex + rowOffset;
+                const nextRow = document.querySelectorAll('div.columns')[newRowIndex];
+                const nextPage = nextRow?.childNodes[newColumnIndex] as HTMLElement;
+                if (newRowIndex !== currentPage.rowIndex && nextRow && nextPage) {
+                    nextRow.scrollTo({ left: nextPage.offsetLeft, behavior: 'auto' });
+                }
+                if (nextPage) {
+                    moveNavigationLine(newColumnIndex, newRowIndex);
+                    nextPage.scrollIntoView({ behavior: 'smooth' });
+                    return { columnIndex: newColumnIndex, rowIndex: newRowIndex };
+                }
+            }
+            return currentPage;
+        });
+    });
+}
+
+export function findNavigationPath(from: { columnIndex: number, rowIndex: number }, to: { columnIndex: number, rowIndex: number }): Array<'left' | 'up' | 'down' | 'right'> | null {
+    const queue: [[{ columnIndex: number, rowIndex: number }, Array<'left' | 'up' | 'down' | 'right'>]] = [[from, []]];
+    const visited = new Set<string>();
+    visited.add(`${from.columnIndex},${from.rowIndex}`);
+    while (queue.length) {
+        const [current, path] = queue.shift()!;
+        if (current.columnIndex === to.columnIndex && current.rowIndex === to.rowIndex) return path;
+        const directions: Array<'left' | 'up' | 'down' | 'right'> = ['left', 'up', 'down', 'right'];
+        directions.forEach((direction, directionIndex) => {
+            const newColumnIndex = navigationMap[current.rowIndex][current.columnIndex][directionIndex];
+            if (newColumnIndex !== null) {
+                const newRowIndex = direction === 'up' ? current.rowIndex - 1 : direction === 'down' ? current.rowIndex + 1 : current.rowIndex;
+                const newPosition = { columnIndex: newColumnIndex, rowIndex: newRowIndex };
+                const key = `${newPosition.columnIndex},${newPosition.rowIndex}`;
+                if (!visited.has(key)) {
+                    visited.add(key);
+                    queue.push([newPosition, [...path, direction]]);
+                }
+            }
+        });
     }
-};
+    return null;
+}
 
 export default function Navigation({ currentPage, setCurrentPage }: { currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>> }) {
+
+    function navigateTo(to: { columnIndex: number, rowIndex: number }) {
+        navigate(findNavigationPath(currentPage, to)!, setCurrentPage);
+    }
 
     function createNavigationButtons(): Array<ReactNode> {
         const navigationDivs: Array<ReactNode> = [];
@@ -83,25 +117,25 @@ export default function Navigation({ currentPage, setCurrentPage }: { currentPag
                 if (row === '1' && index === 0) { // Exception 0
                     buttons.push(
                         React.createElement('button', { key: 'left', onClick: () => window.open('https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy'), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
-                        React.createElement('button', { key: 'up', onClick: () => navigate('up', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
+                        React.createElement('button', { key: 'up', onClick: () => navigate('up', setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
                     );
                 } else if (row === '0' && index === 5) { // Exception 1
                     buttons.push(
-                        React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
+                        React.createElement('button', { key: 'left', onClick: () => navigate('left', setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
                         React.createElement('button', { key: 'tryIt', onClick: () => window.open('https://oles-myflix.netlify.app'), dangerouslySetInnerHTML: { __html: downLabel as string } }),
-                        React.createElement('button', { key: 'right', onClick: () => navigate('right', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } })
+                        React.createElement('button', { key: 'right', onClick: () => navigate('right', setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } })
                     );
                 } else if (row === '0' && index === 6) { // Exception 2
                     buttons.push(
-                        React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
+                        React.createElement('button', { key: 'left', onClick: () => navigate('left', setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
                         React.createElement('button', { key: 'tryIt', onClick: () => window.open('https://pokedex.ole-koester.de'), dangerouslySetInnerHTML: { __html: downLabel as string } }),
-                        React.createElement('button', { key: 'right', onClick: () => navigate('right', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } })
+                        React.createElement('button', { key: 'right', onClick: () => navigate('right', setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } })
                     );
                 } else {
-                    if (left !== null) buttons.push(React.createElement('button', { key: 'left', onClick: () => navigate('left', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }));
-                    if (up !== null) buttons.push(React.createElement('button', { key: 'up', onClick: () => navigate('up', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } }));
-                    if (down !== null) buttons.push(React.createElement('button', { key: 'down', onClick: () => navigate('down', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: downLabel as string } }));
-                    if (right !== null) buttons.push(React.createElement('button', { key: 'right', onClick: () => navigate('right', currentPage, setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } }));
+                    if (left !== null) buttons.push(React.createElement('button', { key: 'left', onClick: () => navigate('left', setCurrentPage), dangerouslySetInnerHTML: { __html: leftLabel as string } }));
+                    if (up !== null) buttons.push(React.createElement('button', { key: 'up', onClick: () => navigate('up', setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } }));
+                    if (down !== null) buttons.push(React.createElement('button', { key: 'down', onClick: () => navigate('down', setCurrentPage), dangerouslySetInnerHTML: { __html: downLabel as string } }));
+                    if (right !== null) buttons.push(React.createElement('button', { key: 'right', onClick: () => navigate('right', setCurrentPage), dangerouslySetInnerHTML: { __html: rightLabel as string } }));
                 }
                 const navigationDiv = React.createElement('div', { className: 'navigation', key: `${row}-${index}` }, buttons);
                 navigationDivs.push(navigationDiv);
@@ -118,7 +152,7 @@ export default function Navigation({ currentPage, setCurrentPage }: { currentPag
             ArrowDown: currentPage.columnIndex === 1 && currentPage.rowIndex === 0 ? null : 'down'
         };
         if (keyMap[event.key]) {
-            navigate(keyMap[event.key], currentPage, setCurrentPage);
+            navigate(keyMap[event.key], setCurrentPage);
         }
     };
 

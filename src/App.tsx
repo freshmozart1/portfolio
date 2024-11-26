@@ -29,7 +29,7 @@ export default function App() {
   const [solvedRiddle, setSolvedRiddle] = useState(false);
 
   useEffect(() => {
-    if (solvedRiddle) navigate('right', { columnIndex: 0, rowIndex: 0 }, setCurrentPage);
+    if (solvedRiddle) navigate('right', setCurrentPage);
   }, [solvedRiddle]);
 
   return (
