@@ -18,29 +18,45 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
   function expandSubMenu(subMenu: Array<{ text: string, columnIndex: number, rowIndex: number }>) {
     setSubMenu(subMenu);
     const subMenuList: HTMLUListElement = document.querySelectorAll('div.menu>div.menuItems>ul')[1] as HTMLUListElement;
-    subMenuList.style.display = 'inline-flex';
+    const subMenuButton: HTMLButtonElement = document.querySelector('div.menu>div.menuButtonContainer>button') as HTMLButtonElement;
+    Object.assign(subMenuList.style, {
+      width: '100%', height: '100%', opacity: '1', fontSize: window.innerWidth >= 1024 ? '40px' : '20px',
+      lineHeight: window.innerWidth >= 1024 ? '50px' : '25px'
+    });
     subMenuList.scrollIntoView({ behavior: 'smooth' });
+    Object.assign(subMenuButton.style, {
+      width: window.innerWidth >= 1024 ? '90px' : '45px',
+      height: window.innerWidth >= 1024 ? '90px' : '45px',
+    });
+  }
+
+  function closeSubMenu() {
+    (document.querySelector('div.menu>div.menuItems>ul') as HTMLUListElement).scrollIntoView({ behavior: 'smooth' });
+    Object.assign((document.querySelector('div.menu>div.menuButtonContainer>button') as HTMLButtonElement).style, {
+      width: '0',
+      height: '0',
+    });
   }
 
   function menuClick(nextPage?: { columnIndex: number, rowIndex: number }) {
-    const menu: HTMLDivElement = document.querySelector('div.menu')!;
-    const mainMenuList: HTMLUListElement = document.querySelectorAll('div.menu>div.menuItems>ul')[0] as HTMLUListElement;
-    const subMenuList: HTMLUListElement = document.querySelectorAll('div.menu>div.menuItems>ul')[1] as HTMLUListElement;
+    const [menu, mainMenuList, subMenuList] = [
+      document.querySelector('div.menu'),
+      document.querySelectorAll('div.menu>div.menuItems>ul')[0],
+      document.querySelectorAll('div.menu>div.menuItems>ul')[1]
+    ].map(el => el as HTMLElement);
 
-    const closeMenu = () => {
-      Object.assign(menu.style, {
-        right: '20px', top: '20px',
-        width: window.innerWidth > 1024 ? '90px' : '45px',
-        height: window.innerWidth > 1024 ? '90px' : '45px',
-        backgroundColor: 'rgba(0, 0, 0, 0)', borderRadius: '50%'
+    function closeMenu() {
+      closeSubMenu();
+      ['right', 'top', 'width', 'height', 'backgroundColor', 'borderRadius', 'padding'].forEach((prop, i) => {
+        menu.style[prop] = ['20px', '20px', window.innerWidth >= 1024 ? '90px' : '45px', window.innerWidth >= 1024 ? '90px' : '45px', 'rgba(0, 0, 0, 0)', '0 0 0 50%', '0'][i];
       });
-      Object.assign(mainMenuList.style, {
-        width: '0', height: '0', opacity: '0',
-        overflow: 'hidden', fontSize: '0', lineHeight: '0'
-      });
-      Object.assign(subMenuList.style, {
-        width: '0', height: '0', opacity: '0', fontSize: '0', lineHeight: '0', display: 'none'
-      });
+      [mainMenuList, subMenuList].forEach(list => Object.assign(list.style, {
+        width: '0',
+        height: '0',
+        opacity: '0',
+        fontSize: '0',
+        lineHeight: '0'
+      }));
       setMenuOpen(false);
     };
 
@@ -55,18 +71,11 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
 
     if (menuOpen) closeMenu();
     else {
-      Object.assign(menu.style, {
-        right: '0', top: '0', width: '100%', height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.9)', borderRadius: '0'
+      ['right', 'top', 'width', 'height', 'backgroundColor', 'borderRadius', 'padding'].forEach((prop, i) => {
+        menu.style[prop] = ['0', '0', '100%', '100%', 'rgba(0, 0, 0, 0.9)', '0', '20px'][i];
       });
-      Object.assign(mainMenuList.style, {
-        width: '100%', height: '100%', opacity: '1',
-        overflow: 'auto', fontSize: window.innerWidth > 1024 ? '40px' : '20px',
-        lineHeight: window.innerWidth > 1024 ? '50px' : '25px'
-      });
-      Object.assign(subMenuList.style, {
-        width: '100%', height: '100%', opacity: '1', fontSize: window.innerWidth > 1024 ? '40px' : '20px',
-        lineHeight: window.innerWidth > 1024 ? '50px' : '25px'
+      ['width', 'height', 'opacity', 'fontSize', 'lineHeight'].forEach((prop, i) => {
+        mainMenuList.style[prop] = ['100%', '100%', '1', window.innerWidth >= 1024 ? '40px' : '20px', window.innerWidth >= 1024 ? '50px' : '25px'][i];
       });
       setMenuOpen(true);
     }
@@ -104,11 +113,19 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
         <path fillRule="evenodd" clipRule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" />
       </svg>
       <div className='menu'>
-        <button onClick={e => menuClick()}>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
-          </svg>
-        </button>
+        <div className="menuButtonContainer">
+          <button onClick={e => closeSubMenu()}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+              <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
+            </svg>
+          </button>
+          <button onClick={e => menuClick()}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+              <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+            </svg>
+          </button>
+        </div>
+
         <div className="menuItems">
           <ul>
             {[

@@ -24,6 +24,12 @@ div.header {
     @media screen and (min-width: 1024px) {
         height: 130px;
         padding: 20px 130px 20px 20px;
+
+        >svg {
+            flex-basis: 90px;
+            width: 90px;
+            height: 90px;
+        }
     }
 
     div.menu {
@@ -33,26 +39,48 @@ div.header {
         width: 45px;
         height: 45px;
         background-color: rgba(0, 0, 0, 0);
-        border-radius: 50%;
+        border-radius: 0 0 0 50%;
         color: white;
         transition: all 0.5s ease;
-        overflow-x: hidden;
-        overflow-y: hidden;
+        padding: 0px;
+        display: inline-flex;
+        flex-direction: column;
 
-        >button {
-            all: unset;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            height: 45px;
-            width: 45px;
-            text-align: center;
-            overflow: hidden;
+        >div.menuButtonContainer {
+            width: 100%;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: space-between;
             z-index: 1;
-            cursor: pointer;
 
-            >svg {
-                fill: white;
+            >button {
+                all: unset;
+                height: 45px;
+                width: 45px;
+                text-align: center;
+                overflow: hidden;
+                flex-shrink: 0;
+                flex-grow: 0;
+                z-index: 1;
+                cursor: pointer;
+
+                >svg {
+                    fill: white;
+                }
+            }
+
+            @media screen and (min-width: 1024px) {
+                >button {
+                    height: 90px;
+                    width: 90px;
+                }
+            }
+
+            >button:first-of-type {
+                width: 0;
+                height: 0;
+                z-index: 0;
+                transition: all 0.5s ease;
             }
         }
 
@@ -62,47 +90,36 @@ div.header {
             overflow: hidden;
             display: inline-flex;
             flex-direction: row;
-        }
 
-        >div.menuItems>ul:first-of-type {
-            width: 0;
-            height: 0;
-            display: inline-flex;
-            flex-direction: column;
-            padding: 20px 85px 20px 20px;
-            margin: 0;
-            list-style-type: none;
-            align-content: center;
-            justify-content: space-around;
-            font-size: 0;
-            line-height: 0;
-            opacity: 0;
-            transition: all 0.5s ease;
-            z-index: 0;
-            text-align: center;
-            flex-shrink: 0;
-
-            >li {
+            >ul {
+                width: 0;
+                height: 0;
+                margin: 0;
+                padding: 0;
                 display: inline-flex;
+                flex-direction: column;
                 align-content: center;
-                justify-content: center;
-                flex-flow: row nowrap;
-            }
-        }
+                justify-content: space-around;
+                font-size: 0;
+                line-height: 0;
+                opacity: 0;
+                z-index: 0;
+                text-align: center;
+                flex-shrink: 0;
+                list-style-type: none;
 
-        >div.menuItems>ul:last-of-type {
-            list-style-type: none;
-            padding: 20px 85px 20px 20px;
-            clip-path: content-box;
-            width: 100%;
-            height: 100%;
-            display: none;
-            flex-direction: column;
-            align-content: center;
-            justify-content: space-around;
-            z-index: 0;
-            flex-shrink: 0;
-            text-align: center;
+                >li {
+                    display: inline-flex;
+                    align-content: center;
+                    justify-content: center;
+                    flex-flow: row nowrap;
+                }
+
+                &:first-of-type {
+                    transition: all 0.5s ease;
+                }
+            }
+
         }
 
         @media screen and (min-width: 1024px) {
