@@ -56,10 +56,17 @@ div.header {
             }
         }
 
-        >ul {
+        >div.menuItems {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: inline-flex;
+            flex-direction: row;
+        }
+
+        >div.menuItems>ul:first-of-type {
             width: 0;
             height: 0;
-            overflow: hidden;
             display: inline-flex;
             flex-direction: column;
             padding: 20px 85px 20px 20px;
@@ -72,6 +79,29 @@ div.header {
             opacity: 0;
             transition: all 0.5s ease;
             z-index: 0;
+            text-align: center;
+            flex-shrink: 0;
+
+            >li {
+                display: inline-flex;
+                align-content: center;
+                justify-content: center;
+                flex-flow: row nowrap;
+            }
+        }
+
+        >div.menuItems>ul:last-of-type {
+            list-style-type: none;
+            padding: 20px 85px 20px 20px;
+            clip-path: content-box;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            align-content: center;
+            justify-content: space-around;
+            z-index: 0;
+            flex-shrink: 0;
             text-align: center;
         }
 
@@ -86,7 +116,7 @@ div.header {
                 width: 90px;
             }
 
-            >ul {
+            >div.menuItems>ul {
                 font-size: 40px;
                 line-height: 50px;
                 padding: 20px 130px 20px 20px;

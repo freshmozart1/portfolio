@@ -4,6 +4,7 @@ import './header.scss';
 
 export default function Header({ currentPage, setCurrentPage }: { currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>> }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [subMenu, setSubMenu] = useState<Array<{ text: string, columnIndex: number, rowIndex: number }>>();
 
   function iconClick(icon: 'mail' | 'linkedin' | 'xing' | 'medium' | 'github') {
     switch (icon) {
@@ -14,9 +15,17 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
     }
   }
 
+  function expandSubMenu(subMenu: Array<{ text: string, columnIndex: number, rowIndex: number }>) {
+    setSubMenu(subMenu);
+    const subMenuList: HTMLUListElement = document.querySelectorAll('div.menu>div.menuItems>ul')[1] as HTMLUListElement;
+    subMenuList.style.display = 'inline-flex';
+    subMenuList.scrollIntoView({ behavior: 'smooth' });
+  }
+
   function menuClick(nextPage?: { columnIndex: number, rowIndex: number }) {
     const menu: HTMLDivElement = document.querySelector('div.menu')!;
-    const menuList: HTMLUListElement = document.querySelector('div.menu>ul')!;
+    const mainMenuList: HTMLUListElement = document.querySelectorAll('div.menu>div.menuItems>ul')[0] as HTMLUListElement;
+    const subMenuList: HTMLUListElement = document.querySelectorAll('div.menu>div.menuItems>ul')[1] as HTMLUListElement;
 
     const closeMenu = () => {
       Object.assign(menu.style, {
@@ -25,9 +34,12 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
         height: window.innerWidth > 1024 ? '90px' : '45px',
         backgroundColor: 'rgba(0, 0, 0, 0)', borderRadius: '50%'
       });
-      Object.assign(menuList.style, {
+      Object.assign(mainMenuList.style, {
         width: '0', height: '0', opacity: '0',
         overflow: 'hidden', fontSize: '0', lineHeight: '0'
+      });
+      Object.assign(subMenuList.style, {
+        width: '0', height: '0', opacity: '0', fontSize: '0', lineHeight: '0', display: 'none'
       });
       setMenuOpen(false);
     };
@@ -47,9 +59,13 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
         right: '0', top: '0', width: '100%', height: '100%',
         backgroundColor: 'rgba(0, 0, 0, 0.9)', borderRadius: '0'
       });
-      Object.assign(menuList.style, {
-        width: 'fit-content', height: '100%', opacity: '1',
+      Object.assign(mainMenuList.style, {
+        width: '100%', height: '100%', opacity: '1',
         overflow: 'auto', fontSize: window.innerWidth > 1024 ? '40px' : '20px',
+        lineHeight: window.innerWidth > 1024 ? '50px' : '25px'
+      });
+      Object.assign(subMenuList.style, {
+        width: '100%', height: '100%', opacity: '1', fontSize: window.innerWidth > 1024 ? '40px' : '20px',
         lineHeight: window.innerWidth > 1024 ? '50px' : '25px'
       });
       setMenuOpen(true);
@@ -93,36 +109,53 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
             <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
           </svg>
         </button>
-        <ul>
-          {[
-            { text: 'Me', columnIndex: 2, rowIndex: 0 },
-            { text: '2000 - 2018', columnIndex: 2, rowIndex: 1 },
-            { text: '2019 - 2024', columnIndex: 3, rowIndex: 1 },
-            { text: 'Skills', columnIndex: 3, rowIndex: 0 },
-            { text: 'Talk With Everyone', columnIndex: 4, rowIndex: 0 },
-            { text: 'Overview', columnIndex: 4, rowIndex: 1 },
-            { text: 'Purpose', columnIndex: 5, rowIndex: 1 },
-            { text: 'Objective', columnIndex: 6, rowIndex: 1 },
-            { text: 'My Role', columnIndex: 7, rowIndex: 1 },
-            { text: 'Tech Stack', columnIndex: 8, rowIndex: 1 },
-            { text: 'Backend', columnIndex: 9, rowIndex: 1 },
-            { text: 'Google Firebase Authentication', columnIndex: 10, rowIndex: 1 },
-            { text: 'Google Firestore', columnIndex: 11, rowIndex: 1 },
-            { text: 'Building the Interface', columnIndex: 12, rowIndex: 1 },
-            { text: 'The Chat', columnIndex: 13, rowIndex: 1 },
-            { text: 'react-native-maps', columnIndex: 14, rowIndex: 1 },
-            { text: 'Testing & Debuging', columnIndex: 15, rowIndex: 1 },
-            { text: 'Duration, what I learned and next steps', columnIndex: 16, rowIndex: 1 },
-            { text: 'Conclusion', columnIndex: 17, rowIndex: 1 },
-            { text: 'myFlix', columnIndex: 5, rowIndex: 0 },
-            { text: 'Pokédex', columnIndex: 6, rowIndex: 0 },
-            { text: 'Imprint', columnIndex: 7, rowIndex: 0 },
-          ].map(item => (
-            <li key={item.text} onClick={e => menuClick({ columnIndex: item.columnIndex, rowIndex: item.rowIndex })}>
-              {item.text}
-            </li>
-          ))}
-        </ul>
+        <div className="menuItems">
+          <ul>
+            {[
+              {
+                text: 'Me', subMenu: [
+                  { text: 'Me', columnIndex: 2, rowIndex: 0 },
+                  { text: '2000 - 2018', columnIndex: 2, rowIndex: 1 },
+                  { text: '2019 - 2024', columnIndex: 3, rowIndex: 1 }
+                ]
+              },
+              { text: 'Skills', columnIndex: 3, rowIndex: 0 },
+              {
+                text: 'Talk With Everyone', subMenu: [
+                  { text: 'Talk With Everyone', columnIndex: 4, rowIndex: 0 },
+                  { text: 'Overview', columnIndex: 4, rowIndex: 1 },
+                  { text: 'Purpose', columnIndex: 5, rowIndex: 1 },
+                  { text: 'Objective', columnIndex: 6, rowIndex: 1 },
+                  { text: 'My Role', columnIndex: 7, rowIndex: 1 },
+                  { text: 'Tech Stack', columnIndex: 8, rowIndex: 1 },
+                  { text: 'Backend', columnIndex: 9, rowIndex: 1 },
+                  { text: 'Google Firebase Authentication', columnIndex: 10, rowIndex: 1 },
+                  { text: 'Google Firestore', columnIndex: 11, rowIndex: 1 },
+                  { text: 'Building the Interface', columnIndex: 12, rowIndex: 1 },
+                  { text: 'The Chat', columnIndex: 13, rowIndex: 1 },
+                  { text: 'react-native-maps', columnIndex: 14, rowIndex: 1 },
+                  { text: 'Testing & Debuging', columnIndex: 15, rowIndex: 1 },
+                  { text: 'Duration, what I learned and next steps', columnIndex: 16, rowIndex: 1 },
+                  { text: 'Conclusion', columnIndex: 17, rowIndex: 1 }
+                ]
+              },
+              { text: 'myFlix', columnIndex: 5, rowIndex: 0 },
+              { text: 'Pokédex', columnIndex: 6, rowIndex: 0 },
+              { text: 'Imprint', columnIndex: 7, rowIndex: 0 },
+            ].map(item => (
+              <li key={item.text} onClick={e => item.subMenu ? expandSubMenu(item.subMenu) : menuClick({ columnIndex: item.columnIndex, rowIndex: item.rowIndex })}>
+                <div>{item.text}{item.subMenu && <span style={{ marginLeft: '10px' }}>&rarr;</span>}</div>
+              </li>
+            ))}
+          </ul>
+          <ul>
+            {subMenu?.map((item, index) => (
+              <li key={item.text} onClick={e => menuClick({ columnIndex: item.columnIndex, rowIndex: item.rowIndex })}>
+                <div>{item.text}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
