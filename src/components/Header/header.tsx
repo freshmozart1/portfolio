@@ -1,84 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { navigate, findNavigationPath } from "../Navigation/navigation.tsx";
 import './header.scss';
 
 export default function Header({ currentPage, setCurrentPage }: { currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>> }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [subMenu, setSubMenu] = useState<Array<{ text: string, columnIndex: number, rowIndex: number }>>();
+  const menuItems = [
+    { text: 'Me', subMenu: [{ text: 'Me', columnIndex: 2, rowIndex: 0 }, { text: '2000 - 2018', columnIndex: 2, rowIndex: 1 }, { text: '2019 - 2024', columnIndex: 3, rowIndex: 1 }] },
+    { text: 'Skills', columnIndex: 3, rowIndex: 0 },
+    {
+      text: 'Talk With Everyone', subMenu: [
+        { text: 'Talk With Everyone', columnIndex: 4, rowIndex: 0 }, { text: 'Overview', columnIndex: 4, rowIndex: 1 }, { text: 'Purpose', columnIndex: 5, rowIndex: 1 }, { text: 'Objective', columnIndex: 6, rowIndex: 1 },
+        { text: 'My Role', columnIndex: 7, rowIndex: 1 }, { text: 'Tech Stack', columnIndex: 8, rowIndex: 1 }, { text: 'Backend', columnIndex: 9, rowIndex: 1 }, { text: 'Google Firebase Authentication', columnIndex: 10, rowIndex: 1 },
+        { text: 'Google Firestore', columnIndex: 11, rowIndex: 1 }, { text: 'Building the Interface', columnIndex: 12, rowIndex: 1 }, { text: 'The Chat', columnIndex: 13, rowIndex: 1 }, { text: 'react-native-maps', columnIndex: 14, rowIndex: 1 },
+        { text: 'Testing & Debuging', columnIndex: 15, rowIndex: 1 }, { text: 'Duration, what I learned and next steps', columnIndex: 16, rowIndex: 1 }, { text: 'Conclusion', columnIndex: 17, rowIndex: 1 }
+      ]
+    },
+    { text: 'myFlix', columnIndex: 5, rowIndex: 0 },
+    { text: 'Pokédex', columnIndex: 6, rowIndex: 0 },
+    { text: 'Imprint', columnIndex: 7, rowIndex: 0 },
+  ];
+  const [subMenuItems, setSubMenuItems] = useState<Array<{ text: string, columnIndex: number, rowIndex: number }>>();
 
   function iconClick(icon: 'mail' | 'linkedin' | 'xing' | 'medium' | 'github') {
-    switch (icon) {
-      case 'mail': window.open('mailto:mail@ole-koester.de'); break;
-      case 'linkedin': window.open('https://www.linkedin.com/in/ole-koester/'); break;
-      case 'xing': window.open('https://www.xing.com/profile/Ole_Koester5'); break;
-      case 'github': window.open('https://github.com/freshmozart1'); break;
-    }
+    window.open({
+      mail: 'mailto:mail@ole-koester.de',
+      linkedin: 'https://www.linkedin.com/in/ole-koester/',
+      xing: 'https://www.xing.com/profile/Ole_Koester5',
+      github: 'https://github.com/freshmozart1'
+    }[icon]);
   }
 
-  function expandSubMenu(subMenu: Array<{ text: string, columnIndex: number, rowIndex: number }>) {
-    setSubMenu(subMenu);
-    const subMenuList: HTMLUListElement = document.querySelectorAll('div.menu>div.menuItems>ul')[1] as HTMLUListElement;
-    const subMenuButton: HTMLButtonElement = document.querySelector('div.menu>div.menuButtonContainer>button') as HTMLButtonElement;
-    Object.assign(subMenuList.style, {
-      width: '100%', height: '100%', opacity: '1', fontSize: window.innerWidth >= 1024 ? '40px' : '20px',
-      lineHeight: window.innerWidth >= 1024 ? '50px' : '25px'
-    });
-    subMenuList.scrollIntoView({ behavior: 'smooth' });
-    Object.assign(subMenuButton.style, {
-      width: window.innerWidth >= 1024 ? '90px' : '45px',
-      height: window.innerWidth >= 1024 ? '90px' : '45px',
-    });
-  }
-
-  function closeSubMenu() {
-    (document.querySelector('div.menu>div.menuItems>ul') as HTMLUListElement).scrollIntoView({ behavior: 'smooth' });
-    Object.assign((document.querySelector('div.menu>div.menuButtonContainer>button') as HTMLButtonElement).style, {
-      width: '0',
-      height: '0',
-    });
-  }
-
-  function menuClick(nextPage?: { columnIndex: number, rowIndex: number }) {
-    const [menu, mainMenuList, subMenuList] = [
-      document.querySelector('div.menu'),
-      document.querySelectorAll('div.menu>div.menuItems>ul')[0],
-      document.querySelectorAll('div.menu>div.menuItems>ul')[1]
-    ].map(el => el as HTMLElement);
-
-    function closeMenu() {
-      closeSubMenu();
-      ['right', 'top', 'width', 'height', 'backgroundColor', 'borderRadius', 'padding'].forEach((prop, i) => {
-        menu.style[prop] = ['20px', '20px', window.innerWidth >= 1024 ? '90px' : '45px', window.innerWidth >= 1024 ? '90px' : '45px', 'rgba(0, 0, 0, 0)', '0 0 0 50%', '0'][i];
-      });
-      [mainMenuList, subMenuList].forEach(list => Object.assign(list.style, {
-        width: '0',
-        height: '0',
-        opacity: '0',
-        fontSize: '0',
-        lineHeight: '0'
-      }));
-      setMenuOpen(false);
-    };
-
-    if (nextPage) {
-      const path = findNavigationPath(currentPage, nextPage);
-      if (path) {
-        closeMenu();
-        navigate(path, setCurrentPage);
-      }
-      return;
-    }
-
-    if (menuOpen) closeMenu();
-    else {
-      ['right', 'top', 'width', 'height', 'backgroundColor', 'borderRadius', 'padding'].forEach((prop, i) => {
-        menu.style[prop] = ['0', '0', '100%', '100%', 'rgba(0, 0, 0, 0.9)', '0', '20px'][i];
-      });
-      ['width', 'height', 'opacity', 'fontSize', 'lineHeight'].forEach((prop, i) => {
-        mainMenuList.style[prop] = ['100%', '100%', '1', window.innerWidth >= 1024 ? '40px' : '20px', window.innerWidth >= 1024 ? '50px' : '25px'][i];
-      });
-      setMenuOpen(true);
-    }
+  function toggleMenu() {
+    (document.querySelector('div.menu > div.menuButtonContainer > button')! as HTMLButtonElement).style.opacity = document.querySelector('div.menu')?.classList.toggle('expanded') && subMenuItems ? '1' : '0';
   }
 
   return (
@@ -113,13 +65,24 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
         <path fillRule="evenodd" clipRule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" />
       </svg>
       <div className='menu'>
-        <div className="menuButtonContainer">
-          <button onClick={e => closeSubMenu()}>
+        <div className="menuButtonContainer" style={{ justifyContent: 'space-between' }}>
+          <button onClick={e => {
+            const mainMenu = document.querySelector('div.menuItems > ul')! as HTMLUListElement;
+            const subMenu = document.querySelector('div.menuItems > ul:nth-child(2)')! as HTMLUListElement;
+            mainMenu.style.transform = 'translateX(0)';
+            subMenu.style.transform = 'translateX(0)';
+            const backButton = e.currentTarget as HTMLButtonElement;
+            backButton.style.opacity = '0';
+            setTimeout(() => {
+              backButton.disabled = true;
+              setSubMenuItems(undefined);
+            }, 500)
+          }}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
               <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" />
             </svg>
           </button>
-          <button onClick={e => menuClick()}>
+          <button onClick={e => toggleMenu()}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
               <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
             </svg>
@@ -127,50 +90,29 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
         </div>
 
         <div className="menuItems">
-          <ul>
-            {[
-              {
-                text: 'Me', subMenu: [
-                  { text: 'Me', columnIndex: 2, rowIndex: 0 },
-                  { text: '2000 - 2018', columnIndex: 2, rowIndex: 1 },
-                  { text: '2019 - 2024', columnIndex: 3, rowIndex: 1 }
-                ]
-              },
-              { text: 'Skills', columnIndex: 3, rowIndex: 0 },
-              {
-                text: 'Talk With Everyone', subMenu: [
-                  { text: 'Talk With Everyone', columnIndex: 4, rowIndex: 0 },
-                  { text: 'Overview', columnIndex: 4, rowIndex: 1 },
-                  { text: 'Purpose', columnIndex: 5, rowIndex: 1 },
-                  { text: 'Objective', columnIndex: 6, rowIndex: 1 },
-                  { text: 'My Role', columnIndex: 7, rowIndex: 1 },
-                  { text: 'Tech Stack', columnIndex: 8, rowIndex: 1 },
-                  { text: 'Backend', columnIndex: 9, rowIndex: 1 },
-                  { text: 'Google Firebase Authentication', columnIndex: 10, rowIndex: 1 },
-                  { text: 'Google Firestore', columnIndex: 11, rowIndex: 1 },
-                  { text: 'Building the Interface', columnIndex: 12, rowIndex: 1 },
-                  { text: 'The Chat', columnIndex: 13, rowIndex: 1 },
-                  { text: 'react-native-maps', columnIndex: 14, rowIndex: 1 },
-                  { text: 'Testing & Debuging', columnIndex: 15, rowIndex: 1 },
-                  { text: 'Duration, what I learned and next steps', columnIndex: 16, rowIndex: 1 },
-                  { text: 'Conclusion', columnIndex: 17, rowIndex: 1 }
-                ]
-              },
-              { text: 'myFlix', columnIndex: 5, rowIndex: 0 },
-              { text: 'Pokédex', columnIndex: 6, rowIndex: 0 },
-              { text: 'Imprint', columnIndex: 7, rowIndex: 0 },
-            ].map(item => (
-              <li key={item.text} onClick={e => item.subMenu ? expandSubMenu(item.subMenu) : menuClick({ columnIndex: item.columnIndex, rowIndex: item.rowIndex })}>
-                <div>{item.text}{item.subMenu && <span style={{ marginLeft: '10px' }}>&rarr;</span>}</div>
-              </li>
-            ))}
+          <ul style={{ transform: `translateX(${subMenuItems ? '-100%' : '0'})` }}>
+            {menuItems.map((item, index) => <li key={index} onClick={e => {
+              if ('subMenu' in item) {
+                const backButton = document.querySelector('div.menu > div.menuButtonContainer > button')! as HTMLButtonElement;
+                backButton.disabled = false;
+                backButton.style.opacity = '1';
+                setSubMenuItems(item.subMenu);
+              }
+              else {
+                toggleMenu();
+                navigate(findNavigationPath(currentPage, { columnIndex: item.columnIndex, rowIndex: item.rowIndex })!, setCurrentPage);
+              }
+            }}>
+              <div>{item.text}{'subMenu' in item && <span>&rarr;</span>}</div>
+            </li>)}
           </ul>
-          <ul>
-            {subMenu?.map((item, index) => (
-              <li key={item.text} onClick={e => menuClick({ columnIndex: item.columnIndex, rowIndex: item.rowIndex })}>
-                <div>{item.text}</div>
-              </li>
-            ))}
+          <ul style={{ transform: `translateX(${subMenuItems ? '-100%' : '0'})` }}>
+            {subMenuItems && subMenuItems.map((item, index) => <li key={index} onClick={e => {
+              toggleMenu();
+              navigate(findNavigationPath(currentPage, { columnIndex: item.columnIndex, rowIndex: item.rowIndex })!, setCurrentPage);
+            }}>
+              <div>{item.text}</div>
+            </li>)}
           </ul>
         </div>
       </div>

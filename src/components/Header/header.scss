@@ -36,107 +36,130 @@ div.header {
         position: fixed;
         top: 20px;
         right: 20px;
+        flex: 0 0 45px;
         width: 45px;
         height: 45px;
         background-color: rgba(0, 0, 0, 0);
-        border-radius: 0 0 0 50%;
         color: white;
-        transition: all 0.5s ease;
+        transition-duration: 0.5s;
+        transition-property:
+            font-size, line-height,
+            width, height,
+            background-color,
+            padding;
+        transition-timing-function: ease;
         padding: 0px;
-        display: inline-flex;
+        display: flex;
         flex-direction: column;
+        font-size: 0;
+        line-height: 0;
+        z-index: 3;
+        flex-wrap: wrap;
+        clip-path: view-box;
 
-        >div.menuButtonContainer {
+        >div {
             width: 100%;
             display: inline-flex;
-            flex-direction: row;
-            justify-content: space-between;
-            z-index: 1;
 
-            >button {
-                all: unset;
+            &.menuButtonContainer {
+                flex-direction: row;
                 height: 45px;
-                width: 45px;
-                text-align: center;
-                overflow: hidden;
-                flex-shrink: 0;
-                flex-grow: 0;
-                z-index: 1;
-                cursor: pointer;
 
-                >svg {
-                    fill: white;
-                }
-            }
-
-            @media screen and (min-width: 1024px) {
                 >button {
-                    height: 90px;
-                    width: 90px;
+                    all: unset;
+                    flex: 0 0 45px;
+                    width: 45px;
+                    height: 45px;
+                    z-index: 1;
+                    color: white;
+                    fill: white;
+
+                    &:first-child {
+                        z-index: 0;
+                        opacity: 0;
+                        transition-property: opacity;
+                        transition-duration: 0.5s;
+                        transition-timing-function: ease;
+                    }
+
+                    &:last-child {
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                    }
                 }
             }
 
-            >button:first-of-type {
-                width: 0;
-                height: 0;
-                z-index: 0;
-                transition: all 0.5s ease;
+            &.menuItems {
+                padding: 20px 0 0 0;
+                height: calc(100% - 45px);
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+
+                >ul {
+                    flex: 1 0 100%;
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                    transition-duration: 0.5s;
+                    transition-timing-function: ease;
+                    transition-property:
+                        font-size, line-height,
+                        width, height,
+                        background-color,
+                        transform,
+                        padding;
+                    ;
+
+                    >li {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        >div {
+                            display: inline-flex;
+                            flex-direction: row;
+                            gap: 10px;
+                        }
+                    }
+                }
             }
         }
 
-        >div.menuItems {
+        &.expanded {
+            position: fixed;
+            top: 0;
+            right: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            display: inline-flex;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
             flex-direction: row;
-
-            >ul {
-                width: 0;
-                height: 0;
-                margin: 0;
-                padding: 0;
-                display: inline-flex;
-                flex-direction: column;
-                align-content: center;
-                justify-content: space-around;
-                font-size: 0;
-                line-height: 0;
-                opacity: 0;
-                z-index: 0;
-                text-align: center;
-                flex-shrink: 0;
-                list-style-type: none;
-
-                >li {
-                    display: inline-flex;
-                    align-content: center;
-                    justify-content: center;
-                    flex-flow: row nowrap;
-                }
-
-                &:first-of-type {
-                    transition: all 0.5s ease;
-                }
-            }
-
+            font-size: 20px;
+            line-height: 25px;
         }
 
         @media screen and (min-width: 1024px) {
+            flex: 0 0 90px;
             width: 90px;
             height: 90px;
-            font-size: 40px;
-            line-height: 50px;
 
-            >button {
-                height: 90px;
-                width: 90px;
+            >div {
+                &.menuButtonContainer {
+                    height: 90px;
+
+                    >button {
+                        flex: 0 0 90px;
+                        width: 90px;
+                        height: 90px;
+                    }
+                }
             }
 
-            >div.menuItems>ul {
+            &.expanded {
                 font-size: 40px;
                 line-height: 50px;
-                padding: 20px 130px 20px 20px;
             }
         }
     }
