@@ -87,10 +87,16 @@ export default function Navigation({ currentPage, setCurrentPage }: CurrentPageP
                     React.createElement('button', { key: 'left', onClick: () => window.open('https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy'), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
                     React.createElement('button', { key: 'up', onClick: () => navigate('up', setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
                 );
-            } else if (row === '0' && index === 5) { // Exception 1
-                buttons.push(...handleTryIt('https://oles-myflix.netlify.app', { left: leftLabel, down: downLabel, right: rightLabel }));
-            } else if (row === '0' && index === 6) { // Exception 2
-                buttons.push(...handleTryIt('https://pokedex.ole-koester.de', { left: leftLabel, down: downLabel, right: rightLabel }));
+            } else if (row === '0' && (index === 5 || index === 6)) { // Exception 1 & 2
+                ['left', 'down', 'right'].forEach((dir, idx) => {
+                    buttons.push(
+                        React.createElement('button', {
+                            key: dir,
+                            onClick: () => dir === 'down' ? window.open(index === 5 ? 'https://oles-myflix.netlify.app' : 'https://pokedex.ole-koester.de') : navigate(dir as NavigationDirection, setCurrentPage),
+                            dangerouslySetInnerHTML: { __html: [leftLabel, downLabel, rightLabel][idx] as string }
+                        })
+                    );
+                });
             } else {
                 ['left', 'up', 'down', 'right'].forEach((dir, i) => {
                     if ([left, up, down, right][i] !== null) {
