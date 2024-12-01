@@ -1,49 +1,14 @@
 import React, { ReactNode, useEffect } from 'react';
 import { CurrentPageProps, PageCoordinates } from '../../interfaces/page.tsx';
 import { NavigationDirection } from '../../types/navigationDirection.tsx';
+import { NavigationMap } from '../../constants/navigationMap.tsx';
 import './navigation.scss';
 
 /*left, up, down, right, leftLabel, upLabel, downLabel, rightLabel */
-export const navigationMap: {
-    0: Array<Array<null | number | string>>,
-    1: Array<Array<null | number | string>>
-} = {
-    0: [
-        [null, null, 0, 1, null, null, '?', 'Portfolio &rarr;'],
-        [null, null, 1, 2, null, null, '&larr; Riddle', 'Me &rarr;'],
-        [1, null, 2, 3, '&larr; 42', null, 'My Journey &darr;', 'Skills &rarr;'],
-        [2, null, null, 4, 'Me &larr;', null, null, 'Projects &rarr;'],
-        [3, null, 4, 5, 'Skills &larr;', null, 'Case Study &darr;', '&rarr;'],
-        [4, null, null, 6, '&larr;', null, 'Try it', '&rarr;'], //Exception 1
-        [5, null, null, 7, '&larr;', null, 'Try it', 'Imprint &rarr;'], //Exception 2
-        [6, null, null, null, 'Projects &larr;', null, null, null]
-
-    ],
-    1: [
-        [null, 1, null, null, 'Wikipedia', '&uarr;', null, null], //Exception 0
-        [null, 1, null, null, null, '&uarr;', null, null],
-        [null, 2, null, 3, null, '&uarr;', null, '&rarr;'],
-        [2, 2, null, null, '&larr;', '&uarr;', null, null],
-        [null, 4, null, 5, null, '&uarr;', null, '&rarr;'],
-        [4, 4, null, 6, '&larr;', '&uarr;', null, '&rarr;'],
-        [5, 4, null, 7, '&larr;', '&uarr;', null, '&rarr;'],
-        [6, 4, null, 8, '&larr;', '&uarr;', null, '&rarr;'],
-        [7, 4, null, 9, '&larr;', '&uarr;', null, '&rarr;'],
-        [8, 4, null, 10, '&larr;', '&uarr;', null, '&rarr;'],
-        [9, 4, null, 11, '&larr;', '&uarr;', null, '&rarr;'],
-        [10, 4, null, 12, '&larr;', '&uarr;', null, '&rarr;'],
-        [11, 4, null, 13, '&larr;', '&uarr;', null, '&rarr;'],
-        [12, 4, null, 14, '&larr;', '&uarr;', null, '&rarr;'],
-        [13, 4, null, 15, '&larr;', '&uarr;', null, '&rarr;'],
-        [14, 4, null, 16, '&larr;', '&uarr;', null, '&rarr;'],
-        [15, 4, null, 17, '&larr;', '&uarr;', null, '&rarr;'],
-        [16, 4, null, null, '&larr;', '&uarr;', null, null]
-    ]
-};
 
 function moveNavigationLine(columnIndex: number = 0, rowIndex: number = 0) {
     const navigationLine = document.querySelector('div.navigationLine') as HTMLDivElement;
-    const numberOfColumns = navigationMap[rowIndex].length;
+    const numberOfColumns = NavigationMap[rowIndex].length;
     const lineWidth = window.innerWidth / numberOfColumns;
     const left = columnIndex * lineWidth;
     navigationLine.style.width = `${lineWidth}px`;
@@ -62,7 +27,7 @@ export function navigate(directionOrPath: NavigationDirection | Array<Navigation
             }[direction];
 
             if (dir !== undefined) {
-                const newColumnIndex = navigationMap[currentPage.rowIndex][currentPage.columnIndex][dir];
+                const newColumnIndex = NavigationMap[currentPage.rowIndex][currentPage.columnIndex][dir];
                 const newRowIndex = currentPage.rowIndex + rowOffset;
                 const nextRow = document.querySelectorAll('div.columns')[newRowIndex];
                 const nextPage = nextRow?.childNodes[newColumnIndex] as HTMLElement;
@@ -87,7 +52,7 @@ export function findNavigationPath(from: PageCoordinates, to: PageCoordinates): 
         if (current.columnIndex === to.columnIndex && current.rowIndex === to.rowIndex) return path;
         const directions: Array<NavigationDirection> = ['left', 'up', 'down', 'right'];
         directions.forEach((direction, directionIndex) => {
-            const newColumnIndex = navigationMap[current.rowIndex][current.columnIndex][directionIndex];
+            const newColumnIndex = NavigationMap[current.rowIndex][current.columnIndex][directionIndex];
             if (newColumnIndex !== null) {
                 const newRowIndex = direction === 'up' ? current.rowIndex - 1 : direction === 'down' ? current.rowIndex + 1 : current.rowIndex;
                 const newPosition = { columnIndex: newColumnIndex, rowIndex: newRowIndex };
@@ -106,8 +71,8 @@ export default function Navigation({ currentPage, setCurrentPage }: CurrentPageP
 
     function createNavigationButtons(): Array<ReactNode> {
         const navigationDivs: Array<ReactNode> = [];
-        Object.keys(navigationMap).forEach(row => {
-            const columns: Array<Array<null | number | string>> = navigationMap[row];
+        Object.keys(NavigationMap).forEach(row => {
+            const columns: Array<Array<null | number | string>> = NavigationMap[row];
             columns.forEach(([left, up, down, right, leftLabel, upLabel, downLabel, rightLabel], index) => {
                 const buttons: Array<ReactNode> = [];
                 if (row === '1' && index === 0) { // Exception 0
