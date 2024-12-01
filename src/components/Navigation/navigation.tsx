@@ -1,7 +1,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import { CurrentPageProps, PageCoordinates } from '../../interfaces/page.tsx';
 import { NavigationDirection } from '../../types/navigationDirection.tsx';
-import { NavigationMap } from '../../constants/navigationMap.tsx';
+import { NavigationMap, NavigationMapCell } from '../../constants/navigationMap.tsx';
 import './navigation.scss';
 
 /*left, up, down, right, leftLabel, upLabel, downLabel, rightLabel */
@@ -71,7 +71,7 @@ export default function Navigation({ currentPage, setCurrentPage }: CurrentPageP
 
     function createNavigationButtons(): Array<ReactNode> {
         const navigationDivs: Array<ReactNode> = [];
-        function handleTryIt(link: string, labels: { left: string, down: string, right: string }) {
+        function handleTryIt(link: string, labels: { left: string | null, down: string | null, right: string | null }) {
             return ['left', 'down', 'right'].map((label) => {
                 return React.createElement('button', {
                     key: label,
@@ -80,7 +80,7 @@ export default function Navigation({ currentPage, setCurrentPage }: CurrentPageP
                 });
             });
         }
-        Object.keys(NavigationMap).forEach(row => NavigationMap[row].forEach(([left, up, down, right, leftLabel, upLabel, downLabel, rightLabel], index) => {
+        Object.keys(NavigationMap).forEach(row => NavigationMap[row].forEach(([left, up, down, right, leftLabel, upLabel, downLabel, rightLabel]: NavigationMapCell, index) => {
             const buttons: Array<ReactNode> = [];
             if (row === '1' && index === 0) { // Exception 0
                 buttons.push(
@@ -88,9 +88,9 @@ export default function Navigation({ currentPage, setCurrentPage }: CurrentPageP
                     React.createElement('button', { key: 'up', onClick: () => navigate('up', setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
                 );
             } else if (row === '0' && index === 5) { // Exception 1
-                buttons.push(...handleTryIt('https://oles-myflix.netlify.app', { left: leftLabel as string, down: downLabel as string, right: rightLabel as string }));
+                buttons.push(...handleTryIt('https://oles-myflix.netlify.app', { left: leftLabel, down: downLabel, right: rightLabel }));
             } else if (row === '0' && index === 6) { // Exception 2
-                buttons.push(...handleTryIt('https://pokedex.ole-koester.de', { left: leftLabel as string, down: downLabel as string, right: rightLabel as string }));
+                buttons.push(...handleTryIt('https://pokedex.ole-koester.de', { left: leftLabel, down: downLabel, right: rightLabel }));
             } else {
                 ['left', 'up', 'down', 'right'].forEach((dir, i) => {
                     if ([left, up, down, right][i] !== null) {
