@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { navigate, findNavigationPath } from "../Navigation/navigation.tsx";
 import HeaderIcons from "./Icons/icons.tsx";
 import * as menuItemsJSON from './menuItems.json';
