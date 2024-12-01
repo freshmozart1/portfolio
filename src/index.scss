@@ -1,14 +1,51 @@
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('./assets/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('./assets/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Playfair Display', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 24px; //same as icon size
+  font-weight: 400;
+  color: white;
+  text-align: center;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  min-height: 3rem;
+  border-radius: 1.5rem;
+  padding: 0 0.5rem;
+  flex-direction: row;
+}
+
+svg.icon {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 24px;
+  width: 24px;
+  height: 24px;
+  fill: white;
+  cursor: pointer;
 }
 
 code {
