@@ -1,4 +1,20 @@
-export const NavigationMap: { 0: Array<Array<null | number | string>>, 1: Array<Array<null | number | string>> } = {
+export type NavigationMapCell = [
+    (null | number),
+    (null | number),
+    (null | number),
+    (null | number),
+    (null | string),
+    (null | string),
+    (null | string),
+    (null | string)
+];
+
+type NavigationMapRow = Array<NavigationMapCell>;
+
+export const NavigationMap: {
+    0: NavigationMapRow,
+    1: NavigationMapRow
+} = {
     0: [
         [null, null, 0, 1, null, null, '?', 'Portfolio &rarr;'],
         [null, null, 1, 2, null, null, '&larr; Riddle', 'Me &rarr;'],
