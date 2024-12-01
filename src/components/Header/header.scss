@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../../assets/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../../assets/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+}
+
 div.header {
     display: inline-flex;
     flex-direction: row;
@@ -41,21 +51,17 @@ div.header {
         height: 45px;
         background-color: rgba(0, 0, 0, 0);
         color: white;
-        transition-duration: 0.5s;
-        transition-property:
-            font-size, line-height,
-            width, height,
-            background-color,
-            padding;
-        transition-timing-function: ease;
+        transition: all 0.5s ease;
         padding: 0px;
         display: flex;
         flex-direction: column;
-        font-size: 0;
-        line-height: 0;
         z-index: 3;
         flex-wrap: wrap;
         clip-path: view-box;
+        font-family: 'Playfair Display', serif;
+        transition-property: top, right, background-color, width, height, padding;
+        transition-duration: 0.5s;
+        transition-timing-function: ease;
 
         >div {
             width: 100%;
@@ -64,6 +70,7 @@ div.header {
             &.menuButtonContainer {
                 flex-direction: row;
                 height: 45px;
+                justify-content: space-between;
 
                 >button {
                     all: unset;
@@ -73,13 +80,16 @@ div.header {
                     z-index: 1;
                     color: white;
                     fill: white;
+                    cursor: pointer;
 
-                    &:first-child {
+                    &.backButton {
                         z-index: 0;
                         opacity: 0;
-                        transition-property: opacity;
-                        transition-duration: 0.5s;
-                        transition-timing-function: ease;
+                        transition: all 0.5s ease;
+
+                        &.visible {
+                            opacity: 1;
+                        }
                     }
 
                     &:last-child {
@@ -102,15 +112,15 @@ div.header {
                     list-style-type: none;
                     padding: 0;
                     margin: 0;
-                    transition-duration: 0.5s;
-                    transition-timing-function: ease;
-                    transition-property:
-                        font-size, line-height,
-                        width, height,
-                        background-color,
-                        transform,
-                        padding;
-                    ;
+                    transition: transform 0.5s ease;
+
+                    &.mainMenu {
+                        transform: translateX(0);
+                    }
+
+                    &.subMenu {
+                        transform: translateX(-100%);
+                    }
 
                     >li {
                         display: flex;
@@ -118,9 +128,22 @@ div.header {
                         align-items: center;
 
                         >div {
+                            width: 0;
+                            height: 0;
                             display: inline-flex;
                             flex-direction: row;
+                            cursor: pointer;
                             gap: 10px;
+                            line-height: 0;
+                            font-size: 0;
+                            transition-property: gap, line-height, font-size, width, height;
+                            transition-duration: 0.5s;
+                            transition-timing-function: ease;
+                            overflow: hidden;
+
+                            &:hover {
+                                gap: 20px;
+                            }
                         }
                     }
                 }
@@ -138,6 +161,13 @@ div.header {
             flex-direction: row;
             font-size: 20px;
             line-height: 25px;
+
+            >div.menuItems>ul>li>div {
+                font-size: 20px;
+                line-height: 25px;
+                width: max-content;
+                height: 100%;
+            }
         }
 
         @media screen and (min-width: 1024px) {
@@ -157,7 +187,7 @@ div.header {
                 }
             }
 
-            &.expanded {
+            &.expanded>div.menuItems>ul>li>div {
                 font-size: 40px;
                 line-height: 50px;
             }
