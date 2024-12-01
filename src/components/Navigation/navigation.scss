@@ -6,7 +6,7 @@ div.navigation {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 85px;
+    height: calc(40px + 3rem);
     position: fixed;
     left: 0;
     bottom: 0;
@@ -15,10 +15,6 @@ div.navigation {
     transition-property: opacity;
     transition-duration: 0.5s;
     transition-timing-function: ease;
-
-    @media screen and (min-width: 1024px) {
-        height: 130px;
-    }
 
     >button {
         @include mixins.navButton;
