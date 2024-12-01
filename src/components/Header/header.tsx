@@ -4,7 +4,16 @@ import HeaderIcons from "./Icons/icons.tsx";
 import * as menuItemsJSON from './menuItems.json';
 import './header.scss';
 
-export default function Header({ currentPage, setCurrentPage }: { currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>> }) {
+interface CurrentPage {
+  columnIndex: number,
+  rowIndex: number
+}
+interface CurrentPageProps {
+  currentPage: CurrentPage,
+  setCurrentPage: React.Dispatch<React.SetStateAction<CurrentPage>>
+}
+
+export default function Header({ currentPage, setCurrentPage }: CurrentPageProps) {
   const menuItems = Array.from(menuItemsJSON);
   const [subMenuItems, setSubMenuItems] = useState<Array<{ text: string, columnIndex: number, rowIndex: number }>>();
   const backButtonRef = useRef<HTMLButtonElement>(null);
@@ -12,15 +21,36 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
   const leftMenuRef = useRef<HTMLUListElement>(null);
   const rightMenuRef = useRef<HTMLUListElement>(null);
 
+  interface MenuItem {
+    text: string,
+    columnIndex: number,
+    rowIndex: number
+  }
+
+  interface SubMenu {
+    text: string,
+    subMenu: Array<MenuItem>
+  }
+
   function toggleMenu() {
     menuRef.current!.classList.toggle('expanded') && subMenuItems ? backButtonRef.current!.classList.add('visible') : backButtonRef.current!.classList.remove('visible');
   }
-
-  function isActiveListItem(item: { text: string, columnIndex: number, rowIndex: number } | { text: string, subMenu: Array<{ text: string, columnIndex: number, rowIndex: number }> }) {
+  function isActiveListItem(item: MenuItem | SubMenu) {
     if ('subMenu' in item) {
       return item.subMenu.some(subItem => subItem.columnIndex === currentPage.columnIndex && subItem.rowIndex === currentPage.rowIndex);
     }
     return item.columnIndex === currentPage.columnIndex && item.rowIndex === currentPage.rowIndex;
+  }
+
+  function menuItemClickHandler(item: MenuItem | SubMenu) {
+    if ('subMenu' in item) {
+      backButtonRef.current!.classList.add('visible');
+      setSubMenuItems(item.subMenu);
+    }
+    else {
+      toggleMenu();
+      navigate(findNavigationPath(currentPage, { columnIndex: item.columnIndex, rowIndex: item.rowIndex })!, setCurrentPage);
+    }
   }
 
   return (
@@ -51,24 +81,12 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
 
         <div className="menuItems">
           <ul className={subMenuItems ? 'subMenu' : 'mainMenu'} ref={leftMenuRef}>
-            {menuItems.map((item, index) => <li key={index} className={isActiveListItem(item) ? 'active' : ''} onClick={e => {
-              if ('subMenu' in item) {
-                backButtonRef.current!.classList.add('visible');
-                setSubMenuItems(item.subMenu);
-              }
-              else {
-                toggleMenu();
-                navigate(findNavigationPath(currentPage, { columnIndex: item.columnIndex, rowIndex: item.rowIndex })!, setCurrentPage);
-              }
-            }}>
+            {menuItems.map((item, index) => <li key={index} className={isActiveListItem(item) ? 'active' : ''} onClick={e => menuItemClickHandler(item)}>
               <div>{item.text}{'subMenu' in item && <span>&rarr;</span>}</div>
             </li>)}
           </ul>
           <ul className={subMenuItems ? 'subMenu' : 'mainMenu'} ref={rightMenuRef}>
-            {subMenuItems && subMenuItems.map((item, index) => <li key={index} className={isActiveListItem(item) ? 'active' : ''} onClick={e => {
-              toggleMenu();
-              navigate(findNavigationPath(currentPage, { columnIndex: item.columnIndex, rowIndex: item.rowIndex })!, setCurrentPage);
-            }}>
+            {subMenuItems && subMenuItems.map((item, index) => <li key={index} className={isActiveListItem(item) ? 'active' : ''} onClick={e => menuItemClickHandler(item)}>
               <div>{item.text}</div>
             </li>)}
           </ul>
