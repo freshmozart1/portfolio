@@ -19,7 +19,6 @@ div.header {
         width: 3rem;
         height: 3rem;
         background-color: rgba(0, 0, 0, 0);
-        color: white;
         transition: all 0.5s ease;
         padding: 0px;
         display: flex;
@@ -47,8 +46,6 @@ div.header {
                     width: 3rem;
                     height: 3rem;
                     z-index: 1;
-                    color: white;
-                    fill: white;
 
                     &.backButton {
                         z-index: 0;
