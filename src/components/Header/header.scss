@@ -1,54 +1,23 @@
-@font-face {
-    font-family: 'Playfair Display';
-    src: url('../../assets/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Playfair Display';
-    src: url('../../assets/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
-}
-
 div.header {
     display: inline-flex;
     flex-direction: row;
     width: 100%;
-    height: 85px;
-    padding: 20px 85px 20px 20px;
+    height: calc(40px + 3rem);
+    padding: 20px calc(40px + 3rem) 20px 20px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     position: fixed;
     left: 0;
     top: 0;
     z-index: 2;
 
-    >svg {
-        flex-grow: 0;
-        flex-shrink: 0;
-        flex-basis: 45px;
-        width: 45px;
-        height: 45px;
-        fill: white;
-        cursor: pointer;
-    }
-
-    @media screen and (min-width: 1024px) {
-        height: 130px;
-        padding: 20px 130px 20px 20px;
-
-        >svg {
-            flex-basis: 90px;
-            width: 90px;
-            height: 90px;
-        }
-    }
-
     div.menu {
         position: fixed;
         top: 20px;
         right: 20px;
-        flex: 0 0 45px;
-        width: 45px;
-        height: 45px;
+        flex: 0 0 3rem;
+        width: 3rem;
+        height: 3rem;
         background-color: rgba(0, 0, 0, 0);
         color: white;
         transition: all 0.5s ease;
@@ -58,10 +27,11 @@ div.header {
         z-index: 3;
         flex-wrap: wrap;
         clip-path: view-box;
-        font-family: 'Playfair Display', serif;
         transition-property: top, right, background-color, width, height, padding;
         transition-duration: 0.5s;
         transition-timing-function: ease;
+        align-content: flex-start;
+        gap: 20px;
 
         >div {
             width: 100%;
@@ -69,18 +39,16 @@ div.header {
 
             &.menuButtonContainer {
                 flex-direction: row;
-                height: 45px;
+                height: 3rem;
                 justify-content: space-between;
 
                 >button {
-                    all: unset;
-                    flex: 0 0 45px;
-                    width: 45px;
-                    height: 45px;
+                    flex: 0 0 3rem;
+                    width: 3rem;
+                    height: 3rem;
                     z-index: 1;
                     color: white;
                     fill: white;
-                    cursor: pointer;
 
                     &.backButton {
                         z-index: 0;
@@ -101,14 +69,13 @@ div.header {
             }
 
             &.menuItems {
-                padding: 20px 0 0 0;
-                height: calc(100% - 45px);
-                align-items: center;
+                align-items: flex-start;
                 display: flex;
                 flex-wrap: nowrap;
 
                 >ul {
                     flex: 1 0 100%;
+                    width: 100%;
                     list-style-type: none;
                     padding: 0;
                     margin: 0;
@@ -166,30 +133,8 @@ div.header {
                 font-size: 20px;
                 line-height: 25px;
                 width: max-content;
+                max-width: 100%;
                 height: 100%;
-            }
-        }
-
-        @media screen and (min-width: 1024px) {
-            flex: 0 0 90px;
-            width: 90px;
-            height: 90px;
-
-            >div {
-                &.menuButtonContainer {
-                    height: 90px;
-
-                    >button {
-                        flex: 0 0 90px;
-                        width: 90px;
-                        height: 90px;
-                    }
-                }
-            }
-
-            &.expanded>div.menuItems>ul>li>div {
-                font-size: 40px;
-                line-height: 50px;
             }
         }
     }
