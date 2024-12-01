@@ -16,6 +16,13 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
     menuRef.current!.classList.toggle('expanded') && subMenuItems ? backButtonRef.current!.classList.add('visible') : backButtonRef.current!.classList.remove('visible');
   }
 
+  function isActiveListItem(item: { text: string, columnIndex: number, rowIndex: number } | { text: string, subMenu: Array<{ text: string, columnIndex: number, rowIndex: number }> }) {
+    if ('subMenu' in item) {
+      return item.subMenu.some(subItem => subItem.columnIndex === currentPage.columnIndex && subItem.rowIndex === currentPage.rowIndex);
+    }
+    return item.columnIndex === currentPage.columnIndex && item.rowIndex === currentPage.rowIndex;
+  }
+
   return (
     <div className='header'>
       <HeaderIcons />
@@ -44,7 +51,7 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
 
         <div className="menuItems">
           <ul className={subMenuItems ? 'subMenu' : 'mainMenu'} ref={leftMenuRef}>
-            {menuItems.map((item, index) => <li key={index} onClick={e => {
+            {menuItems.map((item, index) => <li key={index} className={isActiveListItem(item) ? 'active' : ''} onClick={e => {
               if ('subMenu' in item) {
                 backButtonRef.current!.classList.add('visible');
                 setSubMenuItems(item.subMenu);
@@ -58,7 +65,7 @@ export default function Header({ currentPage, setCurrentPage }: { currentPage: {
             </li>)}
           </ul>
           <ul className={subMenuItems ? 'subMenu' : 'mainMenu'} ref={rightMenuRef}>
-            {subMenuItems && subMenuItems.map((item, index) => <li key={index} onClick={e => {
+            {subMenuItems && subMenuItems.map((item, index) => <li key={index} className={isActiveListItem(item) ? 'active' : ''} onClick={e => {
               toggleMenu();
               navigate(findNavigationPath(currentPage, { columnIndex: item.columnIndex, rowIndex: item.rowIndex })!, setCurrentPage);
             }}>
