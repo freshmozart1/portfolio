@@ -1,17 +1,9 @@
 import React, { useState, useRef } from "react";
 import { navigate, findNavigationPath } from "../Navigation/navigation.tsx";
+import { CurrentPageProps } from "../../interfaces/currentPage.tsx";
 import HeaderIcons from "./Icons/icons.tsx";
 import * as menuItemsJSON from './menuItems.json';
 import './header.scss';
-
-interface CurrentPage {
-  columnIndex: number,
-  rowIndex: number
-}
-interface CurrentPageProps {
-  currentPage: CurrentPage,
-  setCurrentPage: React.Dispatch<React.SetStateAction<CurrentPage>>
-}
 
 export default function Header({ currentPage, setCurrentPage }: CurrentPageProps) {
   const menuItems = Array.from(menuItemsJSON);
