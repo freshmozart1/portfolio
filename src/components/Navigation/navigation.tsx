@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect } from 'react';
+import { CurrentPageProps, PageCoordinates } from '../../interfaces/page.tsx';
 import './navigation.scss';
 
 /*left, up, down, right, leftLabel, upLabel, downLabel, rightLabel */
@@ -49,7 +50,7 @@ function moveNavigationLine(columnIndex: number = 0, rowIndex: number = 0) {
     navigationLine.style.transition = 'left 0.3s ease';
 }
 
-export function navigate(directionOrPath: 'left' | 'up' | 'down' | 'right' | Array<'left' | 'up' | 'down' | 'right'>, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>>) {
+export function navigate(directionOrPath: 'left' | 'up' | 'down' | 'right' | Array<'left' | 'up' | 'down' | 'right'>, setCurrentPage: React.Dispatch<React.SetStateAction<PageCoordinates>>): void {
     (Array.isArray(directionOrPath) ? directionOrPath : [directionOrPath]).forEach(direction => {
         setCurrentPage(currentPage => {
             const [dir, rowOffset] = {
@@ -76,8 +77,8 @@ export function navigate(directionOrPath: 'left' | 'up' | 'down' | 'right' | Arr
     });
 }
 
-export function findNavigationPath(from: { columnIndex: number, rowIndex: number }, to: { columnIndex: number, rowIndex: number }): Array<'left' | 'up' | 'down' | 'right'> | null {
-    const queue: [[{ columnIndex: number, rowIndex: number }, Array<'left' | 'up' | 'down' | 'right'>]] = [[from, []]];
+export function findNavigationPath(from: PageCoordinates, to: PageCoordinates): Array<'left' | 'up' | 'down' | 'right'> | null {
+    const queue: [[PageCoordinates, Array<'left' | 'up' | 'down' | 'right'>]] = [[from, []]];
     const visited = new Set<string>();
     visited.add(`${from.columnIndex},${from.rowIndex}`);
     while (queue.length) {
@@ -100,7 +101,7 @@ export function findNavigationPath(from: { columnIndex: number, rowIndex: number
     return null;
 }
 
-export default function Navigation({ currentPage, setCurrentPage }: { currentPage: { columnIndex: number, rowIndex: number }, setCurrentPage: React.Dispatch<React.SetStateAction<{ columnIndex: number, rowIndex: number }>> }) {
+export default function Navigation({ currentPage, setCurrentPage }: CurrentPageProps) {
 
     function createNavigationButtons(): Array<ReactNode> {
         const navigationDivs: Array<ReactNode> = [];

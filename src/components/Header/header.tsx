@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { navigate, findNavigationPath } from "../Navigation/navigation.tsx";
-import { CurrentPageProps } from "../../interfaces/currentPage.tsx";
+import { CurrentPageProps } from "../../interfaces/page.tsx";
 import HeaderIcons from "./Icons/icons.tsx";
 import * as menuItemsJSON from './menuItems.json';
 import './header.scss';
