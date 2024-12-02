@@ -36,7 +36,6 @@ div {
 
         >div {
 
-            &.transitionContainer,
             &.solutionContainer,
             &.sorryContainer,
             &.skillsContainer,
@@ -55,7 +54,6 @@ div {
                 @include mixins.imageContainer;
             }
 
-            &.transitionContainer,
             &.solutionContainer,
             &.sorryContainer {
                 background: linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1) 100%), url(./assets/star_texture.png);
@@ -98,7 +96,6 @@ div {
             }
 
             &.myFlixContainer {
-                //background: linear-gradient(180deg, #C83434 33%, #E35E5E 100%);
                 background: linear-gradient(180deg, #A51919 33%, #E35E5E 100%);
             }
 

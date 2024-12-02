@@ -87,12 +87,12 @@ export default function Navigation({ currentPage, setCurrentPage }: CurrentPageP
                     React.createElement('button', { key: 'left', onClick: () => window.open('https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy'), dangerouslySetInnerHTML: { __html: leftLabel as string } }),
                     React.createElement('button', { key: 'up', onClick: () => navigate('up', setCurrentPage), dangerouslySetInnerHTML: { __html: upLabel as string } })
                 );
-            } else if (row === '0' && (index === 5 || index === 6)) { // Exception 1 & 2
+            } else if (row === '0' && (index === 4 || index === 5)) { // Exception 1 & 2
                 ['left', 'down', 'right'].forEach((dir, idx) => {
                     buttons.push(
                         React.createElement('button', {
                             key: dir,
-                            onClick: () => dir === 'down' ? window.open(index === 5 ? 'https://oles-myflix.netlify.app' : 'https://pokedex.ole-koester.de') : navigate(dir as NavigationDirection, setCurrentPage),
+                            onClick: () => dir === 'down' ? window.open(index === 4 ? 'https://oles-myflix.netlify.app' : 'https://pokedex.ole-koester.de') : navigate(dir as NavigationDirection, setCurrentPage),
                             dangerouslySetInnerHTML: { __html: [leftLabel, downLabel, rightLabel][idx] as string }
                         })
                     );
@@ -115,10 +115,10 @@ export default function Navigation({ currentPage, setCurrentPage }: CurrentPageP
 
     function handleArrowKeyPress(event: KeyboardEvent) {
         const keyMap = {
-            ArrowLeft: (currentPage.columnIndex === 1 && currentPage.rowIndex === 0) ? 'down' : 'left',
+            ArrowLeft: 'left',
             ArrowRight: 'right',
             ArrowUp: 'up',
-            ArrowDown: currentPage.columnIndex === 1 && currentPage.rowIndex === 0 ? null : 'down'
+            ArrowDown: 'down'
         };
         if (keyMap[event.key]) {
             navigate(keyMap[event.key], setCurrentPage);

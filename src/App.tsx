@@ -38,31 +38,6 @@ export default function App() {
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <div className='columns'>{/* Row 0 */}
         <Riddle solvedRiddle={solvedRiddle} setSolvedRiddle={setSolvedRiddle} />
-        <div className='transitionContainer'>{/* Column 1 */}
-          <div className="content">
-            {!solvedRiddle && <>
-              <span>
-                Although you couldn't solve the riddle, it doesn't truly matter,
-                as the question itself has always remained elusive.
-              </span>
-              <span>
-                In a universe filled with infinite possibilities,
-                my mission is to navigate through this uncertainty
-                and find meaningful solutions through code.
-              </span>
-            </>}
-            {solvedRiddle && <>
-              <span>
-                Your answer was correct, but it doesn't truly matter,
-                as the question itself has always remained elusive.
-              </span>
-              <span>
-                In a universe filled with infinite possibilities,
-                my mission is to find meaningful solutions through code.
-              </span>
-            </>}
-          </div>
-        </div>
         <div className='profilePictureContainer'>{/* Column 2 */}
           {/* eslint-disable-next-line */}
           <div className="imageContainer"><img src={koester} alt='profile picture of me' /></div>
@@ -126,11 +101,6 @@ export default function App() {
           <div className="content">
             <span className="solution">42</span>
             <span><b>42</b> is a reference to the science fiction novel <b>'The Hitchhiker's Guide to the Galaxy'</b>.</span>
-          </div>
-        </div>
-        <div className='sorryContainer'>{/* Column 1 */}
-          <div className='content'>
-            <span>Sorry, you can't go back. Earth was destroyed five minutes ago.</span>
           </div>
         </div>
         <div className='aboutMeContainer'>{/* Column 2 */}
