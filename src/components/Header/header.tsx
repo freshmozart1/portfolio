@@ -47,6 +47,7 @@ export default function Header({ currentPage, setCurrentPage }: CurrentPageProps
 
   return (
     <div className='header'>
+      <span>mail@ole-koester.de</span>
       <HeaderIcons />
       <div className='menu' ref={menuRef}>
         <div className="menuButtonContainer">

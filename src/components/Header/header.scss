@@ -1,8 +1,8 @@
 div.header {
     display: inline-flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
-    height: calc(40px + 3rem);
+    height: calc(40px + 4.5rem);
     padding: 20px calc(40px + 3rem) 20px 20px;
     align-items: center;
     justify-content: center;
@@ -10,6 +10,10 @@ div.header {
     left: 0;
     top: 0;
     z-index: 2;
+
+    >span:first-child {
+        flex: 0 0 1.5rem;
+    }
 
     div.menu {
         position: fixed;
