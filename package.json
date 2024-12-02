@@ -16,7 +16,7 @@
   "scripts": {
     "start": "BROWSER=none react-scripts start",
     "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
+    "deploy": "node node_modules/gh-pages/bin/gh-pages-clean && react-scripts build && gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
