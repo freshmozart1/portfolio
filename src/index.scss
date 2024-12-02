@@ -18,7 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  line-height: 24px; //same as icon size
+  line-height: 1.5rem; //same as icon size
   font-weight: 400;
   color: white;
   text-align: center;
@@ -26,7 +26,6 @@ body {
 
 button {
   all: unset;
-  cursor: pointer;
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -39,16 +38,20 @@ button {
 }
 
 svg.icon {
-  flex-grow: 0;
-  flex-shrink: 0;
-  flex-basis: 24px;
-  width: 24px;
-  height: 24px;
+  flex: 0 0 1.5rem;
   fill: white;
-  cursor: pointer;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+div.iconContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  flex-direction: row;
+}
+
+button,
+svg.icon {
+  cursor: pointer;
 }
