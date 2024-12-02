@@ -17,7 +17,6 @@ export const NavigationMap: {
 } = {
     0: [
         [null, null, 0, 1, null, null, '?', 'Portfolio &rarr;'],
-        //[null, null, 1, 2, null, null, '&larr; Riddle', 'Me &rarr;'],
         [null, null, 1, 2, null, null, 'My Journey &darr;', 'Skills &rarr;'],
         [1, null, null, 3, 'Me &larr;', null, null, 'Projects &rarr;'],
         [2, null, 3, 4, 'Skills &larr;', null, 'Case Study &darr;', '&rarr;'],
@@ -28,7 +27,6 @@ export const NavigationMap: {
     ],
     1: [
         [null, 1, null, null, 'Wikipedia', '&uarr;', null, null], //Exception 0
-        //[null, 1, null, null, null, '&uarr;', null, null],
         [null, 1, null, 2, null, '&uarr;', null, '&rarr;'],
         [1, 1, null, null, '&larr;', '&uarr;', null, null],
         [null, 3, null, 4, null, '&uarr;', null, '&rarr;'],
