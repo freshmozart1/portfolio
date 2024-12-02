@@ -71,15 +71,6 @@ export default function Navigation({ currentPage, setCurrentPage }: CurrentPageP
 
     function createNavigationButtons(): Array<ReactNode> {
         const navigationDivs: Array<ReactNode> = [];
-        function handleTryIt(link: string, labels: { left: string | null, down: string | null, right: string | null }) {
-            return ['left', 'down', 'right'].map((label) => {
-                return React.createElement('button', {
-                    key: label,
-                    onClick: () => label === 'down' ? window.open(link) : navigate(label as NavigationDirection, setCurrentPage),
-                    dangerouslySetInnerHTML: { __html: labels[label] }
-                });
-            });
-        }
         Object.keys(NavigationMap).forEach(row => NavigationMap[row].forEach(([left, up, down, right, leftLabel, upLabel, downLabel, rightLabel]: NavigationMapCell, index) => {
             const buttons: Array<ReactNode> = [];
             if (row === '1' && index === 0) { // Exception 0
