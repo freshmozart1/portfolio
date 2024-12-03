@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 // @ts-ignore
 import koester from './assets/koester.jpg';
@@ -20,7 +20,6 @@ import twe_map from './assets/twe_map.png';
 import twe_test_message from './assets/twe_test_message.png';
 // @ts-ignore
 import pokedex from './assets/pokedex.png';
-import Navigation, { navigate } from './components/Navigation/navigation.tsx';
 import Riddle from './components/Riddle/riddle.tsx';
 import Header from './components/Header/header.tsx';
 
@@ -28,14 +27,9 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState({ columnIndex: 0, rowIndex: 0 });
   const [solvedRiddle, setSolvedRiddle] = useState(false);
 
-  useEffect(() => {
-    if (solvedRiddle) navigate('right', setCurrentPage);
-  }, [solvedRiddle]);
-
   return (
     <div className="rows">
       <Header currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <div className='columns'>{/* Row 0 */}
         <Riddle solvedRiddle={solvedRiddle} setSolvedRiddle={setSolvedRiddle} />
         <div className='profilePictureContainer'>{/* Column 2 */}
