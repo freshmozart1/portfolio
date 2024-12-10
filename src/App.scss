@@ -36,31 +36,17 @@ div {
 
         >div {
 
-            &.solutionContainer,
-            &.sorryContainer,
             &.skillsContainer,
-            &.contactContainer,
             &.aboutMeContainer,
-            &.impressumContainer,
-            &.caseStudyContainer:not(:nth-of-type(n+11):nth-of-type(-n+16)) {
+            &.impressumContainer {
                 @include mixins.container;
             }
 
             &.profilePictureContainer,
             &.tweContainer,
             &.myFlixContainer,
-            &.pokeDexContainer,
-            &.caseStudyContainer:nth-of-type(n+11):nth-of-type(-n+16) {
+            &.pokeDexContainer {
                 @include mixins.imageContainer;
-            }
-
-            &.solutionContainer,
-            &.sorryContainer {
-                background: linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1) 100%), url(./assets/star_texture.png);
-
-                span.solution {
-                    @include mixins.borderedText;
-                }
             }
 
             &.profilePictureContainer {

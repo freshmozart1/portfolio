@@ -2,7 +2,6 @@ import React from 'react';
 import { PageCoordinates } from '../../interfaces/page.tsx';
 import { NavigationDirection } from '../../types/navigationDirection.tsx';
 import { NavigationMap } from '../../constants/navigationMap.tsx';
-import './navigation.scss';
 
 export function navigate(directionOrPath: NavigationDirection | Array<NavigationDirection>, setCurrentPage: React.Dispatch<React.SetStateAction<PageCoordinates>>): void {
     (Array.isArray(directionOrPath) ? directionOrPath : [directionOrPath]).forEach(direction => {
