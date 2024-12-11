@@ -1,18 +1,20 @@
 @use '../../mixins.scss';
 
 div.riddleContainer {
-    @include mixins.container;
+    width: 100svw;
+    min-height: 100svh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
     background: linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 1) 100%), url(../../assets/star_texture.png);
 
     div.fortyTwo {
         display: inline-flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         gap: 10px;
-
-        span.question {
-            @include mixins.borderedText;
-        }
 
         >div {
             width: 45px;
@@ -66,14 +68,6 @@ div.riddleContainer {
                 font-weight: 700;
                 letter-spacing: 0px;
                 cursor: pointer;
-            }
-
-            >button:nth-of-type(1) {
-                rotate: -90deg;
-            }
-
-            >button:nth-of-type(2) {
-                rotate: -90deg;
             }
         }
     }

@@ -20,8 +20,24 @@ body {
   font-size: 16px;
   line-height: 1.5rem; //same as icon size
   font-weight: 400;
-  color: white;
   text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 4.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 3rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  font-weight: 700;
 }
 
 button {
@@ -39,7 +55,6 @@ button {
 
 svg.icon {
   flex: 0 0 1.5rem;
-  fill: white;
 }
 
 div.iconContainer {

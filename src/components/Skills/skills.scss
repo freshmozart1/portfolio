@@ -1,0 +1,21 @@
+div.skillsContainer {
+    display: inline-flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100svw;
+    min-height: 100svh;
+    padding: 20px;
+
+    h1,
+    h2 {
+        width: 100%;
+    }
+
+    #education,
+    #languages {
+        width: 100%;
+        display: inline-flex;
+        flex-direction: column;
+    }
+}

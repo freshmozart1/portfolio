@@ -24,29 +24,27 @@ export default function Riddle({ solvedRiddle, setSolvedRiddle }: { solvedRiddle
 
   return (
     <div className='riddleContainer'>{/* Column 0 */}
-      <div className="content">
-        <span className='question'>What is the answer to life, the universe and everything?</span>
-        <div className='fortyTwo'>
-          <div>
-            <button onClick={e => riddleClickHandler(e, 0, 'up')}>&rarr;</button>
-            <div
-              className='numberContainer'
-              onScroll={e => riddleScrollHandler(e, 0)}
-            >
-              <span>0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9</span>
-            </div>
-            <button onClick={e => riddleClickHandler(e, 0)}>&larr;</button>
+      <span className='question'>What is the answer to life, the universe and everything?</span>
+      <div className='fortyTwo'>
+        <div>
+          <button onClick={e => riddleClickHandler(e, 0, 'up')}>&rarr;</button>
+          <div
+            className='numberContainer'
+            onScroll={e => riddleScrollHandler(e, 0)}
+          >
+            <span>0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9</span>
           </div>
-          <div>
-            <button onClick={e => riddleClickHandler(e, 1, 'up')}>&rarr;</button>
-            <div
-              className='numberContainer'
-              onScroll={e => riddleScrollHandler(e, 1)}
-            >
-              <span>0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9</span>
-            </div>
-            <button onClick={e => riddleClickHandler(e, 1)}>&larr;</button>
+          <button onClick={e => riddleClickHandler(e, 0)}>&larr;</button>
+        </div>
+        <div>
+          <button onClick={e => riddleClickHandler(e, 1, 'up')}>&rarr;</button>
+          <div
+            className='numberContainer'
+            onScroll={e => riddleScrollHandler(e, 1)}
+          >
+            <span>0<br />1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9</span>
           </div>
+          <button onClick={e => riddleClickHandler(e, 1)}>&larr;</button>
         </div>
       </div>
     </div>

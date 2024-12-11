@@ -38,14 +38,16 @@ div {
 
             &.skillsContainer,
             &.aboutMeContainer,
-            &.impressumContainer {
+            &.impressumContainer,
+            &.caseStudyContainer {
                 @include mixins.container;
             }
 
             &.profilePictureContainer,
             &.tweContainer,
             &.myFlixContainer,
-            &.pokeDexContainer {
+            &.pokeDexContainer,
+            &.caseStudyContainer:has(> div.imageContainer) {
                 @include mixins.imageContainer;
             }
 
