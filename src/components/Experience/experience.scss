@@ -1,0 +1,21 @@
+div.experienceContainer {
+    display: inline-flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100svw;
+    min-height: 100svh;
+    padding: 20px;
+
+    h1 {
+        width: 100%;
+    }
+
+    table {
+        border-spacing: 10px;
+
+        td {
+            vertical-align: middle;
+        }
+    }
+}

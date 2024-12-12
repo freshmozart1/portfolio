@@ -6,4 +6,13 @@ div.meContainer {
     width: 100svw;
     min-height: 100svh;
     padding: 20px;
+
+    h1 {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        transition: 0.5s;
+        width: 100%;
+    }
 }

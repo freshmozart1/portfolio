@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./skills.scss";
 
 export default function Skills() {
+    const header = useRef<HTMLHeadingElement>(null);
+    useEffect(() => {
+        const handleScroll = () => {
+            if (header.current) {
+                if ((header.current.getBoundingClientRect()).top < 1) {
+                    header.current.style.fontSize = "1rem";
+                } else {
+                    header.current.style.fontSize = "3rem";
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
     return (
         <div className="skillsContainer">
-            <h1>What I offer</h1>
+            <h1 ref={header}>What I offer</h1>
             <h2>Frontend-Development</h2>
             <span>JavaScript,</span>
             <span>TypeScript,</span>

@@ -40,19 +40,6 @@ h3 {
   font-weight: 700;
 }
 
-button {
-  all: unset;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 3rem;
-  min-height: 3rem;
-  border-radius: 1.5rem;
-  padding: 0 0.5rem;
-  flex-direction: row;
-}
-
 svg.icon {
   flex: 0 0 1.5rem;
 }
@@ -66,7 +53,6 @@ div.iconContainer {
   flex-direction: row;
 }
 
-button,
 svg.icon {
   cursor: pointer;
 }
