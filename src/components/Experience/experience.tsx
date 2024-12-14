@@ -8,7 +8,7 @@ export default function Experience() {
         const handleScroll = () => {
             if (header.current) {
                 if ((header.current.getBoundingClientRect()).top < 1) {
-                    header.current.style.fontSize = "1rem";
+                    header.current.style.fontSize = "1.5rem";
                 } else {
                     header.current.style.fontSize = "3rem";
                 }
