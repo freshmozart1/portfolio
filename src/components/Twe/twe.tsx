@@ -22,16 +22,18 @@ import tweTest from '../../assets/twe/twe_test_message.png';
 export default function Twe() {
     return (
         <>
+            <h1>Talk with Everyone</h1>
             <Swiper
                 effect={'creative'}
                 grabCursor={true}
                 creativeEffect={{
                     prev: {
-                        shadow: true,
                         translate: [0, 0, -1000],
+                        opacity: 0
                     },
                     next: {
                         translate: ['100%', 0, 0],
+                        opacity: 1
                     },
                 }}
                 pagination={{ clickable: true }}
@@ -41,7 +43,6 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="imageSlideText">
-                            <h2>Talk With Everyone</h2>
                             <p>
                                 Talk With Everyone is a chat application, where users can give themselves names and start exchanging messages, without the need of creating a account.
                             </p>

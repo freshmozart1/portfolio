@@ -7,8 +7,7 @@ section.slide {
 
     >div.imageSlideText,
     >img {
-        min-height: calc(50svh - 21px);
-        max-height: calc(50svh - 21px);
+        max-height: calc(50svh - 21px - 2.25rem);
         width: calc(100svw - 40px);
         object-fit: contain;
         display: inline-flex;
@@ -26,8 +25,7 @@ section.slide {
         flex-direction: column;
         justify-content: center;
         width: calc(100svw - 40px);
-        min-height: calc(100svh - 32px);
-        max-height: calc(100svh - 32px);
+        max-height: calc(100svh - 32px - 4.5rem);
 
         >p {
             margin: 0;
