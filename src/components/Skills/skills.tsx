@@ -9,7 +9,7 @@ export default function Skills() {
                 if ((header.current.getBoundingClientRect()).top < 1) {
                     header.current.style.fontSize = "1.5rem";
                 } else {
-                    header.current.style.fontSize = "3rem";
+                    header.current.style.fontSize = "2.5rem";
                 }
             }
         };

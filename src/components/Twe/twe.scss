@@ -1,3 +1,12 @@
+#tweHeader {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    transition: 0.5s;
+    width: 100%;
+}
+
 section.slide {
     display: inline-flex;
     flex-direction: column;
@@ -7,7 +16,7 @@ section.slide {
 
     >div.imageSlideText,
     >img {
-        max-height: calc(50svh - 21px - 2.25rem);
+        max-height: calc(50svh - 21px - 1.875rem);
         width: calc(100svw - 40px);
         object-fit: contain;
         display: inline-flex;
@@ -25,7 +34,7 @@ section.slide {
         flex-direction: column;
         justify-content: center;
         width: calc(100svw - 40px);
-        max-height: calc(100svh - 32px - 4.5rem);
+        max-height: calc(100svh - 32px - 3.75rem);
 
         >p {
             margin: 0;
