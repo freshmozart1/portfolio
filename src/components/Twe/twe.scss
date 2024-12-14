@@ -9,8 +9,7 @@ section.slide {
     >img {
         min-height: calc(50svh - 21px);
         max-height: calc(50svh - 21px);
-        width: auto;
-        max-width: 100%;
+        width: calc(100svw - 40px);
         object-fit: contain;
         display: inline-flex;
         flex-direction: column;
@@ -26,7 +25,7 @@ section.slide {
         display: inline-flex;
         flex-direction: column;
         justify-content: center;
-        max-width: 100%;
+        width: calc(100svw - 40px);
         min-height: calc(100svh - 32px);
         max-height: calc(100svh - 32px);
 
