@@ -1,31 +1,6 @@
 div.projectsContainer {
-
-    gap: 10px;
-    flex-wrap: wrap;
-    width: 100svw;
-    min-height: 100svh;
     padding: 0 20px;
     max-width: 100svw;
-
-    section.slide>div.imageSlideText,
-    section.slide>img,
-    section.slide>div.content,
-    & {
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    div.swiper,
-    section.slide {
-        max-width: calc(100svw - 40px);
-
-        div.swiper-wrapper {
-            display: grid;
-            grid-template-rows: 1fr;
-            grid-template-columns: repeat(17, 1fr);
-        }
-    }
 
     h1 {
         position: sticky;
@@ -36,27 +11,19 @@ div.projectsContainer {
     }
 
     section.slide {
-        max-height: calc(100svh - 6rem);
         height: calc(100svh - 6rem);
         display: grid;
         padding-bottom: 32px;
-        grid-template-columns: 100%;
         grid-template-rows: minmax(0, auto) minmax(0, auto);
-        overflow: auto;
         justify-items: center;
 
         >div.imageSlideText,
-        >img {
-            max-width: 100%;
+        >img,
+        >div.content {
             max-height: 100%;
+            max-width: 100%;
             object-fit: contain;
 
-            >p {
-                margin: 0;
-            }
-        }
-
-        >div.content {
             >p {
                 margin: 0;
             }
