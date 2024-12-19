@@ -1,43 +1,65 @@
-#tweHeader {
-    position: sticky;
-    top: 0;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    transition: 0.5s;
-    width: 100%;
-}
+div.projectsContainer {
 
-section.slide {
-    display: inline-flex;
-    flex-direction: column;
-    padding: 0px 20px 32px 20px;
     gap: 10px;
-    background-color: rgba(255, 255, 255, 1);
+    flex-wrap: wrap;
+    width: 100svw;
+    min-height: 100svh;
+    padding: 20px;
+    max-width: 100svw;
 
-    >div.imageSlideText,
-    >img {
-        max-height: calc(50svh - 21px - 1.875rem);
-        width: calc(100svw - 40px);
-        object-fit: contain;
+    section.slide>div.imageSlideText,
+    section.slide>img,
+    section.slide>div.content,
+    & {
         display: inline-flex;
         flex-direction: column;
         justify-content: center;
+    }
 
-        >p {
-            margin: 0;
+    div.swiper,
+    section.slide {
+        max-width: calc(100svw - 40px);
+
+        div.swiper-wrapper {
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: repeat(17, 1fr);
         }
     }
 
-    >div.content {
-        flex: 0 0 100%;
-        display: inline-flex;
-        flex-direction: column;
-        justify-content: center;
-        width: calc(100svw - 40px);
-        max-height: calc(100svh - 32px - 3.75rem);
+    h1 {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        transition: 0.5s;
+    }
 
-        >p {
-            margin: 0;
+    section.slide {
+        max-height: calc(100svh - 6rem);
+        height: calc(100svh - 6rem);
+        display: grid;
+        padding-bottom: 32px;
+        grid-template-columns: 100%;
+        grid-template-rows: minmax(0, auto) minmax(0, auto);
+        overflow: auto;
+        justify-items: center;
+
+        >div.imageSlideText,
+        >img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+
+            >p {
+                margin: 0;
+            }
+        }
+
+        >div.content {
+            >p {
+                margin: 0;
+            }
         }
     }
 }

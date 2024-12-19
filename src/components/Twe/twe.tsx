@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./twe.scss";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { EffectCreative, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -19,10 +19,31 @@ import tweCodeSnippet from '../../assets/twe/twe_code_snippet.png';
 //@ts-ignore
 import tweTest from '../../assets/twe/twe_test_message.png';
 
-export default function Twe() {
+export default function Projects() {
+    const header = useRef<HTMLHeadingElement>(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (header.current) {
+                const top = header.current.getBoundingClientRect().top;
+                if (top < 1) {
+                    header.current.style.fontSize = "1.5rem";
+                } else {
+                    header.current.style.fontSize = "2.5rem";
+                }
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
-        <>
-            <h1>Talk with Everyone</h1>
+        <div className="projectsContainer">
+            <h1 ref={header}>Projects</h1>
+            <h2 id="tweHeader">Talk with Everyone</h2>
             <Swiper
                 effect={'creative'}
                 grabCursor={true}
@@ -38,7 +59,6 @@ export default function Twe() {
                 }}
                 pagination={{ clickable: true }}
                 modules={[EffectCreative, Pagination]}
-                className="mySwiper"
             >
                 <SwiperSlide>
                     <section className="slide">
@@ -53,12 +73,12 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>Purpose</h2>
+                            <h3>Purpose</h3>
                             <p>
                                 The purpose of the project is to showcase my JavaScript skills.
                                 I created the application as part of my Full-Stack Web Development course at CareerFoundry.com.
                             </p>
-                            <h2>Duration</h2>
+                            <h3>Duration</h3>
                             <p>
                                 Frontend: Two weeks<br />
                                 Backend: One day
@@ -69,12 +89,12 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>Objective</h2>
+                            <h3>Objective</h3>
                             <p>
                                 The objective of this project was to enhance my professional portfolio by adding a mobile app that relies on serverless architecture.
                                 The challenge was to create a complete chat application (front- and backend) from scratch.
                             </p>
-                            <h2>My Role</h2>
+                            <h3>My Role</h3>
                             <p>
                                 I worked alone on this project and was responsible for everything.
                                 I occasionally received some help from my tutor at CareerFoundry.
@@ -85,7 +105,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>Tech Stack</h2>
+                            <h3>Tech Stack</h3>
                             <p>
                                 <b>Backend:</b><br />
                                 Google Firebase Authentication<br />
@@ -104,7 +124,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="imageSlideText">
-                            <h2>Google Firebase Authentication</h2>
+                            <h3>Google Firebase Authentication</h3>
                             <p>
                                 Before using Firestore, it is necessary to authenticate a user. When a user clicks on „Start Chatting“ Firebase Authentication generates a random user ID and authenticates the user anonymously.
                             </p>
@@ -115,9 +135,9 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>Google Firestore</h2>
+                            <h3>Google Firestore</h3>
                             <p>I created a Google Firestore database for storing the messages. Firestore is a real-time database that notifies all connected clients, when new data is available.</p>
-                            <h2>Google Cloud Storage</h2>
+                            <h3>Google Cloud Storage</h3>
                             <p>
                                 Images are stored in a separate Google Cloud Storage Bucket.
                                 Buckets are baasic containers in the Google Cloud that store files.
@@ -128,7 +148,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="imageSlideText">
-                            <h2>Database Structure</h2>
+                            <h3>Database Structure</h3>
                             <p>
                                 The structure of the stored data can be defined in the code of the frontend and is not predefined by the database. The following picture shows how a location message is saved in the database.
                             </p>
@@ -139,7 +159,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="imageSlideText">
-                            <h2>Building the interface</h2>
+                            <h3>Building the interface</h3>
                             <p>
                                 CareerFoundry sent me detailed instructions and mockups that described how the chat applications start screen should look like.
                                 I started building the frontend by adding the start screen. I sped up my development process by using the prefabricated React Native components.
@@ -151,7 +171,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="imageSlideText">
-                            <h2>Building the interface</h2>
+                            <h3>Building the interface</h3>
                             <p>
                                 After I finished the start screen I moved on to develop the chat screen. CareerFoundry did not provide any mockups or design specifications for this screen. That is why I used the basic layout and design that came with react-native-gifted-chat for this screen.
                             </p>
@@ -162,7 +182,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>React Native</h2>
+                            <h3>React Native</h3>
                             <p>
                                 I used React Native to create the basic structure of the frontend. React Native is a JavaScript library for building user interfaces. It offers a core set of native components like &lt;View&gt;, &lt;Text&gt; and &lt;Image&gt; that map directly to the platforms native UI building blocks.
                             </p>
@@ -172,7 +192,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="imageSlideText">
-                            <h2>react-native-gifted-chat</h2>
+                            <h3>react-native-gifted-chat</h3>
                             <p>
                                 react-native-gifted-chat is a extension for React Native that adds a complete chat user interface. I used this extension for the messaging functionality of the app. Whenever a user enters a message and clicks on „Send“, it is saved as a new entry in the Google Firestore database.
                             </p>
@@ -183,7 +203,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="imageSlideText">
-                            <h2>react-native-maps</h2>
+                            <h3>react-native-maps</h3>
                             <p>
                                 react-native-maps is a extension for React Native that offers map components. I used this extension to give the users the possibility of exchanging location messages.
                             </p>
@@ -194,7 +214,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>Custom image view</h2>
+                            <h3>Custom image view</h3>
                             <p>
                                 After I finished implementing the chat screen I added a screen that displays a image in full screen, if a user clicks on a image message.
                             </p>
@@ -204,7 +224,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="imageSlideText">
-                            <h2>Testing & Debuging</h2>
+                            <h3>Testing & Debuging</h3>
                             <p>React Native comes with a service that allows developers to run and test the app on a emulated device. I used this service to regularly test and debug my code.</p>
                         </div>
                         <img src={tweTest} alt="A screenshot showing a console error message" />
@@ -213,7 +233,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>What I learned</h2>
+                            <h3>What I learned</h3>
                             <p>
                                 How to develop native applications with React Native<br /><br />
                                 How to use Google Firebase, Firestore and Cloud Storage Buckets
@@ -224,7 +244,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>Next steps</h2>
+                            <h3>Next steps</h3>
                             <p>
                                 Fix Bugs<br /><br />
                                 Add user registration<br /><br />
@@ -237,7 +257,7 @@ export default function Twe() {
                 <SwiperSlide>
                     <section className="slide">
                         <div className="content">
-                            <h2>Conclusion</h2>
+                            <h3>Conclusion</h3>
                             <p>
                                 React Native is a powerful framework for developing native apps. The project was a fulfilling learning experience. It helped deepen my understanding of the development process and illustrated the complexities of app creation.
                             </p>
@@ -245,6 +265,6 @@ export default function Twe() {
                     </section>
                 </SwiperSlide>
             </Swiper>
-        </>
+        </div>
     );
 }
