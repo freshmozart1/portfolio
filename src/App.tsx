@@ -3,7 +3,7 @@ import Riddle from './components/Riddle/riddle.tsx';
 import Me from './components/Me/me.tsx';
 import Skills from './components/Skills/skills.tsx';
 import Experience from './components/Experience/experience.tsx';
-import Projects from './components/Twe/twe.tsx';
+import Projects from './components/Projects/projects.tsx';
 
 export default function App() {
     const [solvedRiddle, setSolvedRiddle] = useState(false);

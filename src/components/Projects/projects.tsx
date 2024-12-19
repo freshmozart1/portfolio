@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import "./twe.scss";
+import "./projects.scss";
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import { EffectCreative, Pagination } from 'swiper/modules';
 import 'swiper/css';
