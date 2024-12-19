@@ -18,6 +18,10 @@ import tweGiftedChat from '../../assets/twe/twe_gifted_chat.png';
 import tweCodeSnippet from '../../assets/twe/twe_code_snippet.png';
 //@ts-ignore
 import tweTest from '../../assets/twe/twe_test_message.png';
+//@ts-ignore
+import myFlixHeader from '../../assets/myflix_header.png';
+//@ts-ignore
+import pokedex from '../../assets/pokedex.png';
 
 export default function Projects() {
     const header = useRef<HTMLHeadingElement>(null);
@@ -43,7 +47,7 @@ export default function Projects() {
     return (
         <div className="projectsContainer">
             <h1 ref={header}>Projects</h1>
-            <h2 id="tweHeader">Talk with Everyone</h2>
+            <h2>Talk with Everyone</h2>
             <Swiper
                 effect={'creative'}
                 grabCursor={true}
@@ -55,7 +59,7 @@ export default function Projects() {
                     next: {
                         translate: ['100%', 0, 0],
                         opacity: 1
-                    },
+                    }
                 }}
                 pagination={{ clickable: true }}
                 modules={[EffectCreative, Pagination]}
@@ -260,6 +264,97 @@ export default function Projects() {
                             <h3>Conclusion</h3>
                             <p>
                                 React Native is a powerful framework for developing native apps. The project was a fulfilling learning experience. It helped deepen my understanding of the development process and illustrated the complexities of app creation.
+                            </p>
+                        </div>
+                    </section>
+                </SwiperSlide>
+            </Swiper>
+            <h2>myFlix</h2>
+            <Swiper
+                effect="creative"
+                grabCursor={true}
+                creativeEffect={{
+                    prev: {
+                        translate: [0, 0, -1000],
+                        opacity: 0
+                    },
+                    next: {
+                        translate: ['100%', 0, 0],
+                        opacity: 1
+                    }
+                }}
+                pagination={{ clickable: true }}
+                modules={[EffectCreative, Pagination]}
+            >
+                <SwiperSlide>
+                    <section className="slide">
+                        <div className="imageSlideText">
+                            <p>
+                                myFlix is a service, where users can view and upload information about movies. Logged in users can also add movies to their favorites.
+                            </p>
+                        </div>
+                        <img src={myFlixHeader} alt="myFlix screenshot" />
+                    </section>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <section className="slide">
+                        <div className="content">
+                            <h3>Tech-Stack</h3>
+                            <p>
+                                <b>Frontend</b><br />
+                                React<br />
+                                Bootstrap<br />
+                                HTML<br />
+                                CSS<br />
+                                <b>Backend</b><br />
+                                Amazon Web Services<br />
+                                MongoDB<br />
+                                Node.js<br />
+                                Express.js<br />
+                            </p>
+                        </div>
+                    </section>
+                </SwiperSlide>
+            </Swiper>
+            <h2>Pokedéx</h2>
+            <Swiper
+                effect="creative"
+                grabCursor={true}
+                creativeEffect={{
+                    prev: {
+                        translate: [0, 0, -1000],
+                        opacity: 0
+                    },
+                    next: {
+                        translate: ['100%', 0, 0],
+                        opacity: 1
+                    }
+                }}
+                pagination={{ clickable: true }}
+                modules={[EffectCreative, Pagination]}
+            >
+                <SwiperSlide>
+                    <section className="slide">
+                        <div className="imageSlideText">
+                            <p>
+                                Pokedéx is a website, where users can look up information about Pokémon.
+                            </p>
+                        </div>
+                        <img src={pokedex} alt="Pokedéx website screenshot" />
+                    </section>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <section className="slide">
+                        <div className="content">
+                            <h3>Tech-Stack</h3>
+                            <p>
+                                <b>Frontend</b><br />
+                                HTML<br />
+                                CSS<br />
+                                Bootstrap<br />
+                                <b>Backend</b><br />
+                                <a href="https://pokeapi.co/">PokeAPI.co</a>&nbsp;Rest&nbsp;API<br />
+                                Node.js<br />
                             </p>
                         </div>
                     </section>
