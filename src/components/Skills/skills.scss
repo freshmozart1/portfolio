@@ -1,29 +1,88 @@
-div.skillsContainer {
+div.skillContainer {
     display: inline-flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    width: 100svw;
-    min-height: 100svh;
-    padding: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 
     h1 {
         position: sticky;
         top: 0;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(245, 245, 245, 0.8);
         backdrop-filter: blur(10px);
         transition: 0.5s;
+        z-index: 2;
     }
 
-    h1,
-    h2 {
-        width: 100%;
-    }
+    ol.skills {
+        list-style: none;
+        padding: 0;
+        margin: 0;
 
-    #education,
-    #languages {
-        width: 100%;
-        display: inline-flex;
-        flex-direction: column;
+        &>li {
+            position: relative;
+            max-width: 100%;
+            margin: 2rem;
+            padding: 2rem;
+            box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.1);
+            border-radius: 0.25rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.5s ease;
+
+            &>section.overflowX {
+                &>div.horizontalSkillsList {
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: 2rem;
+
+                    &>figure {
+                        margin: 0;
+                        text-align: center;
+                        position: relative;
+                        cursor: pointer;
+                        transition: transform 0.2s ease-in-out;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+
+                        &>picture {
+                            display: inline-block;
+                            inline-size: 96px;
+                            block-size: 96px;
+
+                            &>img {
+                                display: block;
+                                inline-size: 100%;
+                                block-size: 100%;
+                                object-fit: contain;
+                            }
+                        }
+
+                        &>figcaption {
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                }
+            }
+        }
+
+        li:hover {
+            z-index: 1;
+            transform: scale(1.05);
+            box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            display: flex;
+            align-items: baseline;
+            margin: 0 0 1rem;
+            color: rgb(70 70 70);
+        }
     }
 }
