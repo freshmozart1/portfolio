@@ -99,6 +99,10 @@ export default function Skills() {
                     skillPart.style.opacity = `${Math.min(1, Math.max(0, (window.innerHeight - top) / (window.innerHeight / 3)), Math.max(0, bottom / (window.innerHeight / 3)))}`;
                 }
             }
+            for (let skillListElement of skillListElements) {
+                const { top, bottom } = skillListElement.getBoundingClientRect();
+                skillListElement.style.transform = `scale(${Math.min(1.05, Math.max(1, (window.innerHeight - top) / (window.innerHeight / 3)), Math.max(1, bottom / (window.innerHeight / 3)))})`;
+            }
         };
         window.addEventListener("scroll", handleScroll);
         return () => {
