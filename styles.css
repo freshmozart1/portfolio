@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #222;
+}
+
+div.banner {
+    /* Ensures enough scroll space for all 3D items */
+    height: 100svh;
+    width: 100vw;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+}
+
+div.banner>div.slider {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.banner>div.slider>div.item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 32px 64px 0 rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -55%) rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg)) translateZ(600px);
+}
+
+div.banner>div.slider>div.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 24px;
+}
