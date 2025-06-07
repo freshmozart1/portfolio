@@ -76,6 +76,7 @@ div.banner>div.slider>div.item.profile>img {
     left: 0;
 }
 
+div.banner>div.slider>div.item.contact,
 div.banner>div.slider>div.item.welcome {
     display: flex;
     flex-direction: column;
