@@ -6,13 +6,33 @@ body {
     color: #222;
 }
 
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+table th {
+    text-align: center;
+    font-size: 1.5em;
+}
+
+table td {
+    padding: 0.5em;
+}
+
+a {
+    all: unset;
+}
+
 div.banner {
-    /* Ensures enough scroll space for all 3D items */
     height: 100svh;
     width: 100vw;
     overflow-y: auto;
     overflow-x: hidden;
-    text-align: center;
+    text-align: left;
     position: relative;
     margin: 0;
     padding: 0;
@@ -47,6 +67,17 @@ div.banner>div.slider>div.item {
     align-items: center;
     justify-content: center;
     transform: translate(-50%, -55%) rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg)) translateZ(600px);
+    padding: 1em;
+}
+
+div.banner>div.slider>div.item.profile>img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+div.banner>div.slider>div.item.project {
+    display: block;
 }
 
 div.banner>div.slider>div.item img {
@@ -55,4 +86,142 @@ div.banner>div.slider>div.item img {
     object-fit: cover;
     object-position: center;
     border-radius: 24px;
+}
+
+small {
+    color: rgba(0, 0, 0, 0.25);
+}
+
+div.banner>div.slider>div.item.contact>small {
+    margin-block: 0.5em;
+}
+
+div.banner>div.slider>div.item.project img {
+    width: 50%;
+    height: 50%;
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+i.icon {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 5px;
+}
+
+div.banner>div.slider>div.item.project>div>a>i.icon,
+div.banner>div.slider>div.item.skills>div>a>i.icon {
+    position: absolute;
+    top: 0em;
+    left: 0em;
+}
+
+i.icon.github {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg');
+}
+
+i.icon.js {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg');
+}
+
+i.icon.ts {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/typescript.svg');
+}
+
+i.icon.html {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/html5.svg');
+}
+
+i.icon.css {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/css.svg');
+}
+
+i.icon.sass {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/sass.svg');
+}
+
+i.icon.tailwind {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tailwindcss.svg');
+    padding-left: 0.25em;
+}
+
+i.icon.node {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nodedotjs.svg');
+}
+
+i.icon.next {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nextdotjs.svg');
+}
+
+i.icon.googlecloud {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlecloud.svg');
+}
+
+i.icon.react {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg');
+}
+
+i.icon.puppeteer {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/puppeteer.svg');
+}
+
+i.icon.jest {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/jest.svg');
+}
+
+i.icon.git {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/git.svg');
+}
+
+i.icon.copilot {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/githubcopilot.svg');
+}
+
+i.icon.postman {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postman.svg');
+}
+
+i.icon.npm {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/npm.svg');
+}
+
+i.icon.googlemaps {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlemaps.svg');
+}
+
+i.icon.redux {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/redux.svg');
+}
+
+
+i.icon.express {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/express.svg');
+}
+
+i.icon.firebase {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/firebase.svg');
+}
+
+i.icon.email {
+    content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg');
+}
+
+div.banner>div.slider>div.item.project>div>a,
+div.banner>div.slider>div.item.skills>div>a {
+    height: 1em;
+    padding: 0.25em 0.5em 0.25em 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+div.banner>div.slider>div.item.project>div,
+div.banner>div.slider>div.item.skills>div {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
 }
