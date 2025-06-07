@@ -81,6 +81,7 @@ div.banner>div.slider>div.item.welcome {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 div.banner>div.slider>div.item.project {
