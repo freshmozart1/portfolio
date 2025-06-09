@@ -1,17 +1,25 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    background: #f4f4f4;
+    background: #fefefe;
     color: #222;
 }
 
 h1 {
     font-size: 2em;
+    margin-block: 0.5em;
 }
 
 h2 {
     font-size: 1.5em;
+    margin-block: 0.25em;
 }
 
 table th {
