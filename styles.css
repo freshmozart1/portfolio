@@ -120,13 +120,6 @@ i.icon {
     border-radius: 5px;
 }
 
-div.banner>div.slider>div.item.project>div>a>i.icon,
-div.banner>div.slider>div.item.skills>div>a>i.icon {
-    position: absolute;
-    top: 0em;
-    left: 0em;
-}
-
 i.icon.github {
     content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/github.svg');
 }
@@ -153,7 +146,6 @@ i.icon.sass {
 
 i.icon.tailwind {
     content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tailwindcss.svg');
-    padding-left: 0.25em;
 }
 
 i.icon.node {
@@ -217,20 +209,12 @@ i.icon.email {
     content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg');
 }
 
-div.banner>div.slider>div.item.project>div>a,
-div.banner>div.slider>div.item.skills>div>a {
-    height: 1em;
-    padding: 0.25em 0.5em 0.25em 2em;
-    position: relative;
-    overflow: hidden;
-}
-
 div.banner>div.slider>div.item.project>div,
 div.banner>div.slider>div.item.skills>div {
     width: 100%;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1.5em 1fr);
     gap: 1em;
+    justify-items: left;
+    align-items: center;
 }
