@@ -15,7 +15,7 @@
      */
     function setRotation(deg) {
         // Much deeper perspective for a more immersive 3D effect
-        style.transform = `perspective(1600px) rotateX(-2deg) rotateY(${deg}deg)`;
+        style.transform = `perspective(900px) rotateX(-2deg) rotateY(${deg}deg)`;
     }
 
     /**
