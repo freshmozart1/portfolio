@@ -22,11 +22,6 @@ h2 {
     margin-block: 0.25em;
 }
 
-table th {
-    text-align: center;
-    font-size: 1.5em;
-}
-
 table td {
     padding: 0.5em;
 }
@@ -35,29 +30,27 @@ a {
     all: unset;
 }
 
-div.banner {
+small {
+    color: rgba(0, 0, 0, 0.25);
+}
+
+div.banner,
+div.banner>div.slider {
     height: 100svh;
-    width: 100vw;
-    overflow-y: auto;
-    overflow-x: hidden;
-    text-align: left;
+    width: 100svw;
+}
+
+div.banner {
+    overflow: hidden;
     position: relative;
-    margin: 0;
-    padding: 0;
     z-index: 0;
 }
 
 div.banner>div.slider {
-    width: 100vw;
-    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
     transform-style: preserve-3d;
-    cursor: grab;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 div.banner>div.slider>div.item {
@@ -66,60 +59,10 @@ div.banner>div.slider>div.item {
     left: 50%;
     width: 400px;
     height: 400px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 24px;
+    transform: translate(-50%, -55%) rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg)) translateZ(360px);
+    background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
-    box-shadow: 0 32px 64px 0 rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transform: translate(-50%, -55%) rotateY(calc(var(--position) * (360 / var(--quantity)) * 1deg)) translateZ(600px);
-    padding: 1em;
-}
-
-div.banner>div.slider>div.item.profile>img {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-div.banner>div.slider>div.item.contact,
-div.banner>div.slider>div.item.welcome {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-div.banner>div.slider>div.item.project {
-    display: block;
-}
-
-div.banner>div.slider>div.item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 24px;
-}
-
-small {
-    color: rgba(0, 0, 0, 0.25);
-}
-
-div.banner>div.slider>div.item.contact>small {
-    margin-block: 0.5em;
-}
-
-div.banner>div.slider>div.item.project img {
-    width: 50%;
-    height: 50%;
-    float: right;
-    margin-left: 1em;
-    margin-bottom: 1em;
-    border: 1px solid rgba(0, 0, 0, 0.25);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 i.icon {
@@ -217,12 +160,109 @@ i.icon.email {
     content: url('https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/gmail.svg');
 }
 
-div.banner>div.slider>div.item.project>div,
-div.banner>div.slider>div.item.skills>div {
+div.banner>div.slider>div.item>div.header {
     width: 100%;
+    height: 90px;
+    border-radius: 1.5em 1.5em 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 1.5em 1.5em 0 1.5em;
+    background-color: rgba(0, 0, 0, 1);
+    display: flex;
+    align-items: end;
+    color: white;
+    padding: 0 1.5em 0 0;
+    justify-content: right;
+}
+
+div.banner>div.slider>div.item>div.header:has(img) {
+    justify-content: space-between;
+}
+
+div.banner>div.slider>div.item>div.header>img {
+    height: 90px;
+    width: 90px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 1.5em 0 0 1.5em;
+}
+
+div.banner>div.slider>div.item>div.main {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    height: 308px;
+    padding: 0 1em 1em 1em;
+    border-radius: 0 1.5em 1.5em 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+div.banner>div.slider>div.item.contact>div.main {
+    justify-content: center;
+}
+
+div.banner>div.slider>div.item.skills>div.main {
     display: grid;
     grid-template-columns: repeat(3, 1.5em 1fr);
-    gap: 1em;
+    column-gap: 0.5em;
+    row-gap: 0.25em;
     justify-items: left;
+    align-items: center;
+}
+
+div.banner>div.slider>div.item.project>div.main {
+    display: grid;
+    grid-template-columns: 24px 167px 167px;
+    grid-template-rows: 150px repeat(3, 48px);
+    grid-template-areas:
+        "desc desc img img"
+        "icon icon icon icon"
+        "icon icon icon icon"
+        "giticon git git git";
+    column-gap: 0.5em;
+    row-gap: 0.25em;
+}
+
+div.banner>div.slider>div.item.project>div.main>p.desc {
+    grid-area: desc;
+    border-top-right-radius: 1.5em;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+div.banner>div.slider>div.item.project>div.header::after {
+    content: url('data:image/svg+xml;utf8,<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M24,24 A24,24 0 0,0 0,0 L24,0 Z" fill="black"/></svg>');
+    display: block;
+    position: absolute;
+    top: 90px;
+    left: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    z-index: 1;
+
+}
+
+div.banner>div.slider>div.item.project>div.main>img {
+    width: 100%;
+    height: 100%;
+    grid-area: img;
+    object-fit: cover;
+    border-radius: 0 1.5em 0 1.5em;
+    border-left: 0.5em solid black;
+    border-bottom: 0.5em solid black;
+}
+
+div.banner>div.slider>div.item.project>div.main>div.techs {
+    display: grid;
+    grid-template-columns: repeat(3, 1.5em 1fr);
+    padding-right: 1em;
+    column-gap: 0.5em;
     align-items: center;
 }
