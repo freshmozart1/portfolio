@@ -11,8 +11,8 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
-    line-height: 1.1;
+    font-size: 20px;
+    line-height: 22px;
     margin: 0;
     padding: 0;
     background: rgb(222, 227, 232);
@@ -21,7 +21,6 @@ body {
 
 h1 {
     font-size: 2em;
-    margin-block: 0.5em;
 }
 
 h2 {
@@ -30,7 +29,7 @@ h2 {
 }
 
 table td {
-    padding: 0.5em;
+    padding: 10px;
 }
 
 a {
@@ -74,9 +73,9 @@ div.banner>div.slider>div.item {
 }
 
 i.icon {
-    width: 1.5em;
-    height: 1.5em;
-    border-radius: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
 }
 
 i.icon.github {
@@ -171,16 +170,15 @@ i.icon.email {
 div.banner>div.slider>div.item>div.header {
     width: 100%;
     height: 90px;
-    border-radius: 1.5em 1.5em 0 0;
+    border-radius: 10px 10px 0 0;
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 1.5em 1.5em 0 1.5em;
     background-color: rgba(0, 0, 0, 1);
     display: flex;
     align-items: end;
     color: white;
-    padding: 0 1.5em 0 0;
+    padding: 0 10px 0 0;
     justify-content: right;
 }
 
@@ -193,7 +191,7 @@ div.banner>div.slider>div.item>div.header>img {
     width: 90px;
     object-fit: cover;
     object-position: top;
-    border-radius: 1.5em 0 0 1.5em;
+    border-top-left-radius: 10px;
 }
 
 div.banner>div.slider>div.item>div.main {
@@ -201,9 +199,9 @@ div.banner>div.slider>div.item>div.main {
     top: 90px;
     left: 0;
     width: 100%;
-    height: 308px;
-    padding: 0 1em 1em 1em;
-    border-radius: 0 1.5em 1.5em 1.5em;
+    height: 310px;
+    padding: 0 10px 10px 10px;
+    border-radius: 0 0 10px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -214,31 +212,38 @@ div.banner>div.slider>div.item.contact>div.main {
     justify-content: center;
 }
 
+div.banner>div.slider>div.item.project>div.main>div.techs,
 div.banner>div.slider>div.item.skills>div.main {
+    line-height: 24px;
     display: grid;
-    grid-template-columns: repeat(3, 1.5em 1fr);
-    column-gap: 0.5em;
-    row-gap: 0.25em;
+    grid-template-columns: repeat(2, minmax(24px, 1fr));
     justify-items: left;
     align-items: center;
+    row-gap: 10px;
+}
+
+div.banner>div.slider>div.item.project>div.main>div.techs>div,
+div.banner>div.slider>div.item.skills>div.main>div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 div.banner>div.slider>div.item.project>div.main {
     display: grid;
-    grid-template-columns: 24px 167px 167px;
-    grid-template-rows: 150px repeat(3, 48px);
+    grid-template-columns: 240px 140px;
     grid-template-areas:
-        "desc desc img img"
-        "icon icon icon icon"
-        "icon icon icon icon"
-        "giticon git git git";
-    column-gap: 0.5em;
-    row-gap: 0.25em;
+        "desc img"
+        "icon icon"
+        "git git";
+    column-gap: 10px;
+    row-gap: 5px;
+    padding: 0 0 10px 10px;
+    width: 100%;
 }
 
 div.banner>div.slider>div.item.project>div.main>p.desc {
     grid-area: desc;
-    border-top-right-radius: 1.5em;
     width: 100%;
     height: 100%;
     display: flex;
@@ -246,13 +251,13 @@ div.banner>div.slider>div.item.project>div.main>p.desc {
 }
 
 div.banner>div.slider>div.item.project>div.header::after {
-    content: url('data:image/svg+xml;utf8,<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M24,24 A24,24 0 0,0 0,0 L24,0 Z" fill="black"/></svg>');
+    content: url('data:image/svg+xml;utf8,<svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24,24 A24,24 0 0,0 0,0 L24,0 Z" fill="black"/></svg>');
     display: block;
-    position: absolute;
-    top: 90px;
-    left: 50%;
-    width: 1.5em;
-    height: 1.5em;
+    position: relative;
+    left: -130px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
     z-index: 1;
 
 }
@@ -265,12 +270,4 @@ div.banner>div.slider>div.item.project>div.main>img {
     border-radius: 0 0 0 1.5em;
     border-left: 0.5em solid black;
     border-bottom: 0.5em solid black;
-}
-
-div.banner>div.slider>div.item.project>div.main>div.techs {
-    display: grid;
-    grid-template-columns: repeat(3, 1.5em 1fr);
-    padding-right: 1em;
-    column-gap: 0.5em;
-    align-items: center;
 }
