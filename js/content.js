@@ -14,7 +14,6 @@ const I18N = {
     "nav.skills": "Skills",
     "nav.projects": "Projects",
     "nav.vision": "Vision",
-    "nav.contact": "Contact",
     "nav.openToRoles": "Open to roles",
     "nav.langAria": "Switch language",
     "nav.menuAria": "Sections",
@@ -23,7 +22,6 @@ const I18N = {
     "hero.lead": "I learn by building.",
     "hero.support":
       "From full-stack TypeScript apps to AI-powered tools, I take ideas all the way from a blank file to a working, shipped product — picking up whatever the problem needs along the way.",
-    "hero.ctaContact": "Get in touch",
     "hero.ctaProjects": "See what I've built",
     "hero.photoAlt": "Portrait of Ole Köster",
 
@@ -73,14 +71,6 @@ const I18N = {
     "vision.body":
       "I want to grow into an established developer with hands-on experience on large-scale, real-world corporate projects. My goal is to bring the drive that made me self-taught into a professional engineering team — to learn from production systems at scale, take on real responsibility, and keep getting better at the craft.",
 
-    "contact.label": "contact",
-    "contact.heading": "Let's talk",
-    "contact.body":
-      "I'm currently open to developer roles. The fastest way to reach me is by email — I'd be glad to hear what you're building.",
-    "contact.emailLabel": "Email",
-    "contact.githubLabel": "GitHub",
-    "contact.linkedinLabel": "LinkedIn",
-
     "footer.note": "Built from scratch with HTML, CSS, and JavaScript.",
   },
 
@@ -93,7 +83,6 @@ const I18N = {
     "nav.skills": "Fähigkeiten",
     "nav.projects": "Projekte",
     "nav.vision": "Vision",
-    "nav.contact": "Kontakt",
     "nav.openToRoles": "Offen für Stellen",
     "nav.langAria": "Sprache wechseln",
     "nav.menuAria": "Abschnitte",
@@ -102,7 +91,6 @@ const I18N = {
     "hero.lead": "Ich lerne, indem ich baue.",
     "hero.support":
       "Von Full-Stack-Anwendungen mit TypeScript bis zu KI-gestützten Tools bringe ich Ideen vom leeren File bis zum fertigen, lauffähigen Produkt — und eigne mir dabei an, was das Problem gerade braucht.",
-    "hero.ctaContact": "Kontakt aufnehmen",
     "hero.ctaProjects": "Meine Projekte ansehen",
     "hero.photoAlt": "Porträt von Ole Köster",
 
@@ -151,14 +139,6 @@ const I18N = {
     "vision.heading": "Die nächsten fünf Jahre",
     "vision.body":
       "Ich möchte zu einem etablierten Entwickler heranwachsen, mit praktischer Erfahrung in großen, realen Unternehmensprojekten. Mein Ziel ist es, den Antrieb, der mich zum Autodidakten gemacht hat, in ein professionelles Entwicklungsteam einzubringen — von Produktivsystemen im großen Maßstab zu lernen, echte Verantwortung zu übernehmen und im Handwerk immer besser zu werden.",
-
-    "contact.label": "kontakt",
-    "contact.heading": "Lassen Sie uns sprechen",
-    "contact.body":
-      "Ich bin derzeit offen für Stellen als Entwickler. Am schnellsten erreichen Sie mich per E-Mail — ich freue mich zu hören, woran Sie arbeiten.",
-    "contact.emailLabel": "E-Mail",
-    "contact.githubLabel": "GitHub",
-    "contact.linkedinLabel": "LinkedIn",
 
     "footer.note": "Von Grund auf gebaut mit HTML, CSS und JavaScript.",
   },
