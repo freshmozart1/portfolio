@@ -1,33 +1,35 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script>document.documentElement.classList.add("js");</script>
   <title data-i18n="meta.title">Ole Köster — Self-taught Full-Stack Developer</title>
   <meta name="description" data-i18n-content="meta.description"
-        content="Portfolio of Ole Köster, a self-taught full-stack developer who learns by building." />
+    content="Portfolio of Ole Köster, a self-taught full-stack developer who learns by building." />
   <meta name="author" content="Ole Köster" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" />
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- Distortion filter powering the header's liquid-glass effect (referenced by backdrop-filter) -->
-  <svg class="glass-filter-defs" aria-hidden="true" focusable="false" width="0" height="0"
-       xmlns="http://www.w3.org/2000/svg">
-    <filter id="liquid-glass" x="-20%" y="-20%" width="140%" height="140%"
-            color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.011" numOctaves="2" seed="42" result="noise" />
-      <feGaussianBlur in="noise" stdDeviation="2.2" result="smoothed" />
-      <feDisplacementMap in="SourceGraphic" in2="smoothed" scale="58"
-                         xChannelSelector="R" yChannelSelector="G" />
+  <svg class="glass-filter-defs" aria-hidden="true" focusable="false" width="0" height="0" style="display: none;"
+    xmlns="http://www.w3.org/2000/svg">
+    <filter id="liquid-glass">
+      <feImage
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAACXBIWXMAAA9hAAAPYQGoP6dpAAAMoElEQVRogZ1a3ZqjyI6MkBJc3XOz7/+g+53pMoq9kJQk2K6Zs0yNGzAG/YRCSgn+/r0PYpCD2IEH+SC/yIdZfj6MD9pu3M02cjMb5KC50cycNBoJ0kiCJKn8BEWCACgCAkAAIAhQAGAAIRccNGIDBjCADdilHdilh/QAH9AX+DA+yN1sM9vAYRw2SIKg1dNJkm61Y0YzGkmDGc1A0og8JEGT1Q1gBCkQJEgArENgCi4QFDR1AABIAEEJggAIECRJogBJeblIkLK0AUEOjpQUBMzMyPk/naTRUvTUgTQDjWZESmxgfgJGIA8poE62+HNHvSeJedzngdYgZZaASNepr1HelgQhYthuhjKrpaBmrP+MZuUHt9IqP9mKWnkEZiAxzc8UkgQFkDzFLAeohZJw7qh3InRAIYYUQAhBCOVStauHbaTBQXMaPWV2L4Sb08ytxPUS1wxmaftohIEX0QkT076Fe1UcZExISB3Uhp3Ctw9CSt0i2jMSKCKmP4nBB70AYsbEudtwcx++DR/DbJi7mafh6WVs2sSPQJql+Zmxm9Y/kVPSsw1OlB/K3gIhEwI4ICqDO47QM8Lj2BShCFHMCEnTaPhXYd5TBXN3H2N/7PtjezzG/nDfzDe6kw66+cRQBsQKfaSLK2RXBU6Y84SSFtwrhCOjNcULAaEIHId/f38f37tCoQAEBCBQ0uCXO+E0N7rb5j58e+y/f339/v3462t7bDaGuTMZkwZ6RgBIEvk50d/Si1DGMi8KqHVicc8ZstEIknBAh3Aojjjw/Obzb/v7z/78ez9CVAhKiAHDv8qYLPSPfX/8+vX719f//Nr/2rd9s+FWdOPNWCk9KzpZzM7Cjdr2J0+CnPSji+yEAATAPqeCO0IRccTzie9tH//7/A+ex98hISoeAhr2SCah08wSPV/7778eX3899t/DNrdJnMVXGapW4hbceSLnZP4VP9P20jw76afUUAMqACkkQYPb+OP8j8WXjnhGxHFECBQEcPCr2JFGp49tG4992x/742GeadcIFNXgBE3zQJ1sE99wX0Q/sbXkrsvRCa+ZCxonh/jc9Y3vZ4yDT4UiEJLIkIZ9mYFmNtLGw20bY9vMh/mocAVViM/Yb7uDInlyJRfEL9C/RO881HJGEFtZQJnBLc8LDBwxxrF7wCNiZmmBw3abGcvo5u6bcTg9MzEh4sXkrUMVBLwY/oV83m7pNgEpO1sNZDSUtWAZL6ag3GKjghIVRabDdzeaZx6AmRs35yCsLTq5pUHPhW1O/LwXnauVr1t7RQuvcuYHAKpUSIYgMzkhyiAwQkWjtruDltUlRuZf+qx/WCiZ9cdCO9OQn23fmp940eUrCMwgpgArNVQRiqo5YJBn8UGJQEAsCPnmDnoXOk7H8CQm2Mru09LzD1cs/ajAaXV79cUstZupqoA6CcsIIZyiEIiqMxJCw410ZJ5y0tyJTrbT0h20L9J/9MNVE85/rrFbUs4I4HpeVXJKAVlWIQxrjpJEDPOytlkyvaOL0AUti7icKt00WSR+5SKhi5eVTtdMrdUH0kJveRElL29nJi4P2Kh1SqcqTvzwLmsF9Sn0xwC4UdDbzHaTm7WqqeDOmpuiQCIaRVVr5dIHQHmgFlqmWqmwFll5La/QZ+P61Q/9mUkNpzxX2c8lzZReaJOvsdCHygVAUAYJwUxzDGDQ5wLRDEZ5umHlnKvtL5iZCe6uxksk36XXTb1Xn+R9VKkzuSgoEmZSZOk0LFcyuSYrD3T4LtIvbHMR9L0H3oTvi+3Lf1otnd92NPfCIRc7hGSy6hXUugwYtQyWmVmulgm78D1XWW5S/iD9HezvtlfpZ3CXDmWlJCMjZAELSvAswIeZTfxkAjtDtrI9X2RdDf9WsZv9Lwb+IDcnVXE9vER/rvVy0Vc5wgzu8FMHeHqA5++4yLJq8rMTbpd90vPyqeVQ19/OsiI/xVozDaMbaLLsmWR3oYJmeeQ1Kv9RxJsf5vaD7W/kc95B/XlKn9eQgHJ9PkU3g6E8cIoyeeaKnFWTH3b+q1D5IXJOL6kWxBRg7GZVU03uGLhQp2636SB58+BXV9xUvetzWyq8/Xk7YWny9WaE5anknyyrVgy+M+fbJ93M/Oknr9sPqHvxku7ONCBbUGwdzr+K/PePfCv6W7F+UO9ywZuc9vLzeU35ROgYmDpk1/WN+f/l9paLflCPL6fOMwu6lLUbs4brOABglKXQldl62f7JBv8k+n+98ePRHauq/kXvIxWoFmGmYauerz5J/BoDc9PLlf8k7Rs/XPsU77cmeBGAUYQKQiV9k8+rT3/cbpe9fbxeD/Xm/PvnMoXXSYwUzJr1iTlamYy7pvJ/3N4uFOff/2Ob04OWWK8eaw6d31GmPqTeWv+tl+/08Gnh+7r/zxZqSjmlLLUEcXRqarqYJe3lQe+f8qKgfoyKtzp8MsFlu4ZdO0UkZZgeOlsCuCpx2X138hXZPwfAv0fUTKtYhWq6zPCtb7he11HwD0Lw5cz1UJ8NfH7qZyeUDDUUnAzTa1blWOUknHzmOVJ70eEDRG5i3aDy0fYXTjnFAq5wB9AzsbZtMiY1ijKN6hblyaB97+Ve1XA6EyT4Y0n8ul2Uud58VeyycyV1nRASLBXJYpt2XQW8mutFgs+k9IlVbzv3Gy6EeOqmU/pe8mbdbBhFpPOurGKjdU87lYG7WwNBOX2vFSBnUEwP4IMTrvpXE1TvKPvs5FNIwukUm01zGDBy7Jfd1e43anJv31arC+uwwr+/Onmre5pamw7vdVjgevfJ+txqRVmPPxMvIsAhx5nS1U3hALITebFKD0bvlsbd8BcS+yj9y7darFAgWNfm2U8x5mqrwD7gU/wUUTUwj1sqTqtnHJ9d2G4itL2n7d6IfhX0JLv3V5Zz2HFnVXUmU3bvhINeaqdzJPEQONvgN0yfcXU+pn/auJrS/FjecbJQBcPCp7XPs0gQTTVZN/asUSQGvSdb1TVtrUO3x7bNl4nQyaq44Gr96RrPd1C9wImn9OdTa34LmuiiJ51EQYhb1qHdwIq2ztoau2eAoiau2p3Mpbvpb85YvMSrDpwj5v66gQQ6MECHeQ6ZSMCoga3SQiKfQQAIQmd1NAclyoyIOdW9RsgFJG9TyXLBawDwclkzppj8YzIXh+DZfcjFlw2NnJaVDnFAgELIt0Im68xIPcXFkk3/fQSvoresN33WZk5lAdDB0X+A2cwDe1JP5i/CJECHEksFHS3PzmUGm4h068JqccZE1HL+1SFr3F/VKD8Q5qmAbAcd3UAXwIGHEMzkq5CegqQnFKpUgJo9vFD/VeiLGlex1mi+A+ZF9NlcQOEaBpg4xB3cZCNbo6kDB/bm5chJpwKBI6QIhcmkGvEscvfsKSPijt77diEprqGPnsqAKFqsHEhgzvgsfMi2sE22ywaybCNAw+DeHkvMuALHoe8Dw2k6OqwZC7+tcQzcC5nGUI3dsfiIa52FHmrPYE2TlAsV2bEaI3w8t8cxHoc/wAFI9Gq0D37RauhBShrS0GHHk9/m8OdQ0MFDsE4UBEw43wZIyS4R/NEPtd+/5Aqk2VojDNnmj0GN7bnvf/Zff7avw7fDh5w01GuSg49eKgQA46E4jm//5gb+ifh+ejBkFhXQJhgQoqWZZqu76sEzF826SZp+KKyzxZ3Qz4ZUNacgJ5wYjM31tT9/7X++Ht/b4+kuOskga4w3+EVEY0OKgAmxP78fwvMYTzuCLrhgwXrzol8ctO71sVj4bMovpYYWQBHz336jlN0ezL6aQ8MwKCc2xu56+PPXFvv2HEOVELrhT8PQXgFTr6+IEXHsxHEwQgc8KEABE0aVLTAxXxJL+J3NvJM/EiWFk7N866ivV0t7oIKckEKDGIQzdtcG7B4P0/AYLmOQSPTnRIPkwKOKgswDqnqUETpCQL2JR5ChrFBTn9RWUivASvqauGoU9QtAlRNmbZPrlLJ9v5QLGTEMngHgcmKYzETO+VdOISlhxKNeAGE6PtOWInkpJ+IUQjLNfKekpXRFLbVbh8XOXX0vyOl1d2eMjKosgZofsnYAROtpmFULEcsMGDASQ3t6WpbLmJyCZySklFAIEcpXOxkpgBigGIBJyPqql4d5p+aXtUaizhfCiX7Pes7UaSJIE7C8nFrXdAPU5uyCAIe2IoyADMwJeOK7DV+LnNyvMjtfyy78GM7XPc/grXeje2mFfqdO6CbURRLAquggOeXukJ2pF0V4pwIjpotzdFw4yUIi+iXIwo9KpWg+73FDgUL9YnSTEdfVLuv1MhE2XyrlJCXjgiLU6AXovAsqybPKAlHA/wH75uVy+EFM3wAAAABJRU5ErkJggg=="
+        preserveAspectRatio="none" />
+
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="200" xChannelSelector="R" yChannelSelector="G" />
     </filter>
   </svg>
 
@@ -81,25 +83,34 @@
           <ul class="hero-social" aria-label="Profiles">
             <li>
               <a href="https://github.com/freshmozart1" target="_blank" rel="noopener" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.41-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path fill="currentColor"
+                    d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.41-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
+                </svg>
               </a>
             </li>
             <li>
               <a href="https://www.linkedin.com/in/ole-koester" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0Z"/></svg>
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path fill="currentColor"
+                    d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0Z" />
+                </svg>
               </a>
             </li>
             <li>
               <a href="mailto:mail@ole-koester.de" aria-label="Email">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm10 8.13L3.6 6H20.4L12 12.13ZM3 7.87V18h18V7.87l-8.4 6.12a1 1 0 0 1-1.2 0L3 7.87Z"/></svg>
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path fill="currentColor"
+                    d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm10 8.13L3.6 6H20.4L12 12.13ZM3 7.87V18h18V7.87l-8.4 6.12a1 1 0 0 1-1.2 0L3 7.87Z" />
+                </svg>
               </a>
             </li>
           </ul>
         </div>
 
         <figure class="hero-portrait reveal" aria-hidden="false">
-          <img src="assets/ole.jpg" alt="Portrait of Ole Köster"
-               data-i18n-alt="hero.photoAlt" width="472" height="709" />
+          <img src="assets/ole.jpg" alt="Portrait of Ole Köster" data-i18n-alt="hero.photoAlt" width="472"
+            height="709" />
         </figure>
       </div>
     </section>
@@ -133,40 +144,53 @@
           <div class="skill-group">
             <h3 class="skill-title" data-i18n="skills.langTitle">Languages</h3>
             <ul class="chips">
-              <li class="chip">TypeScript</li><li class="chip">JavaScript</li>
-              <li class="chip">Python</li><li class="chip">HTML</li><li class="chip">CSS</li>
+              <li class="chip">TypeScript</li>
+              <li class="chip">JavaScript</li>
+              <li class="chip">Python</li>
+              <li class="chip">HTML</li>
+              <li class="chip">CSS</li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 class="skill-title" data-i18n="skills.frontendTitle">Frontend</h3>
             <ul class="chips">
-              <li class="chip">Vue 3</li><li class="chip">Next.js</li><li class="chip">React</li>
-              <li class="chip">React Native</li><li class="chip">Tailwind CSS</li>
+              <li class="chip">Vue 3</li>
+              <li class="chip">Next.js</li>
+              <li class="chip">React</li>
+              <li class="chip">React Native</li>
+              <li class="chip">Tailwind CSS</li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 class="skill-title" data-i18n="skills.backendTitle">Backend</h3>
             <ul class="chips">
-              <li class="chip">Node.js</li><li class="chip">Express</li><li class="chip">REST APIs</li>
+              <li class="chip">Node.js</li>
+              <li class="chip">Express</li>
+              <li class="chip">REST APIs</li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 class="skill-title" data-i18n="skills.dataTitle">Data</h3>
             <ul class="chips">
-              <li class="chip">MongoDB</li><li class="chip">Mongoose</li><li class="chip">Firestore</li>
+              <li class="chip">MongoDB</li>
+              <li class="chip">Mongoose</li>
+              <li class="chip">Firestore</li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 class="skill-title" data-i18n="skills.aiTitle">AI &amp; Automation</h3>
             <ul class="chips">
-              <li class="chip">OpenAI API</li><li class="chip">Puppeteer</li>
+              <li class="chip">OpenAI API</li>
+              <li class="chip">Puppeteer</li>
             </ul>
           </div>
           <div class="skill-group">
             <h3 class="skill-title" data-i18n="skills.toolingTitle">Tooling &amp; Deploy</h3>
             <ul class="chips">
-              <li class="chip">Vite</li><li class="chip">Git &amp; GitHub</li>
-              <li class="chip">Vercel</li><li class="chip">PWAs</li>
+              <li class="chip">Vite</li>
+              <li class="chip">Git &amp; GitHub</li>
+              <li class="chip">Vercel</li>
+              <li class="chip">PWAs</li>
             </ul>
           </div>
         </div>
@@ -191,12 +215,19 @@
               to browse and match them.
             </p>
             <ul class="tags">
-              <li>TypeScript</li><li>Node.js</li><li>Express</li><li>Puppeteer</li>
-              <li>MongoDB</li><li>Vue 3</li><li>Vite</li>
+              <li>TypeScript</li>
+              <li>Node.js</li>
+              <li>Express</li>
+              <li>Puppeteer</li>
+              <li>MongoDB</li>
+              <li>Vue 3</li>
+              <li>Vite</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/freshmozart1/jobMatch" target="_blank" rel="noopener" data-i18n="projects.linkCode">Code</a>
-              <a href="https://github.com/freshmozart1/jobMatchServer" target="_blank" rel="noopener" data-i18n="projects.linkServer">Server</a>
+              <a href="https://github.com/freshmozart1/jobMatch" target="_blank" rel="noopener"
+                data-i18n="projects.linkCode">Code</a>
+              <a href="https://github.com/freshmozart1/jobMatchServer" target="_blank" rel="noopener"
+                data-i18n="projects.linkServer">Server</a>
             </div>
           </li>
 
@@ -208,11 +239,16 @@
               a spending-analytics dashboard.
             </p>
             <ul class="tags">
-              <li>Next.js</li><li>TypeScript</li><li>Tailwind CSS</li>
-              <li>OpenAI API</li><li>Express</li><li>MongoDB</li>
+              <li>Next.js</li>
+              <li>TypeScript</li>
+              <li>Tailwind CSS</li>
+              <li>OpenAI API</li>
+              <li>Express</li>
+              <li>MongoDB</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/freshmozart1/receiptTracker" target="_blank" rel="noopener" data-i18n="projects.linkCode">Code</a>
+              <a href="https://github.com/freshmozart1/receiptTracker" target="_blank" rel="noopener"
+                data-i18n="projects.linkCode">Code</a>
             </div>
           </li>
 
@@ -223,10 +259,13 @@
               backed by Google Firestore.
             </p>
             <ul class="tags">
-              <li>React Native</li><li>Expo</li><li>Firestore</li>
+              <li>React Native</li>
+              <li>Expo</li>
+              <li>Firestore</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/freshmozart1/chat-app" target="_blank" rel="noopener" data-i18n="projects.linkCode">Code</a>
+              <a href="https://github.com/freshmozart1/chat-app" target="_blank" rel="noopener"
+                data-i18n="projects.linkCode">Code</a>
             </div>
           </li>
 
@@ -237,11 +276,15 @@
               with vanilla HTML, CSS, and JavaScript.
             </p>
             <ul class="tags">
-              <li>JavaScript</li><li>HTML</li><li>CSS</li>
+              <li>JavaScript</li>
+              <li>HTML</li>
+              <li>CSS</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/freshmozart1/notes" target="_blank" rel="noopener" data-i18n="projects.linkCode">Code</a>
-              <a href="https://freshmozart1.github.io/notes/" target="_blank" rel="noopener" data-i18n="projects.linkLive">Live demo</a>
+              <a href="https://github.com/freshmozart1/notes" target="_blank" rel="noopener"
+                data-i18n="projects.linkCode">Code</a>
+              <a href="https://freshmozart1.github.io/notes/" target="_blank" rel="noopener"
+                data-i18n="projects.linkLive">Live demo</a>
             </div>
           </li>
 
@@ -252,11 +295,15 @@
               documented in an accompanying build video.
             </p>
             <ul class="tags">
-              <li>JavaScript</li><li>CSS</li><li>HTML</li>
+              <li>JavaScript</li>
+              <li>CSS</li>
+              <li>HTML</li>
             </ul>
             <div class="project-links">
-              <a href="https://github.com/freshmozart1/tinder-ui" target="_blank" rel="noopener" data-i18n="projects.linkCode">Code</a>
-              <a href="https://youtu.be/MZRPgTGTtP0" target="_blank" rel="noopener" data-i18n="projects.linkVideo">Watch video</a>
+              <a href="https://github.com/freshmozart1/tinder-ui" target="_blank" rel="noopener"
+                data-i18n="projects.linkCode">Code</a>
+              <a href="https://youtu.be/MZRPgTGTtP0" target="_blank" rel="noopener" data-i18n="projects.linkVideo">Watch
+                video</a>
             </div>
           </li>
         </ol>
@@ -315,4 +362,5 @@
   <script src="js/content.js"></script>
   <script src="js/main.js" defer></script>
 </body>
+
 </html>
