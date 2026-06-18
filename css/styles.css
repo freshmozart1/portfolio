@@ -353,10 +353,13 @@ section[id] {
   margin: 1.7rem 0 1.4rem;
 }
 .hero-social {
-  display: flex;
-  gap: 1.1rem;
-  align-items: center;
+  display: contents;
 }
+
+.hero-social li {
+  display: flex;
+}
+
 .hero-social a {
   color: var(--muted);
   display: inline-flex;
