@@ -19,16 +19,19 @@ assets/         ← Portrait + favicon
 ## How to Edit (Common Tasks)
 
 ### Add or change text
+
 1. Open `js/content.js`
 2. Find the key in the `I18N` object (e.g. `"hero.lead"`)
 3. Edit both `en` and `de` versions so the toggle stays in sync
 
 ### Add or change structure (headings, links, sections)
+
 1. Open `index.html`
 2. Add or modify elements and attach `data-i18n="keyName"` attributes
 3. Add the new key to `I18N` in `js/content.js` with both language versions
 
 ### Change colors, fonts, spacing, or theme
+
 1. Open `css/styles.css`
 2. Edit CSS variables at the top (`:root` block):
    - Colors: `--navy`, `--teal`, `--paper`, `--ink`, etc.
@@ -37,6 +40,7 @@ assets/         ← Portrait + favicon
 3. The entire site will restyle in one place
 
 ### Add a new project or skill
+
 1. Add a new entry to the appropriate `I18N` keys in `js/content.js` (e.g. `"projects.title"`)
 2. Add the corresponding HTML structure to `index.html`
 3. Attach `data-i18n` attributes to all translatable elements
@@ -85,12 +89,12 @@ python3 -m http.server 8000
 
 ## File Ownership
 
-| File | Owns What | Touch When... |
-|------|-----------|---------------|
-| `index.html` | HTML structure, tech names, URLs, links, non-translatable labels | Adding sections, changing structure, updating contact/social links |
-| `js/content.js` | All translatable text (English + German) | Editing copy, fixing translations, adding new content keys |
-| `css/styles.css` | All styling, design tokens, layout, animations | Changing colors, fonts, spacing, or responsiveness |
-| `js/main.js` | Language toggle logic, scroll-reveal | Rarely—only if modifying i18n or interaction behavior |
+| File             | Owns What                                                        | Touch When...                                                      |
+| ---------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `index.html`     | HTML structure, tech names, URLs, links, non-translatable labels | Adding sections, changing structure, updating contact/social links |
+| `js/content.js`  | All translatable text (English + German)                         | Editing copy, fixing translations, adding new content keys         |
+| `css/styles.css` | All styling, design tokens, layout, animations                   | Changing colors, fonts, spacing, or responsiveness                 |
+| `js/main.js`     | Language toggle logic, scroll-reveal                             | Rarely—only if modifying i18n or interaction behavior              |
 
 ## Tips for AI Agents
 
