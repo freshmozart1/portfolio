@@ -16,6 +16,10 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" />
   <link rel="stylesheet" href="css/styles.css" />
+
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="7abd38a7-2f4a-4be8-a9a7-2e5d0cfd9650"
+    data-domains="ole-koester.de" data-do-not-track="true" data-exclude-search="true"
+    data-exclude-hash="true"></script>
 </head>
 
 <body>
@@ -35,16 +39,21 @@
 
   <header class="site-header" id="top">
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Ole Köster — home">
+      <a class="brand" href="#top" aria-label="Ole Köster — home" data-umami-event="section-navigation"
+        data-umami-event-target="top" data-umami-event-source="brand">
         <span class="brand-mark" aria-hidden="true">OK</span>
         <span class="brand-name">Ole&nbsp;Köster</span>
       </a>
 
       <nav class="nav-links" data-i18n-aria="nav.menuAria" aria-label="Sections">
-        <a href="#about" data-i18n="nav.about">About</a>
-        <a href="#vision" data-i18n="nav.vision">Vision</a>
-        <a href="#skills" data-i18n="nav.skills">Skills</a>
-        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#about" data-i18n="nav.about" data-umami-event="section-navigation" data-umami-event-target="about"
+          data-umami-event-source="header-nav">About</a>
+        <a href="#vision" data-i18n="nav.vision" data-umami-event="section-navigation" data-umami-event-target="vision"
+          data-umami-event-source="header-nav">Vision</a>
+        <a href="#skills" data-i18n="nav.skills" data-umami-event="section-navigation" data-umami-event-target="skills"
+          data-umami-event-source="header-nav">Skills</a>
+        <a href="#projects" data-i18n="nav.projects" data-umami-event="section-navigation"
+          data-umami-event-target="projects" data-umami-event-source="header-nav">Projects</a>
       </nav>
 
       <div class="nav-meta">
@@ -54,7 +63,8 @@
         </span>
         <ul class="hero-social" aria-label="Profiles">
           <li>
-            <a href="https://github.com/freshmozart1" target="_blank" rel="noopener" aria-label="GitHub">
+            <a href="https://github.com/freshmozart1" target="_blank" rel="noopener" aria-label="GitHub"
+              data-umami-event="profile-link-click" data-umami-event-destination="github">
               <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                 <path fill="currentColor"
                   d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.41-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z" />
@@ -62,7 +72,8 @@
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/ole-koester" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/ole-koester" target="_blank" rel="noopener" aria-label="LinkedIn"
+              data-umami-event="profile-link-click" data-umami-event-destination="linkedin">
               <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                 <path fill="currentColor"
                   d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0Z" />
@@ -70,7 +81,8 @@
             </a>
           </li>
           <li>
-            <a href="mailto:mail@ole-koester.de" aria-label="Email">
+            <a href="mailto:mail@ole-koester.de" aria-label="Email" data-umami-event="contact-link-click"
+              data-umami-event-channel="email">
               <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
                 <path fill="currentColor"
                   d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm10 8.13L3.6 6H20.4L12 12.13ZM3 7.87V18h18V7.87l-8.4 6.12a1 1 0 0 1-1.2 0L3 7.87Z" />
@@ -79,9 +91,11 @@
           </li>
         </ul>
         <div class="lang" role="group" data-i18n-aria="nav.langAria" aria-label="Switch language">
-          <button class="lang-btn is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn is-active" type="button" data-lang="en" aria-pressed="true"
+            data-umami-event="language-switch" data-umami-event-language="en">EN</button>
           <span class="lang-sep" aria-hidden="true">/</span>
-          <button class="lang-btn" type="button" data-lang="de" aria-pressed="false">DE</button>
+          <button class="lang-btn" type="button" data-lang="de" aria-pressed="false" data-umami-event="language-switch"
+            data-umami-event-language="de">DE</button>
         </div>
       </div>
     </div>
@@ -102,7 +116,8 @@
             the way.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#projects" data-i18n="hero.ctaProjects">See what I've built</a>
+            <a class="btn btn-primary" href="#projects" data-i18n="hero.ctaProjects" data-umami-event="section-navigation"
+              data-umami-event-target="projects" data-umami-event-source="hero-cta">See what I've built</a>
           </div>
         </div>
 
@@ -237,9 +252,11 @@
             </ul>
             <div class="project-links">
               <a href="https://github.com/freshmozart1/jobMatch" target="_blank" rel="noopener"
-                data-i18n="projects.linkCode">Code</a>
+                data-i18n="projects.linkCode" data-umami-event="project-link-click" data-umami-event-project="job-search-suite"
+                data-umami-event-link_type="code">Code</a>
               <a href="https://github.com/freshmozart1/jobMatchServer" target="_blank" rel="noopener"
-                data-i18n="projects.linkServer">Server</a>
+                data-i18n="projects.linkServer" data-umami-event="project-link-click" data-umami-event-project="job-search-suite"
+                data-umami-event-link_type="server">Server</a>
             </div>
           </li>
 
@@ -260,7 +277,8 @@
             </ul>
             <div class="project-links">
               <a href="https://github.com/freshmozart1/receiptTracker" target="_blank" rel="noopener"
-                data-i18n="projects.linkCode">Code</a>
+                data-i18n="projects.linkCode" data-umami-event="project-link-click" data-umami-event-project="receipt-tracker"
+                data-umami-event-link_type="code">Code</a>
             </div>
           </li>
 
@@ -277,7 +295,8 @@
             </ul>
             <div class="project-links">
               <a href="https://github.com/freshmozart1/chat-app" target="_blank" rel="noopener"
-                data-i18n="projects.linkCode">Code</a>
+                data-i18n="projects.linkCode" data-umami-event="project-link-click"
+                data-umami-event-project="talk-with-everyone" data-umami-event-link_type="code">Code</a>
             </div>
           </li>
 
@@ -294,9 +313,11 @@
             </ul>
             <div class="project-links">
               <a href="https://github.com/freshmozart1/notes" target="_blank" rel="noopener"
-                data-i18n="projects.linkCode">Code</a>
+                data-i18n="projects.linkCode" data-umami-event="project-link-click" data-umami-event-project="notes-whiteboard"
+                data-umami-event-link_type="code">Code</a>
               <a href="https://freshmozart1.github.io/notes/" target="_blank" rel="noopener"
-                data-i18n="projects.linkLive">Live demo</a>
+                data-i18n="projects.linkLive" data-umami-event="project-link-click" data-umami-event-project="notes-whiteboard"
+                data-umami-event-link_type="live-demo">Live demo</a>
             </div>
           </li>
 
@@ -313,9 +334,11 @@
             </ul>
             <div class="project-links">
               <a href="https://github.com/freshmozart1/tinder-ui" target="_blank" rel="noopener"
-                data-i18n="projects.linkCode">Code</a>
-              <a href="https://youtu.be/MZRPgTGTtP0" target="_blank" rel="noopener" data-i18n="projects.linkVideo">Watch
-                video</a>
+                data-i18n="projects.linkCode" data-umami-event="project-link-click" data-umami-event-project="tinder-ui"
+                data-umami-event-link_type="code">Code</a>
+              <a href="https://youtu.be/MZRPgTGTtP0" target="_blank" rel="noopener" data-i18n="projects.linkVideo"
+                data-umami-event="project-link-click" data-umami-event-project="tinder-ui"
+                data-umami-event-link_type="video">Watch video</a>
             </div>
           </li>
         </ol>
@@ -324,10 +347,25 @@
 
   </main>
 
+  <section class="section privacy-section" id="privacy">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="privacy.label">privacy</p>
+      <h2 class="section-title" data-i18n="privacy.heading">Analytics &amp; privacy</h2>
+      <p class="privacy-copy" data-i18n="privacy.body">
+        This portfolio uses Umami Cloud for anonymous, cookie-free usage analytics. We collect page views,
+        referrer information, browser and device categories, country, and aggregated interaction counts to
+        understand how the site is used. Analytics are processed in the EU, respect your browser's Do Not Track
+        setting, and do not use cross-site tracking, visitor IDs, or custom personal data.
+      </p>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="wrap footer-inner">
       <span class="brand-mark" aria-hidden="true">OK</span>
       <p class="footer-note" data-i18n="footer.note">Built from scratch with HTML, CSS, and JavaScript.</p>
+      <a class="footer-link" href="#privacy" data-i18n="footer.privacyLink" data-i18n-aria="footer.privacyAria"
+        aria-label="Read the privacy information">Privacy</a>
       <p class="footer-rights">© 2026 Ole Köster</p>
     </div>
   </footer>

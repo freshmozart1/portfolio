@@ -56,3 +56,19 @@ Edit the hero social links, the `#contact` cards, and the footer in
 
 It's a plain static site, so it can be served by any static host whenever you
 choose to publish it — just upload the folder as-is.
+
+## Analytics (Umami Cloud)
+
+The page uses privacy-first Umami Cloud analytics, including anonymous
+interaction events. The tracker is configured for the EU-region website at
+`ole-koester.de` and:
+
+1. Limits collection to `ole-koester.de`.
+2. Respects browser Do Not Track.
+3. Excludes URL query strings and hash fragments.
+
+The website ID is public and may be committed. Never add an Umami API key or
+other account credential to this repository. If the website ID needs to be
+rotated, replace it in the tracker script in `index.html`. The account owner
+should also review the provider's data-processing arrangement before
+production use.

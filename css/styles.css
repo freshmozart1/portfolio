@@ -623,6 +623,17 @@ section[id] {
   border-color: var(--teal-light);
 }
 
+/* ---------- privacy ---------- */
+.privacy-section {
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+.privacy-copy {
+  max-width: 72ch;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
 /* ---------- footer ---------- */
 .site-footer {
   position: relative;
@@ -640,6 +651,16 @@ section[id] {
   font-family: var(--mono);
   font-size: 0.8rem;
   color: var(--muted);
+}
+.footer-link {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--teal-ink);
+  text-decoration: none;
+}
+.footer-link:hover {
+  color: var(--navy);
+  text-decoration: underline;
 }
 .footer-rights {
   font-size: 0.85rem;

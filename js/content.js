@@ -71,7 +71,14 @@ const I18N = {
     "vision.body":
       "I want to grow into an established developer with hands-on experience on large-scale, real-world corporate projects. My goal is to bring the drive that made me self-taught into a professional engineering team — to learn from production systems at scale, take on real responsibility, and keep getting better at the craft.",
 
+    "privacy.label": "privacy",
+    "privacy.heading": "Analytics & privacy",
+    "privacy.body":
+      "This portfolio uses Umami Cloud for anonymous, cookie-free usage analytics. We collect page views, referrer information, browser and device categories, country, and aggregated interaction counts to understand how the site is used. Analytics are processed in the EU, respect your browser's Do Not Track setting, and do not use cross-site tracking, visitor IDs, or custom personal data.",
+
     "footer.note": "Built from scratch with HTML, CSS, and JavaScript.",
+    "footer.privacyLink": "Privacy",
+    "footer.privacyAria": "Read the privacy information",
   },
 
   de: {
@@ -140,6 +147,13 @@ const I18N = {
     "vision.body":
       "Ich möchte zu einem etablierten Entwickler heranwachsen, mit praktischer Erfahrung in großen, realen Unternehmensprojekten. Mein Ziel ist es, den Antrieb, der mich zum Autodidakten gemacht hat, in ein professionelles Entwicklungsteam einzubringen — von Produktivsystemen im großen Maßstab zu lernen, echte Verantwortung zu übernehmen und im Handwerk immer besser zu werden.",
 
+    "privacy.label": "datenschutz",
+    "privacy.heading": "Analyse & Datenschutz",
+    "privacy.body":
+      "Dieses Portfolio nutzt Umami Cloud für eine anonyme, cookiefreie Nutzungsanalyse. Erfasst werden Seitenaufrufe, Referrer-Informationen, Browser- und Gerätekategorien, das Land sowie aggregierte Interaktionszahlen, um zu verstehen, wie die Website genutzt wird. Die Analyse wird in der EU verarbeitet, berücksichtigt die Do-Not-Track-Einstellung des Browsers und verwendet weder websiteübergreifendes Tracking noch Besucherkennungen oder benutzerdefinierte personenbezogene Daten.",
+
     "footer.note": "Von Grund auf gebaut mit HTML, CSS und JavaScript.",
+    "footer.privacyLink": "Datenschutz",
+    "footer.privacyAria": "Datenschutzinformationen lesen",
   },
 };
