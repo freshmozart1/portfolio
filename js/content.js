@@ -76,9 +76,7 @@ const I18N = {
     "privacy.body":
       "This portfolio uses Umami Cloud for anonymous, cookie-free usage analytics. We collect page views, referrer information, browser and device categories, country, and aggregated interaction counts to understand how the site is used. Analytics are processed in the EU, respect your browser's Do Not Track setting, and do not use cross-site tracking, visitor IDs, or custom personal data.",
 
-    "footer.note": "Built from scratch with HTML, CSS, and JavaScript.",
-    "footer.privacyLink": "Privacy",
-    "footer.privacyAria": "Read the privacy information",
+    "footer.note": "Built from scratch with HTML, CSS, and JavaScript."
   },
 
   de: {
@@ -152,8 +150,6 @@ const I18N = {
     "privacy.body":
       "Dieses Portfolio nutzt Umami Cloud für eine anonyme, cookiefreie Nutzungsanalyse. Erfasst werden Seitenaufrufe, Referrer-Informationen, Browser- und Gerätekategorien, das Land sowie aggregierte Interaktionszahlen, um zu verstehen, wie die Website genutzt wird. Die Analyse wird in der EU verarbeitet, berücksichtigt die Do-Not-Track-Einstellung des Browsers und verwendet weder websiteübergreifendes Tracking noch Besucherkennungen oder benutzerdefinierte personenbezogene Daten.",
 
-    "footer.note": "Von Grund auf gebaut mit HTML, CSS und JavaScript.",
-    "footer.privacyLink": "Datenschutz",
-    "footer.privacyAria": "Datenschutzinformationen lesen",
+    "footer.note": "Von Grund auf gebaut mit HTML, CSS und JavaScript."
   },
 };
